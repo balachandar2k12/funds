@@ -17,6 +17,74 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 
 <script type="text/javascript" src="../js/fundsinn.js"></script>
+<script type="text/javascript">
+if($("#applicantpaddrcheck").attr("checked"))
+		$('#applicantcommunicationaddress').hide();
+	else
+		$('#applicantcommunicationaddress').show();
+		
+	if($("#applicantsip").attr("checked"))
+		$('#sipmdetails').hide();
+	else
+		$('#sipmdetails').show();
+		
+	if($("#aplicantnomcheckbox").attr("checked"))
+		$('#appnomineedetails').hide();
+	else
+		$('#appnomineedetails').show();	
+		
+		
+		
+	$('#investor2').hide();
+	$('#investor3').hide();
+	$('#bankdetails2').hide();
+	$('#bankdetails3').hide();
+	
+	
+	
+	
+	//form submit ajax option
+	
+	function send()
+	{
+		  // make the AJAX request
+    var dataString = $('#cform').serialize();
+    $.ajax({
+        type: "POST",
+        url: 'individual.php',
+        data: dataString,
+        dataType: 'json',
+        success: function (data) {
+            if (data.success == 0) {
+                var errors = '<ul><li>';
+                if (data.name_msg != '')
+                    errors += data.name_msg + '</li>';
+                if (data.email_msg != '')
+                    errors += '<li>' + data.email_msg + '</li>';
+                if (data.message_msg != '')
+                    errors += '<li>' + data.message_msg + '</li>';
+                if (data.subject_msg != '')
+                    errors += '<li>' + data.subject_msg + '</li>';
+
+                $("div#output").removeClass('alert-success').addClass('alert-error').show().html('<div class="alert-content"><button type="button" class="close" data-dismiss="alert-content">x</button>Could not complete your request. See the errors below!</div>' + errors);
+            }
+            else if (data.success == 1) {
+
+                $("div#output").removeClass('alert-error').addClass('alert-success').show().html('<div class="alert-content"><button type="button" class="close" data-dismiss="alert-content">x</button>You message has been sent successfully!</div>');
+            }
+
+        },
+        error: function (error) {
+            $("div#output").removeClass('alert-success').addClass('alert-error').show().html('<div class="alert-content"><button type="button" class="close" data-dismiss="alert-content">x</button>Could not complete your request. See the error below!</div>' + error);
+        }
+    });
+	
+	
+	}
+	
+	
+	
+	</script>
 </head>
 <body>
 <!--MAIN WRAPPER-->
@@ -54,106 +122,104 @@
       </div>
       <div id="signUp-Container" class="grid_14 gridFirst"> 
        <!-- woofoo forms -->
-        <form id="form2" name="form2" class="wufoo leftLabel page" novalidate enctype="multipart/form-data" method="post" action="individual_php.php">
+        <form id="individualform" name="individualform" class="wufoo leftLabel page" novalidate method="post" action="javascript:send();">
            <div class="formHeaderTitle">
                 <h3 id="titleindividual"> Individual</h3>
 			</div>
 		<ul>
-            <li id="foli1" class="notranslate">
-              <label class="desc" id="title1" for="redirectIndividual"> Acount Type <span id="req_1" class="req">*</span> </label>
+            <li class="notranslate">
+              <label class="desc" for="redirectIndividual"> Acount Type <span class="req">*</span> </label>
               <div>
                 <input id="redirectIndividual" checked="checked"  data-required="true" tabindex="1" name="account_type" type="radio" value="Individual">&nbsp;Individual&nbsp;&nbsp;&nbsp;&nbsp;
-                <input id="redirectNRI" name="account_type" type="radio" value="NRI">&nbsp;NRI&nbsp;&nbsp;&nbsp;&nbsp;
-                <input id="redirectCorp"  name="account_type" type="radio" value="Corporate">&nbsp;Corporate/HUF&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="redirectNRI" name="account_type" type="radio" tabindex="2" value="NRI">&nbsp;NRI&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="redirectCorp"  name="account_type" type="radio" tabindex="3" value="Corporate">&nbsp;Corporate/HUF&nbsp;&nbsp;&nbsp;&nbsp;
               </div>
-              <p class="instruct" id="instruct1"><small>Please select A/C type.</small></p>
+              <p class="instruct" id="instructaccount_type"><small>Please select A/C type.</small></p>
             </li>
             <!-- investor_details -->
-            <li id="foli2" class="notranslate">
+            <li class="notranslate">
              
-              <label class="desc" id="title2" for="Field2"> Name of the applicant <span id="req_2" class="req">*</span> </label>
+              <label class="desc" for="applicantname"> Name of the applicant <span class="req">*</span> </label>
               <div>
-                <input id="Field2" name="Field2" type="text" class="field text medium" value="" maxlength="62" tabindex="2" onKeyUp="" required autofocus />
+                <input id="applicantname" name="applicantname" type="text" class="field text medium" value="" maxlength="62" tabindex="4" onKeyUp="" />
               </div>
-              <p class="instruct" id="instruct2"><small>Only letters, maximum only 62 characters all in CAPS</small></p>
+              <p class="instruct" id="instructapplicantname"><small>Only letters, maximum only 62 characters all in CAPS</small></p>
             </li>
-            <li id="foli3" class="notranslate">
-              <label class="desc " id="title3" for="Field3"> Father's Name <span id="req_3" class="req">*</span> </label>
+            <li class="notranslate">
+              <label class="desc " for="applicantfname"> Father's Name <span class="req">*</span> </label>
               <div>
-                <input id="Field3" name="Field3" type="text" class="field text nospin medium"  value="" maxlength="54" tabindex="3" onKeyUp="" required />
+                <input id="applicantfname" name="applicantfname" type="text" class="field text nospin medium"  value="" maxlength="54" tabindex="5" onKeyUp="" />
               </div>
-              <p class="instruct " id="instruct3"><small>Only letters, Maximum Only 54 Characters all in CAPS</small></p>
+              <p class="instruct " id="instructapplicantfname"><small>Only letters, Maximum Only 54 Characters all in CAPS</small></p>
             </li>
-            <li id="foli4" class="date eurodate notranslate">
-              <label class="desc" id="title4" for="Field4"> Date of Birth <span id="req_4" class="req">*</span> </label>
+            <li class="date eurodate notranslate">
+              <label class="desc"> Date of Birth <span class="req">*</span> </label>
               <span>
-              <input id="Field4-1" name="Field4-1" type="text" class="field text" value="" size="2" maxlength="2" tabindex="4" required />
-              <label for="Field4-1">DD</label>
+              <input id="applicantdobdd" name="applicantdobdd" type="text" class="field text" value="" size="2" maxlength="2" tabindex="6" />
+              <label for="applicantdobdd">DD</label>
               </span> <span class="symbol">/</span> <span>
-              <input id="Field4-2" name="Field4-2" type="text" class="field text" value="" size="2" maxlength="2" tabindex="5" required />
-              <label for="Field4-2">MM</label>
+              <input id="applicantdobmm" name="applicantdobmm" type="text" class="field text" value="" size="2" maxlength="2" tabindex="7" />
+              <label for="applicantdobmm">MM</label>
               </span> <span class="symbol">/</span> <span>
-              <input id="Field4" name="Field4" type="text" class="field text" value="" size="4" maxlength="4" tabindex="6" required />
-              <label for="Field4">YYYY</label>
+              <input id="applicantdobyyyy" name="applicantdobyyyy" type="text" class="field text" value="" size="4" maxlength="4" tabindex="8" />
+              <label for="applicantdobyyyy">YYYY</label>
               </span>
-              <p class="instruct" id="instruct4"><small>Your date of birth</small></p>
+              <p class="instruct" id="instructapplicantdob"><small>Your date of birth</small></p>
             </li>
-            <li id="foli5" class="notranslate">
+            <li class="notranslate">
               <fieldset>
-                
-                <legend id="title5" class="desc"> Gender <span id="req_5" class="req">*</span> </legend>
-             
-                <!--[if lt IE 8]>
-<label id="title113" class="desc">
+                <legend class="desc"> Gender <span class="req">*</span> </legend>
+             <!--[if lt IE 8]>
+<label class="desc">
 Gender
-<span id="req_113" class="req">*</span>
+<span  class="req">*</span>
 </label>
 <![endif]-->
                 <div>
                   <span>
-                  <input id="Field5" name="Field5" type="radio" class="field radio" value="Male" tabindex="7" onChange="handleInput(this);" onMouseUp="handleInput(this);" checked="checked" required />
-                  <label class="choice" for="Field5" > Male</label>
+                  <input id="applicantmaleradio" name="applicantgenderradio" type="radio" class="field radio" value="Male" tabindex="9" checked="checked" />
+                  <label class="choice" for="applicantmaleradio" > Male</label>
                   </span> <span>
-                  <input id="Field51" name="Field5" type="radio" class="field radio" value="Female" tabindex="8" onChange="handleInput(this);" onMouseUp="handleInput(this);" required />
-                  <label class="choice" for="Field5" > Female</label>
+                  <input id="applicantfemaleradio" name="applicantgenderradio" type="radio" class="field radio" value="Female" tabindex="10" />
+                  <label class="choice" for="applicantfemaleradio" > Female</label>
                   </span> 
 				 </div>
               </fieldset>
-              <p class="instruct" id="instruct5"><small>Gender</small></p>
+              <p class="instruct" id="instructapplicantgenderradio"><small>Gender</small></p>
             </li>
-            <li id="foli6" class="notranslate">
-              <label class="desc" id="title6" for="Field6"> PAN Number <span id="req_6" class="req">*</span> </label>
+            <li class="notranslate">
+              <label class="desc" for="applicantpan"> PAN Number <span class="req">*</span> </label>
               <div>
-                <input id="Field6" class="field text medium" name="Field6" tabindex="9" required  type="tel" maxlength="255" value="" />
+                <input id="applicantpan" class="field text medium" name="applicantpan" tabindex="11" required  type="number" value="" />
               </div>
-              <p class="instruct" id="instruct6"><small>Your pan number</small></p>
+              <p class="instruct" id="instructapplicantpan"><small>Your pan number</small></p>
             </li>
-            <li id="foli7" class="notranslate">
-              <label class="desc" id="title7" for="Field7"> Tele Number (Residential) <span id="req_7" class="req">*</span> </label>
+            <li class="notranslate">
+              <label class="desc"  for="applicanttelr"> Tele Number (Residential) <span class="req">*</span> </label>
               <div>
-                <input id="Field7" class="field text medium" name="Field7" tabindex="10" required  type="tel" maxlength="255" value="" />
+                <input id="applicanttelr" class="field text medium" name="applicanttelr" tabindex="12" required  type="tel" maxlength="255" value="" />
               </div>
-              <p class="instruct" id="instruct7"><small>Only Number 10 Digits</small></p>
+              <p class="instruct" id="instructapplicanttelr"><small>Only Number 10 Digits</small></p>
             </li>
-            <li id="foli8" class="notranslate">
-              <label class="desc" id="title8" for="Field8"> Tele Number (Office):  <span id="req_8" class="req">*</span> </label>
+            <li class="notranslate">
+              <label class="desc" for="applicanttelo"> Tele Number (Office):  <span class="req">*</span> </label>
               <div>
-                <input id="Field8" class="field text medium" name="Field8" tabindex="11" required  type="tel" maxlength="255" value="" />
+                <input id="applicanttelo" class="field text medium" name="applicanttelo" tabindex="13" required  type="tel" maxlength="255" value="" />
               </div>
-              <p class="instruct" id="instruct8"><small>Only Number 10 Digits</small></p>
+              <p class="instruct" id="instructapplicanttelo"><small>Only Number 10 Digits</small></p>
             </li>
-            <li id="foli9" class="notranslate">
-              <label class="desc" id="title9" for="Field9"> Moblie Number:  <span id="req_9" class="req">*</span> </label>
+            <li class="notranslate">
+              <label class="desc" for="applicanttelm"> Moblie Number:  <span class="req">*</span> </label>
               <div>
-                <input id="Field9" class="field text medium" name="Field9" tabindex="12" required  type="tel" maxlength="255" value="" />
+                <input id="applicanttelm" class="field text medium" name="applicanttelm" tabindex="14" required  type="tel" maxlength="255" value="" />
               </div>
-              <p class="instruct" id="instruct9"><small>+91 (only ten Digits Number)</small></p>
+              <p class="instruct" id="instructapplicanttelm"><small>+91 (only ten Digits Number)</small></p>
             </li>
-            <li id="foli10" class="notranslate">
-              <label class="desc" id="title10" for="Field10"> Occupation <span id="req_10" class="req">*</span> </label>
+            <li class="notranslate">
+              <label class="desc" for="applicantocc"> Occupation <span class="req">*</span> </label>
               <div>
                 <div class="styled-select">
-                  <select id="Field10" name="Field10" class="field select medium" tabindex="13" >
+                  <select id="applicantocc" name="applicantocc" class="field select medium" tabindex="15" >
                     <option value="--Select--" selected="selected"> --Select-- </option>
                     <option value="Business">Business</option>
                     <option value="Service">Service</option>
@@ -166,48 +232,417 @@ Gender
                   </select>
                 </div>
               </div>
-              <p class="instruct" id="instruct10"><small>Your occupation</small></p>
+              <p class="instruct" id="instructapplicantocc"><small>Your occupation</small></p>
             </li>
            </ul>
 	   
             <!--FORM 2-->
               <div class="formHeaderTitle">
-                <h3 id="titleaddress"> Address Information</h3>
+                <h3 > Address Information</h3>
 			</div>
 			
 			<ul>	
-            <li id="foli11" class="complex notranslate">
-              <label class="desc" id="title11" for="Field11"> Permanent Address <span id="req_11" class="req">*</span> </label>
-              <div> <label for="Field11">Address Line 1</label><span class="full addr1">
-                <input id="Field11" name="Field11" type="text" class="field text addr" value="" tabindex="14" required />
+            <li class="complex notranslate">
+              <label class="desc"> Permanent Address <span class="req">*</span> </label>
+              <div> <label for="applicantpaddr1">Address Line 1</label><span class="full addr1">
+                <input id="applicantpaddr1" name="applicantpaddr1" type="text" class="field text addr" value="" tabindex="16" required />
                 
-                </span>  <label for="Field12">Address Line 2</label><span class="full addr2">
-                <input id="Field12" name="Field12" type="text" class="field text addr" value="" tabindex="15" />
+                </span>  <label for="applicantpaddr2">Address Line 2</label><span class="full addr2">
+                <input id="applicantpaddr2" name="applicantpaddr2" type="text" class="field text addr" value="" tabindex="17" />
                
-                </span> <label for="Field13">City</label> <span class="left city">
-                <input id="Field13" name="Field13" type="text" class="field text addr" value="" tabindex="16" maxlength="30" required />
+                </span> <label for="applicantpcity">City</label> <span class="left city">
+                <input id="applicantpcity" name="applicantpcity" type="text" class="field text addr" value="" tabindex="18" maxlength="30" required />
                
-                </span>  <label for="Field14">State</label><span class="right state">
-                <input id="Field14" name="Field14" type="text" class="field text addr" value="" tabindex="17" maxlength="20" required />
+                </span>  <label for="applicantpstate">State</label><span class="right state">
+                <input id="applicantpstate" name="applicantpstate" type="text" class="field text addr" value="" tabindex="19" maxlength="20" required />
                
-                </span><label for="Field15">Postal / Zip Code</label> <span class="left zip">
-                <input id="Field15" name="Field15" type="text" class="field text addr" value="" maxlength="6" tabindex="18" required />
+                </span><label for="applicantpzip">Postal / Zip Code</label> <span class="left zip">
+                <input id="applicantpzip" name="applicantpzip" type="text" class="field text addr" value="" maxlength="6" tabindex="20" required />
                 
                 </span> 
                 </div>
-                
-              <p class="complex instruct" id="instruct15"><small>Address here!</small></p>
+             <p class="complex instruct" id="instructapplicantpaddr"><small>Address here!</small></p>
             </li>
-            
-            
-             <li>
+           </ul>
+		   <ul>
+		      <li class="complex notranslate">
+			 <label class="desc" for="applicantpaddrcheck">  <input type="checkbox" id="applicantpaddrcheck" name="applicantpaddrcheck" value="same" onChange="javascript:$('#applicantcommunicationaddress').toggle();"> &nbsp; Same Address for communication</label>
+				<input type='hidden' value='diferent' name='applicantpaddrcheck'>
+			<p class="complex instruct" id="instructapplicantpaddrcheck"><small>Addres for communication</small></p>
+			</li>
+		   </ul>
+		   
+		   <ul id="applicantcommunicationaddress" >
+		    <li class="complex notranslate">
+              <label class="desc" > Communication Address <span class="req">*</span> </label>
+              <div> <label for="applicantcaddr1">Address Line 1</label><span class="full addr1">
+                <input id="applicantcaddr1" name="applicantcaddr1" type="text" class="field text addr" value="" tabindex="21" required />
+                
+                </span>  <label for="applicantcaddr2">Address Line 2</label><span class="full addr2">
+                <input id="applicantcaddr2" name="applicantcaddr2" type="text" class="field text addr" value="" tabindex="22" />
+               
+                </span> <label for="applicantccity">City</label> <span class="left city">
+                <input id="applicantccity" name="applicantccity" type="text" class="field text addr" value="" tabindex="23" maxlength="30" required />
+               
+                </span>  <label for="applicantcstate">State</label><span class="right state">
+                <input id="applicantcstate" name="applicantcstate" type="text" class="field text addr" value="" tabindex="24" maxlength="20" required />
+               
+                </span><label for="applicantczip">Postal / Zip Code</label> <span class="left zip">
+                <input id="applicantczip" name="applicantczip" type="text" class="field text addr" value="" maxlength="6" tabindex="25" required />
+                </span> 
+                </div>
+             <p class="complex instruct" id="instructapplicantcaddr"><small>communication address here</small></p>
+            </li>
+			</ul>
+		   
+		   
+		     
+		   <diV id="Addinvestorsblock">
+				<div id="investor2">
+					<div class="formHeaderTitle">
+					<h3> Additional Investor Details</h3>
+					</div>
+					<ul>
+				<li class="notranslate">
+				<label class="desc" for="applicant2name"> Name of the second applicant <span class="req">*</span> </label>
+				<div>
+                <input id="applicant2name" name="applicant2name" type="text" class="field text medium" value="" maxlength="62" tabindex="26" onKeyUp="" required autofocus />
+              </div>
+              <p class="instruct" id="instructapplicant2name"><small>Only letters, maximum only 62 characters all in CAPS</small></p>
+				</li>
+				
+				 <li class="notranslate">
+              <label class="desc" for="applicant2pan"> second applicant PAN Number <span class="req">*</span> </label>
+             <div>
+                <input id="applicant2pan" class="field text medium" name="applicant2pan" tabindex="27" required  type="number" value="" />
+              </div>
+				<p class="instruct" id="instructapplicant2pan"><small>Your pan number</small></p>
+				</li>
+				</ul>
+				</div>
+
+				<ul id="investor3" >
+				
+				<li class="notranslate">
+				<label class="desc" for="applicant3name"> Name of the Third applicant <span class="req">*</span> </label>
+              <div>
+                <input id="applicant3name" name="applicant3name" type="text" class="field text medium" value="" maxlength="62" tabindex="28" onKeyUp="" required autofocus />
+              </div>
+              <p class="instruct" id="instructapplicant3name"><small>Only letters, maximum only 62 characters all in CAPS</small></p>
+				</li>
+				
+				 <li class="notranslate">
+              <label class="desc" for="applicant3pan"> Third applicant PAN Number <span class="req">*</span> </label>
+              <div>
+                <input id="applicant3pan" class="field text medium" name="Field6" tabindex="29" required  type="number" value="" />
+              </div>
+              <p class="instruct" id="instructapplicant3pan"><small>Your pan number</small></p>
+				</li>
+				</ul>
+			</div>
+		   
+		   <script type="text/javascript">
+		   
+		   function addinvestor(val){
+		   
+				if(val==2)
+				{
+					$('#investor2').show();
+					$('#addmoreinvestorlink').attr('href','javascript:addinvestor(3);');
+				}
+				
+				if(val==3)
+				{
+					$('#investor3').show();
+					$('#addinvestorsbutton').empty();
+				}
+			}
+		   </script>
+		   
+		   <ul id="addinvestorsbutton">
+			<li id="invesorbutton" class="buttons">
+				<a id="addmoreinvestorlink" class="btTxt submit fundsInn-btn" href="javascript:addinvestor(2);" >Add More Investors</a>
+				</li>
+		   </ul>
+		   
+		   
+			 <div class="formHeaderTitle">
+                <h3 > Bank Account Details</h3>
+			</div>
+			<ul>
+            <li class="complex notranslate">
+              <div id="bank_details"> <span class="full addr1">
+                 <label for="bankname">Name of the Bank</label><input id="bankname" name="bankname" type="text" class="field text addr" value="" tabindex="30" />
+               
+                </span> <label>Account Type</label> 
+				<div>
+					<input type="radio" id="bankacctypes" name="bankacctype" value="saving" tabindex="31"/>&nbsp;Savings&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" id="bankacctypec" name="bankacctype" value="current" tabindex="32"/>&nbsp;Current
+				</div>
+				<span class="full addr2">
+                
+				</span> <label for="bankaccno">Account Number</label><span class="left city">
+                <input id="bankaccno" name="bankaccno" type="text" class="field text addr" value="" tabindex="33" />
+                
+                </span><label>Branch Address</label> <span class="right state">
+                
+                </span> <label for="bankaddr1">Line 1</label><span class="left zip">
+                <input id="bankaddr1" name="bankaddr1" type="text" class="field text addr" value="" maxlength="40" tabindex="34" required />
+                
+                </span> <label for="bankaddr2">Line 2	</label><span class="left zip">
+                <input id="bankaddr2" name="bankaddr2" type="text" class="field text addr" value="" maxlength="40" tabindex="35" required />
+                
+                
+                </span> <label for="bankcity">Branch City</label><span class="left zip">
+                <input id="bankcity" name="bankcity" type="text" class="field text addr" value="" maxlength="30" tabindex="36"  />
+                
+                
+                </span> <label for="bankmicr">MICR Code</label><span class="left zip">
+                <input id="bankmicr" name="bankmicr" type="text" class="field text addr" value="" maxlength="9" tabindex="37"  />
+                
+               
+                </span> <label for="bankifsc">IFSC Code</label><span class="left zip">
+                <input id="bankifsc" name="bankifsc" type="text" class="field text addr" value="" maxlength="11"  tabindex="38"  />
+               </span>
+            </div>
+			  <p class="complex instruct" id="instructbank"><small>Bank details here!</small></p>
+            </li>
+		</ul>
+			 
+			 
+			 
+			 
+			  <diV id="Addbankdetailsblock">
+				<div id="bankdetails2">
+					<div class="formHeaderTitle">
+					<h3> Additional Bank Details</h3>
+					</div>
+					
+					
+					<ul>
+            <li class="complex notranslate">
+              <div id="bank2details"> <span class="full addr1">
+                 <label for="bank2name">Name of the Second Bank</label><input id="bank2name" name="bank2name" type="text" class="field text addr" value="" tabindex="39" />
+               
+                </span> <label>Account Type</label> 
+				<div>
+					<input type="radio" id="bank2acctypes" name="bank2acctype" value="saving" tabindex="40"/>&nbsp;Savings&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" id="bank2acctypec" name="bank2acctype" value="current" tabindex="41"/>&nbsp;Current
+				</div>
+				<span class="full addr2">
+                
+				</span> <label for="bank2accno">Account Number</label><span class="left city">
+                <input id="bank2accno" name="bank2accno" type="text" class="field text addr" value="" tabindex="42" />
+                
+                </span><label>Branch Address</label> <span class="right state">
+                
+                </span> <label for="bank2addr1">Line 1</label><span class="left zip">
+                <input id="bank2addr1" name="bank2addr1" type="text" class="field text addr" value="" maxlength="40" tabindex="43" required />
+                
+                </span> <label for="bank2addr2">Line 2	</label><span class="left zip">
+                <input id="bank2addr2" name="bank2addr2" type="text" class="field text addr" value="" maxlength="40" tabindex="44" required />
+                
+                
+                </span> <label for="bank2city">Branch City</label><span class="left zip">
+                <input id="bank2city" name="bank2city" type="text" class="field text addr" value="" maxlength="30" tabindex="45"  />
+                
+                
+                </span> <label for="bank2micr">MICR Code</label><span class="left zip">
+                <input id="bank2micr" name="bank2micr" type="text" class="field text addr" value="" maxlength="9" tabindex="46"  />
+                
+               
+                </span> <label for="bank2ifsc">IFSC Code</label><span class="left zip">
+                <input id="bank2ifsc" name="bank2ifsc" type="text" class="field text addr" value="" maxlength="11"  tabindex="47"  />
+               </span>
+            </div>
+			  <p class="complex instruct" id="instructbank2"><small>Second Bank details here!</small></p>
+            </li>
+		</ul>
+					
+					
+				</div>
+				
+			<div id="bankdetails3">
+			
+				<ul>
+            <li class="complex notranslate">
+              <div id="bank3details"> <span class="full addr1">
+                 <label for="bank3name">Name of the Third Bank</label><input id="bank3name" name="bank3name" type="text" class="field text addr" value="" tabindex="48" />
+               
+                </span> <label>Account Type</label> 
+				<div>
+					<input type="radio" id="bank3acctypes" name="bank3acctype" value="saving" tabindex="49"/>&nbsp;Savings&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" id="bank3acctypec" name="bank3acctype" value="current" tabindex="50"/>&nbsp;Current
+				</div>
+				<span class="full addr2">
+                
+				</span> <label for="bank3accno">Account Number</label><span class="left city">
+                <input id="bank3accno" name="bank3accno" type="text" class="field text addr" value="" tabindex="51" />
+                
+                </span><label>Branch Address</label> <span class="right state">
+                
+                </span> <label for="bank3addr1">Line 1</label><span class="left zip">
+                <input id="bank3addr1" name="bank3addr1" type="text" class="field text addr" value="" maxlength="40" tabindex="52" required />
+                
+                </span> <label for="bank3addr2">Line 2	</label><span class="left zip">
+                <input id="bank3addr2" name="bank3addr2" type="text" class="field text addr" value="" maxlength="40" tabindex="53" required />
+                
+                
+                </span> <label for="bank3city">Branch City</label><span class="left zip">
+                <input id="bank3city" name="bank3city" type="text" class="field text addr" value="" maxlength="30" tabindex="54"  />
+                
+                
+                </span> <label for="bank3micr">MICR Code</label><span class="left zip">
+                <input id="bank3micr" name="bank3micr" type="text" class="field text addr" value="" maxlength="9" tabindex="55"  />
+                
+               
+                </span> <label for="bank3ifsc">IFSC Code</label><span class="left zip">
+                <input id="bank3ifsc" name="bank3ifsc" type="text" class="field text addr" value="" maxlength="11"  tabindex="56"  />
+               </span>
+            </div>
+			  <p class="complex instruct" id="instructbank3"><small>Third Bank details here!</small></p>
+            </li>
+		</ul>
+		
+			</div>			
+				
+				
+			</div>
+			 
+			 
+			 
+			 
+			 	   <script type="text/javascript">
+		   
+		   function addbanksdetails(val){
+		   
+				if(val==2)
+				{
+					$('#bankdetails2').show();
+					$('#addmorebankdetailslink').attr('href','javascript:addbanksdetails(3);');
+				}
+				
+				if(val==3)
+				{
+					$('#bankdetails3').show();
+					$('#addbankdetailsbutton').empty();
+				}
+			}
+		   </script>
+		   
+		   <ul id="addbankdetailsbutton">
+			<li id="bankdetailsbutton" class="buttons">
+				<a id="addmorebankdetailslink" class="btTxt submit fundsInn-btn" href="javascript:addbanksdetails(2);" >Add More Banks</a>
+				</li>
+		   </ul>
+		   
+	  <ul>
+            <li class="notranslate">
+			<span class="left zip">
+                
+               <label>SIP Mandate</label>
+                </span> <label for="applicantsip"><input name="applicantsip" id="applicantsip" onchange="javascript:$('#sipmdetails').toggle();" value="sipmandatefalse" type="checkbox" tabindex="57">
+			
+                &nbsp;&nbsp;I Do not wish to make SIP mandate</label>
+					<input name="applicantsip" value="sipmandatetrue" type="hidden">
+                
+				<div id="sipmdetails">
                 <span class="left zip">
-            <label for="Field16"><input id="Field16" name="Field16" type="checkbox">&nbsp;&nbsp;I Have read the terms and Conditions Before investing </label>
-            </span><p class="instruct" id="instruct16"><small>Accept before submitting</small></p></li>
+                <label for="applicantvalidy">Number of years validity</label>
+				</span>
+				 <div class="styled-select">
+                  <select id="applicantvalidy" name="applicantvalidy" tabindex="58">
+                  	<option value="10">10</option>
+                  	<option value="11">11</option>
+                  	<option value="12">12</option>
+                    <option value="13">13</option>
+                  	<option value="14">14</option>
+                  	<option value="15">15</option>
+                  </select>
+                  </div>
+				  <span class="left zip">
+                <label for="applicantvalidma">Maximum Per month mandate amount</label>
+				 </span>
+				  <div class="styled-select">
+                  <select id="applicantvalidma" name="applicantvalidma" tabindex="59">
+                  	<option value="10">5000</option>
+                  	<option value="11">10000</option>
+                  	<option value="12">25000</option>
+                    <option value="13">50000</option>
+                  	<option value="14">75000</option>
+                  	<option value="15">100000 </option>
+                  </select>
+				  </div>
+				  </div>
+				   <p class="complex instruct" id="instructapplicantsip"><small>SIP details here!</small></p>
+				  
+			</li>
+			
+			</ul>
+		   
+		 <div class="formHeaderTitle">
+                <h3> Nominee Information</h3>
+			</div>
+			<ul>
+				  
+            <li class="complex notranslate">
+             <label for="aplicantnomcheckbox"> <input type="checkbox" name="aplicantnomcheckbox" id="aplicantnomcheckbox" onchange="javascript:$('#appnomineedetails').toggle();" value="appnomineefalse" tabindex="60"> &nbsp;&nbsp;I Do not wish to make nomination<br/><br/></label> 
+			  <input type="hidden" value="appnomineetrue" name="aplicantnomcheckbox">
+			<p class="instruct" id="instructnomineedetailcheckbox"><small>Nominee details</small></p>	
+			</li>			
+			</ul>
+			
+			<div id="appnomineedetails">
+			<ul>
+			<li>
+			  <span class="left city">
+				<label for="appnomname">Nominee Name</label> <input id="appnomname" name="appnomname" type="text" class="field text addr" value="" tabindex="61" maxlength="60" />
+                
+                </span> 
+                <p class="instruct" id="instructappnomname"><small>About Nominee</small></p>
+                <li class="date eurodate notranslate      ">
+              <label class="desc"> Date Of Birth <span class="req">*</span> </label>
+              <span>
+              <input id="appnomdobd" name="appnomdobd" type="text" class="field text" value="" size="2" maxlength="2" tabindex="62" required />
+              <label for="appnomdobd">DD</label>
+              </span> <span class="symbol">/</span> <span>
+              <input id="appnomdobm" name="appnomdobm" type="text" class="field text" value="" size="2" maxlength="2" tabindex="63" required />
+              <label for="appnomdobm">MM</label>
+              </span> <span class="symbol">/</span> <span>
+              <input id="appnomdoby" name="appnomdoby" type="text" class="field text" value="" size="4" maxlength="4" tabindex="64" required />
+              <label for="appnomdoby">YYYY</label>
+              </span>
+              <p class="instruct" id="instructappnomdob"><small>Your date of birth</small></p>
+            </li>
+            <li>
+                <span class="left zip"><label for="appnompname">Name Of Parent (In Case of Minor)	</label>
+                <input id="appnompname" name="appnompname" type="text" class="field text addr" value="" maxlength="60" tabindex="65" />
+                
+                </span> 
+                <p class="instruct" id="instructappnompname"><small>Name Of Parent (In Case of Minor)</small></p>
+                </li>
+              
+                
+            <li>
+                <span class="left zip"><label for="appnomrel">Relationship	</label>
+                <input id="appnomrel" name="appnomrel" type="text" class="field text addr" value="" maxlength="60" tabindex="66" />
+                
+                </span> 
+                <p class="instruct" id="instructappnomrel"><small>Relationship</small></p>
+                </li>
+				
+			</ul>
+		   
+		   </div>
+		   <ul>
+			<li>
+                <span class="left zip">
+            <label for="agreementaccept"><input tabindex="100" id="agreementaccept" name="agreementaccept" type="checkbox">&nbsp;&nbsp;I Have read the terms and Conditions Before investing </label>
+            </span><p class="instruct" id="instructagreementaccept"><small>Accept before submitting</small></p></li>
             <li class="buttons ">
               <div>
-                <input id="saveForm" name="saveForm" class="btTxt submit fundsInn-btn" type="submit" value="Submit"/>
-                <input id="clearForm" name="clearForm" class="btTxt submit fundsInn-btn" type="button" value="Clear"/>
+                <input id="saveForm" name="saveForm" class="btTxt submit fundsInn-btn" type="submit" tabindex="101" value="Submit"/>
+                <input id="clearForm" name="clearForm" class="btTxt submit fundsInn-btn" type="button" tabindex="102" value="Clear"/>
               </div>
             </li>
            
@@ -222,7 +657,6 @@ Gender
     </div>
   </div>
 </div>
-
 <!--MAIN WRAPPER-->
 <div class="footer">
   <div class="footerBox container_16 ">
@@ -285,5 +719,7 @@ Gender
     </div>
   </div>
 </div>
+</div>
+
 </body>
 </html>

@@ -1,145 +1,20 @@
-<li id="foli7" class="complex notranslate      ">
-            	<label class="desc" id="title7" for="Field7">Same as Permanent Address <input type="radio" id="rbscommaddress">&nbsp;&nbsp;&nbsp;&nbsp;Different <input type="radio" id="rbdcommaddress"></label>
-              <label class="desc" id="title7" for="Field7">    Communication Address <span id="req_7" class="req">*</span> </label>
-              <div><label for="Field7">Address Line 1</label> <span class="full addr1">
-                <input id="Field7" name="Field7" type="text" class="field text addr" value="" tabindex="1" required />
                 
-                </span><label for="Field8">Address Line 2</label> <span class="full addr2">
-                <input id="Field8" name="Field8" type="text" class="field text addr" value="" tabindex="2" />
-                
-                </span> <label for="Field9">City</label><span class="left city">
-                <input id="Field9" name="Field9" type="text" class="field text addr" value="" tabindex="3" maxlength="30" required />
-                
-                </span><label for="Field10">State</label> <span class="right state">
-                <input id="Field10" name="Field10" type="text" class="field text addr" value="" tabindex="4" maxlength="20" required />
-                
-                </span> <label for="Field11">Postal / Zip Code</label><span class="left zip">
-                <input id="Field11" name="Field11" type="text" class="field text addr" value="" maxlength="6" tabindex="5" required />
-                
-                </span> 
-                </div>
-                <p class="instruct" id="instruct1"><small>Communication Address</small></p>
-           
-              <p class="complex instruct" id="instruct7"><small>Address here!</small></p>
-            <input id="addmoreinvestor" class="btTxt submit fundsInn-btn" type="button" value="Add more investor"/>
-              <p class="complex instruct" id="instruct7"><small>Invester details here!</small></p>
-            </li>
-                
-            <div class="formHeaderTitle">
-                <h3 id="title3"> Bank Account Details</h3>
-</div>
-            <li id="foli7" class="complex notranslate      ">
-              <div id="bank_details"> <span class="full addr1">
-                 <label for="Field7">Name of the Bank</label><input id="Field7" name="Field7" type="text" class="field text addr" value="" tabindex="1" />
-               
-                </span> <label for="Field8">Account Type</label> <label for="Field8"><input type="radio">&nbsp;Savings&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio">&nbsp;Current</label><span class="full addr2">
-                
-               
-                </span> <label for="Field9">Account Number</label><span class="left city">
-                <input id="Field9" name="Field9" type="text" class="field text addr" value="" tabindex="3" />
-                
-                </span><label for="Field10">Branch Address</label> <span class="right state">
-                
-                </span> <label for="Field11">Line 1</label><span class="left zip">
-                <input id="Field11" name="Field11" type="text" class="field text addr" value="" maxlength="40" tabindex="5" required />
-                
-                </span> <label for="Field12">Line 2	</label><span class="left zip">
-                <input id="Field12" name="Field12" type="text" class="field text addr" value="" maxlength="40" tabindex="5" required />
-                
-                
-                </span> <label for="Field13">Branch City</label><span class="left zip">
-                <input id="Field13" name="Field13" type="text" class="field text addr" value="" maxlength="30" tabindex="5"  />
-                
-                
-                </span> <label for="Field14">MICR Code</label><span class="left zip">
-                <input id="Field14" name="Field14" type="text" class="field text addr" value="" maxlength="9" minlength="9" tabindex="5"  />
-                
-               
-                </span> <label for="Field15">IFSC Code</label><span class="left zip">
-                <input id="Field15" name="Field15" type="text" class="field text addr" value="" maxlength="11" minlength="11" tabindex="5"  />
-                 
-                
-                </span><span class="left zip">
-                
-               <label for="Field16">SIP Mandate</label>
-                </span> <label for="Field16"><input type="checkbox">
-                &nbsp;&nbsp;I Do not wish to make SIP mandate<br><br></label>
-                </span>
-                <span class="left zip">
-                <label for="Field17">Number of years validity</label><p>
-                  <select name="Field17">
-                  	<option value="10">10</option>
-                  	<option value="11">11</option>
-                  	<option value="12">12</option>
-                    <option value="13">13</option>
-                  	<option value="14">14</option>
-                  	<option value="15">15</option>
-                  </select>
-                  
-                </p></span>
-                <span class="left zip">
-                <label for="Field17">Maximum Per month mandate amount</label><p>
-                  <select name="Field17">
-                  	<option value="10">5000</option>
-                  	<option value="11">10000</option>
-                  	<option value="12">25000</option>
-                    <option value="13">50000</option>
-                  	<option value="14">75000</option>
-                  	<option value="15">100000 </option>
-                  </select>
-                  
-                </p></span>
-              </div>
-                
-              <p class="complex instruct" id="instruct7"><small>Bank details here!</small></p>
-            </li>
-            <input id="addmorebank" class="btTxt submit fundsInn-btn" type="button" value="Add more bank"/>
+
             
-             
-            <div class="formHeaderTitle">
-                <h3 id="title4"> Nominee Information</h3>
-</div>
-            <li id="foli7" class="complex notranslate      ">
-              <div>  <label for="Field7"> <input type="checkbox"> &nbsp;&nbsp;I Do not wish to make nomination</br></br></label> <span class="left city">
-               <label for="Field9">Nominee Name</label> <input id="Field9" name="Field9" type="text" class="field text addr" value="" tabindex="3" maxlength="60" />
-                
-                </span> 
-                <p class="instruct" id="instruct9"><small>About Nominee</small></p>
-                <li id="foli9" class="date eurodate notranslate      ">
-              <label class="desc" id="title9" for="Field9"> Date Of Birth <span id="req_9" class="req">*</span> </label>
-              <span>
-              <input id="Field9-1" name="Field9-1" type="text" class="field text" value="" size="2" maxlength="2" tabindex="6" required />
-              <label for="Field9-1">DD</label>
-              </span> <span class="symbol">/</span> <span>
-              <input id="Field9-2" name="Field9-2" type="text" class="field text" value="" size="2" maxlength="2" tabindex="7" required />
-              <label for="Field9-2">MM</label>
-              </span> <span class="symbol">/</span> <span>
-              <input id="Field9" name="Field9" type="text" class="field text" value="" size="4" maxlength="4" tabindex="8" required />
-              <label for="Field9">YYYY</label>
-              </span>
-              <p class="instruct" id="instruct9"><small>Your date of birth</small></p>
-            </li>
-            <li>
-                <span class="left zip"><label for="Field12">Name Of Parent (In Case of Minor)	</label>
-                <input id="Field12" name="Field12" type="text" class="field text addr" value="" maxlength="60" tabindex="5" />
-                
-                </span> 
-                <p class="instruct" id="instruct9"><small>Name Of Parent (In Case of Minor)</small></p>
-                </li>
-              
-                
-            <li>
-                <span class="left zip"><label for="Field12">Relationship	</label>
-                <input id="Field12" name="Field12" type="text" class="field text addr" value="" maxlength="60" tabindex="5" />
-                
-                </span> 
-                <p class="instruct" id="instruct9"><small>Relationship</small></p>
-                </li>
+			
+			
+			
+
+
+
+
+
+			
 				
-				
-				
-				
-				
-				
-				
-				
+
+		
+			
+			
+			
+			
+			
