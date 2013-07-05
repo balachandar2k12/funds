@@ -28,7 +28,51 @@
 			$('#'+fieldname).addClass("error");
 		}
 	}
+	function alphareq2(val,fieldname,errocontainer)
+	{
+		var return_attr;
+		if(val=="")
+			return_attr="TRUE";
+		else
+		if(alphapattern.test(val))
+			return_attr="TRUE";
+		else
+			return_attr="Only alphabhats are allowed for contact name";
+			
+		if(return_attr=="TRUE")
+		{
+				$('#'+errocontainer).html("<small>Only letters, maximum only 62 characters all in CAPS</small><br/>");
+			$('#'+fieldname).removeClass("error");
+		}
+		else
+		{
+			$('#'+errocontainer).html("<small>"+return_attr+"</small><br/>");
+			$('#'+fieldname).addClass("error");
+		}
+	}
 	
+	function alphareq3(val,fieldname,errocontainer)
+	{
+		var return_attr;
+		if(val=="")
+			return_attr="TRUE";
+		else
+		if(alphapattern.test(val))
+			return_attr="TRUE";
+		else
+			return_attr="Only alphabhats are allowed for contact desination";
+			
+		if(return_attr=="TRUE")
+		{
+				$('#'+errocontainer).html("<small>Only letters, maximum only 62 characters all in CAPS</small><br/>");
+			$('#'+fieldname).removeClass("error");
+		}
+		else
+		{
+			$('#'+errocontainer).html("<small>"+return_attr+"</small><br/>");
+			$('#'+fieldname).addClass("error");
+		}
+	}
 	var ddpattern=/^(0?[1-9]|[12][0-9]|3[01])$/;
 	function ddval(val,fieldname,errocontainer)
 	{
@@ -44,6 +88,29 @@
 		if(return_attr=="TRUE")
 		{
 				$('#'+errocontainer).html("<small>Enter Date of birth</small><br/>");
+			$('#'+fieldname).removeClass("error");
+		}
+		else
+		{
+			$('#'+errocontainer).html("<small>"+return_attr+"</small><br/>");
+			$('#'+fieldname).addClass("error");
+		}
+	}
+	
+	function ddval2(val,fieldname,errocontainer)
+	{
+		var return_attr;
+		if(val=="")
+			return_attr="Date cannot be empty";
+		else
+		if(ddpattern.test(val))
+			return_attr="TRUE";
+		else
+			return_attr="Invalid Date";
+			
+		if(return_attr=="TRUE")
+		{
+				$('#'+errocontainer).html("<small>Enter Date of incorporation</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -77,6 +144,30 @@
 			$('#'+fieldname).addClass("error");
 		}
 	}
+	
+	function mmval2(val,fieldname,errocontainer)
+	{
+		var return_attr;
+		if(val=="")
+			return_attr="Date cannot be empty";
+		else
+		if(mmpattern.test(val))
+			return_attr="TRUE";
+		else
+			return_attr="Invalid Date";
+			
+		if(return_attr=="TRUE")
+		{
+				$('#'+errocontainer).html("<small>Enter Date of incorporation</small><br/>");
+			$('#'+fieldname).removeClass("error");
+		}
+		else
+		{
+			$('#'+errocontainer).html("<small>"+return_attr+"</small><br/>");
+			$('#'+fieldname).addClass("error");
+		}
+	}
+
 
 	var yypattern=/^(19|20)?[0-9]{2}$/;
 		function yyval(val,fieldname,errocontainer)
@@ -93,6 +184,31 @@
 		if(return_attr=="TRUE")
 		{
 				$('#'+errocontainer).html("<small>Enter Date of birth</small><br/>");
+			$('#'+fieldname).removeClass("error");
+		}
+		else
+		{
+			$('#'+errocontainer).html("<small>"+return_attr+"</small><br/>");
+			$('#'+fieldname).addClass("error");
+		}
+	}
+	
+	
+	var yypattern2=/^(1)?[0-9]{3}$/;
+		function yyval2(val,fieldname,errocontainer)
+	{
+		var return_attr;
+		if(val=="")
+			return_attr="Date cannot be empty";
+		else
+		if(yypattern2.test(val))
+			return_attr="TRUE";
+		else
+			return_attr="Invalid Date";
+			
+		if(return_attr=="TRUE")
+		{
+				$('#'+errocontainer).html("<small>Enter Date of incorporation</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -142,7 +258,7 @@
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Enter your Residential phone number</small><br/>");
+				$('#'+errocontainer).html("<small>Enter Residential phone number</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -167,7 +283,7 @@
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Enter your office phone number</small><br/>");
+				$('#'+errocontainer).html("<small>Enter office phone number</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -192,7 +308,29 @@
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Enter your mobile number</small><br/>");
+				$('#'+errocontainer).html("<small>Enter mobile number</small><br/>");
+			$('#'+fieldname).removeClass("error");
+		}
+		else
+		{
+			$('#'+errocontainer).html("<small>"+return_attr+"</small><br/>");
+			$('#'+fieldname).addClass("error");
+		}
+	}
+	function temval2(val,fieldname,errocontainer)
+	{
+		var return_attr;
+		if(val=="")
+			return_attr="TRUE";
+		else
+		if(tempattern.test(val))
+			return_attr="TRUE";
+		else
+			return_attr="Invalid mobile Phone number";
+			
+		if(return_attr=="TRUE")
+		{
+				$('#'+errocontainer).html("<small>Enter mobile number</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -217,7 +355,7 @@
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Enter your email address</small><br/>");
+				$('#'+errocontainer).html("<small>Enter email address</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -227,6 +365,28 @@
 		}
 	}
 	
+	function emval2(val,fieldname,errocontainer)
+	{
+		var return_attr;
+		if(val=="")
+			return_attr="TRUE";
+		else
+		if(empattern.test(val))
+			return_attr="TRUE";
+		else
+			return_attr="Invalid Email";
+			
+		if(return_attr=="TRUE")
+		{
+				$('#'+errocontainer).html("<small>Enter email address</small><br/>");
+			$('#'+fieldname).removeClass("error");
+		}
+		else
+		{
+			$('#'+errocontainer).html("<small>"+return_attr+"</small><br/>");
+			$('#'+fieldname).addClass("error");
+		}
+	}
 	function ocval(val,fieldname,errocontainer)
 	{
 		var return_attr;
@@ -237,7 +397,45 @@
 		
 		if(return_attr=="TRUE")
 		{
-			$('#'+errocontainer).html("<small>Select your Occupation</small><br/>");
+			$('#'+errocontainer).html("<small>Select  Occupation</small><br/>");
+			$('#'+fieldname).removeClass("error");
+		}
+		else
+		{
+			$('#'+errocontainer).html("<small>"+return_attr+"</small><br/>");
+			$('#'+fieldname).addClass("error");
+		}
+	}
+	function statusval(val,fieldname,errocontainer)
+	{
+		var return_attr;
+		if(val=="--Select--")
+			return_attr="Please select Status ";
+		else
+			return_attr="TRUE";
+		
+		if(return_attr=="TRUE")
+		{
+			$('#'+errocontainer).html("<small>Select  Status</small><br/>");
+			$('#'+fieldname).removeClass("error");
+		}
+		else
+		{
+			$('#'+errocontainer).html("<small>"+return_attr+"</small><br/>");
+			$('#'+fieldname).addClass("error");
+		}
+	}
+	function tstatusval(val,fieldname,errocontainer)
+	{
+		var return_attr;
+		if(val=="--Select--")
+			return_attr="Please select the Tax Status ";
+		else
+			return_attr="TRUE";
+		
+		if(return_attr=="TRUE")
+		{
+			$('#'+errocontainer).html("<small>Select  Tax Status</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else

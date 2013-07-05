@@ -15,24 +15,31 @@ $return_array = array();
 	$applicant_id = date('dmo'); 
 	$applicant_account_type = request("account_type", "Individual");
     $applicant_name = request("applicantname", "");
-    $applicant_father_name = request("applicantfname", "");
-    $applicant_dob_year = request("applicantdobyyyy", "");
-    $applicant_dob_month = request("applicantdobmm", "");
-    $applicant_dob_day = request("applicantdobdd", "");
-    if (($applicant_dob_year != "")
-     && ($applicant_dob_month != "")
-     && ($applicant_dob_day != "")) {
-        $applicant_dob = $applicant_dob_year."-".$applicant_dob_month."-".$applicant_dob_day;
+	
+	$applicant_doi_year = request("applicantdoiyyyy", "");
+    $applicant_doi_month = request("applicantdoimm", "");
+    $applicant_doi_day = request("applicantdoidd", "");
+    if (($applicant_doi_year != "")
+     && ($applicant_doi_month != "")
+     && ($applicant_doi_day != "")) {
+        $applicant_doi = $applicant_doi_year."-".$applicant_doi_month."-".$applicant_doi_day;
     } else {
-        $applicant_dob = "";
+        $applicant_doi = "";
     }
-    $applicant_gender = request("applicantgenderradio", "Male");
     $applicant_pan = request("applicantpan", "");
-    $applicant_telephone_residence = request("applicanttelr", "");
-    $applicant_telephone_office = request("applicanttelo", "");
-    $applicant_telephone_mobile = request("applicanttelm", "");
-    $applicant_email = request("applicantemail", "");
-    $applicant_occupation = request("applicantocc", "");
+   
+	
+	$applicant_contact_name=request("applicant2contactname", "");
+	$applicant_contact_designation=request("applicant2contactdes", "");
+	$applicant_contact_telephone_residence=request("applicant2contacttelr", "");
+	$applicant_contact_telephone_office=request("applicant2contacttelo", "");
+	$applicant_contact_telephone_mobile=request("applicant2contacttelm", "");
+	$applicant_contact_email=request("applicant2contactemail", "");
+
+	$applicant_occupation = request("applicantocc", "");
+	$applicant_status = request("applicantstatus", "");
+	$applicant_tax_status = request("applicanttaxstatus", "");
+	
     $applicant_address_permanant_line1 = request("applicantpaddr1", "");
     $applicant_address_permanent_line2 = request("applicantpaddr2", "");
     $applicant_address_permanent_city = request("applicantpcity", "");
@@ -102,36 +109,28 @@ $return_array = array();
 		else
 			$return_attr['applicantname']="Only alpha bhats are allowed for name";
 
-	if($applicant_father_name==="")
-		$return_attr['applicantfname']="Applicant Father name cannot be empty";
-	else
-		if(preg_match($words,$applicant_father_name))
-			$return_attr['applicantfname']="TRUE";
-		else
-			$return_attr['applicantfname']="Only alphabhts are allowed for father name";
-
 	//$datepattern = "/^[0-9]{4}[-\/][0-9]{1,2}[-\/][0-9]{1,2}\$/";
-	$datepattern="/^(19|20)?[0-9]{2}[-\/](0?[1-9]|1[012])[-\/](0?[1-9]|[12][0-9]|3[01])\$/";
+	$datepattern="/^(1)?[0-9]{3}[-\/](0?[1-9]|1[012])[-\/](0?[1-9]|[12][0-9]|3[01])\$/";
 
-	if($applicant_dob==="")
+	if($applicant_doi==="")
 			{
-				$return_attr['applicantdobdd']="Date of birth name cannot be empty";
-				$return_attr['applicantdobmm']="Date of birth name cannot be empty";
-				$return_attr['applicantdobyyyy']="Date of birth name cannot be empty";
+				$return_attr['applicantdoidd']="Date of incorporation cannot be empty";
+				$return_attr['applicantdoimm']="Date of incorporation cannot be empty";
+				$return_attr['applicantdoiyyyy']="Date of incorporation cannot be empty";
 			}
 	else
-		if(preg_match($datepattern,$applicant_dob))
+		if(preg_match($datepattern,$applicant_doi))
 			{	
-				$return_attr['applicantdobdd']="TRUE";
-				$return_attr['applicantdobmm']="TRUE";
-				$return_attr['applicantdobyyyy']="TRUE";
+				$return_attr['applicantdoidd']="TRUE";
+				$return_attr['applicantdoimm']="TRUE";
+				$return_attr['applicantdoiyyyy']="TRUE";
 						
 			}
 		else
 			{
-					$return_attr['applicantdobdd']="In Valid Date";
-					$return_attr['applicantdobmm']="In Valid Date";
-					$return_attr['applicantdobyyyy']="In Valid Date";
+					$return_attr['applicantdoidd']="In Valid Date";
+					$return_attr['applicantdoimm']="In Valid Date";
+					$return_attr['applicantdoiyyyy']="In Valid Date";
 			}
 	$panpattern='/^[a-z]{4,4}[cphfatbljg]{1,1}[0-9]{4,4}[a-z]/i';
 	
@@ -143,47 +142,68 @@ $return_array = array();
 		else
 			$return_attr['applicantpan']="In Valid PAN example ABCDF9999A ";
 	
+	
+		if(!$applicant_contact_name=="")
+			if(preg_match($words,$applicant_contact_name))
+				$return_attr['applicant2contactname']="TRUE";
+			else
+				$return_attr['applicant2contactname']="Only alpha bhats are allowed for name";
+				
+	
+	
+		if(!$applicant_contact_designation=="")
+			if(preg_match($words,$applicant_contact_designation))
+				$return_attr['applicant2contactdes']="TRUE";
+			else
+				$return_attr['applicant2contactdes']="Only alpha bhats are allowed for designation";
+	
 	$terpattern = "/^[0-9]{6,12}\$/";
 	
-		if(!$applicant_telephone_residence=="")
-			if(preg_match($terpattern,$applicant_telephone_residence))
-				$return_attr['applicanttelr']="TRUE";
+		if(!$applicant_contact_telephone_residence=="")
+			if(preg_match($terpattern,$applicant_contact_telephone_residence))
+				$return_attr['applicant2contacttelr']="TRUE";
 			else
-				$return_attr['applicanttelr']="InValid phone no";
+				$return_attr['applicant2contacttelr']="InValid phone no";
 	
 		$teopattern = "/^[0-9]{6,15}\$/";
 		
-		if(!$applicant_telephone_office=="")
-		if(preg_match($teopattern,$applicant_telephone_office))
-			$return_attr['applicanttelo']="TRUE";
+		if(!$applicant_contact_telephone_office=="")
+		if(preg_match($teopattern,$applicant_contact_telephone_office))
+			$return_attr['applicant2contacttelo']="TRUE";
 		else
-			$return_attr['applicanttelo']="InValid phone no";
+			$return_attr['applicant2contacttelo']="InValid phone no";
 	
 		$tempattern = "/^[0-9]{10,11}\$/";
 	
-		if($applicant_telephone_mobile==="")
-			$return_attr['applicanttelm']="mobile no cannot be empty";
+		if(!$applicant_contact_telephone_mobile=="")
+			if(preg_match($tempattern,$applicant_contact_telephone_mobile))
+			$return_attr['applicant2contacttelm']="TRUE";
 		else
-			if(preg_match($tempattern,$applicant_telephone_mobile))
-			$return_attr['applicanttelm']="TRUE";
-		else
-			$return_attr['applicanttelm']="In Valid phone no";
+			$return_attr['applicant2contacttelm']="In Valid phone no";
 	
 	
 	$emailpattern='/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/'; 
 	
-	if($applicant_email==="")
-		$return_attr['applicantemail']="Email cannot be empty";
-	else
-		if(preg_match($emailpattern,$applicant_email))
-			$return_attr['applicantemail']="TRUE";
+	if(!$applicant_contact_email=="")
+		if(preg_match($emailpattern,$applicant_contact_email))
+			$return_attr['applicant2contactemail']="TRUE";
 		else
-			$return_attr['applicantemail']="In Valid email ";
+			$return_attr['applicant2contactemail']="In Valid email ";
 	
 		if($applicant_occupation==="--Select--")
 			$return_attr['applicantocc']="Please select the occupation ";
 		else
 			$return_attr['applicantocc']="TRUE";
+			
+		if($applicant_status==="--Select--")
+			$return_attr['applicantstatus']="Please select the status ";
+		else
+			$return_attr['applicantstatus']="TRUE";
+			
+		if($applicant_tax_status==="--Select--")
+			$return_attr['applicanttaxstatus']="Please select the Taxt Status ";
+		else
+			$return_attr['applicanttaxstatus']="TRUE";
 	
 	if($applicant_address_permanant_line1==="")
 		$return_attr['applicantpaddr1']="address line cannot  be empty";
@@ -476,62 +496,64 @@ if(($return_array['success'])==='1')
 {	
 		
 	//prepare sql
-  $sql = "INSERT INTO `individual_customer`";
+  $sql = "INSERT INTO `corporate_customer`";
         $sql .= " (";
-        $sql .= "individual_customer.applicant_id"; 
-        $sql .= ",individual_customer.applicant_account_type"; 
-        $sql .= ",individual_customer.applicant_name"; 
-        $sql .= ",individual_customer.applicant_father_name"; 
-        $sql .= ",individual_customer.applicant_dob"; 
-        $sql .= ",individual_customer.applicant_gender"; 
-        $sql .= ",individual_customer.applicant_pan"; 
-        $sql .= ",individual_customer.applicant_telephone_residence"; 
-        $sql .= ",individual_customer.applicant_telephone_office"; 
-        $sql .= ",individual_customer.applicant_telephone_mobile"; 
-        $sql .= ",individual_customer.applicant_email"; 
-        $sql .= ",individual_customer.applicant_occupation"; 
-        $sql .= ",individual_customer.applicant_address_permanant_line1"; 
-        $sql .= ",individual_customer.applicant_address_permanent_line2"; 
-        $sql .= ",individual_customer.applicant_address_permanent_city"; 
-        $sql .= ",individual_customer.applicant_address_permanent_state"; 
-        $sql .= ",individual_customer.applicant_address_permanent_pincode"; 
-        $sql .= ",individual_customer.applicant_address_communication_line1"; 
-        $sql .= ",individual_customer.applicant_address_communication_line2"; 
-        $sql .= ",individual_customer.applicant_address_communication_city"; 
-        $sql .= ",individual_customer.applicant_address_communication_state"; 
-        $sql .= ",individual_customer.applicant_address_communication_pincode"; 
-		$sql .= ",individual_customer.applicant_bank1_account_number"; 
-        $sql .= ",individual_customer.bank1_account_type"; 
-        $sql .= ",individual_customer.bank1_ifsc_code"; 
-        $sql .= ",individual_customer.bank1_micr_code"; 
-        $sql .= ",individual_customer.bank1_name"; 
-        $sql .= ",individual_customer.bank1_branch_address_line1"; 
-        $sql .= ",individual_customer.bank1_branch_address_line2"; 
-        $sql .= ",individual_customer.bank1_branch_city"; 
-        $sql .= ",individual_customer.applicant_bank2_account_number"; 
-        $sql .= ",individual_customer.bank2_account_type"; 
-        $sql .= ",individual_customer.bank2_ifsc_code"; 
-        $sql .= ",individual_customer.bank2_micr_code"; 
-        $sql .= ",individual_customer.bank2_name"; 
-        $sql .= ",individual_customer.bank2_branch_address_line1"; 
-        $sql .= ",individual_customer.bank2_branch_address_line2"; 
-        $sql .= ",individual_customer.bank2_branch_city"; 
-        $sql .= ",individual_customer.applicant_bank3_account_number"; 
-        $sql .= ",individual_customer.bank3_account_type"; 
-        $sql .= ",individual_customer.bank3_ifsc_code"; 
-        $sql .= ",individual_customer.bank3_micr_code"; 
-        $sql .= ",individual_customer.bank3_name"; 
-        $sql .= ",individual_customer.bank3_branch_address_line1"; 
-        $sql .= ",individual_customer.bank3_branch_address_line2"; 
-        $sql .= ",individual_customer.bank3_branch_city"; 
-        $sql .= ",individual_customer.applicant_nominee_mandate"; 
-        $sql .= ",individual_customer.applicant_nominee_name"; 
-        $sql .= ",individual_customer.applicant_nominee_dob"; 
-        $sql .= ",individual_customer.applicant_nominee_parent_name"; 
-        $sql .= ",individual_customer.applicant_nominee_relationship"; 
-        $sql .= ",individual_customer.applicant_sip_mandate"; 
-        $sql .= ",individual_customer.applicant_sip_mandate_years"; 
-        $sql .= ",individual_customer.appplicant_sip_mandate_maximum_per_month"; 
+        $sql .= "corporate_customer.applicant_id"; 
+        $sql .= ",corporate_customer.applicant_account_type"; 
+        $sql .= ",corporate_customer.applicant_name"; 
+		$sql .= ",applicant_doi"; 
+		$sql .= ",applicant_pan"; 
+		$sql .= ",applicant_contact_name"; 
+		$sql .= ",applicant_contact_designation"; 
+		$sql .= ",applicant_contact_telephone_residence"; 
+		$sql .= ",applicant_contact_telephone_office"; 
+		$sql .= ",applicant_contact_telephone_mobile"; 
+		$sql .= ",applicant_contact_email"; 
+		$sql .= ",applicant_occupation"; 
+		$sql .= ",applicant_status"; 
+		$sql .= ",applicant_tax_status";
+		$sql .= ",corporate_customer.applicant_address_permanant_line1"; 
+        $sql .= ",corporate_customer.applicant_address_permanent_line2"; 
+        $sql .= ",corporate_customer.applicant_address_permanent_city"; 
+        $sql .= ",corporate_customer.applicant_address_permanent_state"; 
+        $sql .= ",corporate_customer.applicant_address_permanent_pincode"; 
+        $sql .= ",corporate_customer.applicant_address_communication_line1"; 
+        $sql .= ",corporate_customer.applicant_address_communication_line2"; 
+        $sql .= ",corporate_customer.applicant_address_communication_city"; 
+        $sql .= ",corporate_customer.applicant_address_communication_state"; 
+        $sql .= ",corporate_customer.applicant_address_communication_pincode"; 
+		$sql .= ",corporate_customer.applicant_bank1_account_number"; 
+        $sql .= ",corporate_customer.bank1_account_type"; 
+        $sql .= ",corporate_customer.bank1_ifsc_code"; 
+        $sql .= ",corporate_customer.bank1_micr_code"; 
+        $sql .= ",corporate_customer.bank1_name"; 
+        $sql .= ",corporate_customer.bank1_branch_address_line1"; 
+        $sql .= ",corporate_customer.bank1_branch_address_line2"; 
+        $sql .= ",corporate_customer.bank1_branch_city"; 
+        $sql .= ",corporate_customer.applicant_bank2_account_number"; 
+        $sql .= ",corporate_customer.bank2_account_type"; 
+        $sql .= ",corporate_customer.bank2_ifsc_code"; 
+        $sql .= ",corporate_customer.bank2_micr_code"; 
+        $sql .= ",corporate_customer.bank2_name"; 
+        $sql .= ",corporate_customer.bank2_branch_address_line1"; 
+        $sql .= ",corporate_customer.bank2_branch_address_line2"; 
+        $sql .= ",corporate_customer.bank2_branch_city"; 
+        $sql .= ",corporate_customer.applicant_bank3_account_number"; 
+        $sql .= ",corporate_customer.bank3_account_type"; 
+        $sql .= ",corporate_customer.bank3_ifsc_code"; 
+        $sql .= ",corporate_customer.bank3_micr_code"; 
+        $sql .= ",corporate_customer.bank3_name"; 
+        $sql .= ",corporate_customer.bank3_branch_address_line1"; 
+        $sql .= ",corporate_customer.bank3_branch_address_line2"; 
+        $sql .= ",corporate_customer.bank3_branch_city"; 
+        $sql .= ",corporate_customer.applicant_nominee_mandate"; 
+        $sql .= ",corporate_customer.applicant_nominee_name"; 
+        $sql .= ",corporate_customer.applicant_nominee_dob"; 
+        $sql .= ",corporate_customer.applicant_nominee_parent_name"; 
+        $sql .= ",corporate_customer.applicant_nominee_relationship"; 
+        $sql .= ",corporate_customer.applicant_sip_mandate"; 
+        $sql .= ",corporate_customer.applicant_sip_mandate_years"; 
+        $sql .= ",corporate_customer.appplicant_sip_mandate_maximum_per_month"; 
         $sql .= ") ";
         $sql .= " VALUES "; 
         $sql .= " (";
@@ -589,6 +611,8 @@ $sql .= " , ?" ;
 $sql .= " , ?" ;  
 $sql .= " , ?" ;  
 $sql .= " , ?" ;  
+$sql .= " , ?" ;  
+$sql .= " , ?" ;  
        $sql .= ") ";
 
 	
@@ -603,7 +627,7 @@ $return_array['error'] ='0';
 		}
 		
 		
-		$query="SELECT count(*) FROM `individual_customer` WHERE `applicant_id` like \"".$applicant_id."%\"";
+		$query="SELECT count(*) FROM `corporate_customer` WHERE `applicant_id` like \"".$applicant_id."%\"";
 		$genid="0";
 		
 		if (!($stmt2 = $mysqli2->prepare($query))) {
@@ -622,15 +646,20 @@ $return_array['error'] ='0';
 $applicant_id=mb_strtoupper($applicant_id);
 $applicant_account_type=mb_strtoupper($applicant_account_type);
 $applicant_name=mb_strtoupper($applicant_name);
-$applicant_father_name=mb_strtoupper($applicant_father_name);
-$applicant_dob=mb_strtoupper($applicant_dob);
-$applicant_gender=mb_strtoupper($applicant_gender);
+$applicant_doi=mb_strtoupper($applicant_doi);
 $applicant_pan=mb_strtoupper($applicant_pan);
-$applicant_telephone_residence=mb_strtoupper($applicant_telephone_residence);
-$applicant_telephone_office=mb_strtoupper($applicant_telephone_office);
-$applicant_telephone_mobile=mb_strtoupper($applicant_telephone_mobile);
-$applicant_email=mb_strtoupper($applicant_email);
-$applicant_occupation=mb_strtoupper($applicant_occupation);
+
+
+$applicant_contact_name=mb_strtoupper($applicant_contact_name); 
+$applicant_contact_designation=mb_strtoupper($applicant_contact_designation); 
+$applicant_contact_telephone_residence=mb_strtoupper($applicant_contact_telephone_residence); 
+$applicant_contact_telephone_office=mb_strtoupper($applicant_contact_telephone_office); 
+$applicant_contact_telephone_mobile=mb_strtoupper($applicant_contact_telephone_mobile); 
+$applicant_contact_email=mb_strtoupper($applicant_contact_email); 
+$applicant_occupation=mb_strtoupper($applicant_occupation); 
+$applicant_status=mb_strtoupper($applicant_status); 
+$applicant_tax_status=mb_strtoupper($applicant_tax_status);
+
 $applicant_address_permanant_line1=mb_strtoupper($applicant_address_permanant_line1);
 $applicant_address_permanent_line2=mb_strtoupper($applicant_address_permanent_line2);
 $applicant_address_permanent_city=mb_strtoupper($applicant_address_permanent_city);
@@ -674,7 +703,7 @@ $applicant_sip_mandate=mb_strtoupper($applicant_sip_mandate);
 $applicant_sip_mandate_years=mb_strtoupper($applicant_sip_mandate_years);
 $appplicant_sip_mandate_maximum_per_month=mb_strtoupper($appplicant_sip_mandate_maximum_per_month);
 
-		if (!$stmt->bind_param("sssssssiiissssssissssiississssississssississssissssiii",$applicant_id,$applicant_account_type,$applicant_name,$applicant_father_name,$applicant_dob,$applicant_gender,$applicant_pan,$applicant_telephone_residence,$applicant_telephone_office,$applicant_telephone_mobile,$applicant_email,$applicant_occupation,$applicant_address_permanant_line1,$applicant_address_permanent_line2,$applicant_address_permanent_city,$applicant_address_permanent_state,$applicant_address_permanent_pincode,$applicant_address_communication_line1,$applicant_address_communication_line2,$applicant_address_communication_city,$applicant_address_communication_state,$applicant_address_communication_pincode,$applicant_bank1_account_number,$bank1_account_type,$bank1_ifsc_code,$bank1_micr_code,$bank1_name,$bank1_branch_address_line1,$bank1_branch_address_line2,$bank1_branch_city,$applicant_bank2_account_number,$bank2_account_type,$bank2_ifsc_code,$bank2_micr_code,$bank2_name,$bank2_branch_address_line1,$bank2_branch_address_line2,$bank2_branch_city,$applicant_bank3_account_number,$bank3_account_type,$bank3_ifsc_code,$bank3_micr_code,$bank3_name,$bank3_branch_address_line1,$bank3_branch_address_line2,$bank3_branch_city,$applicant_nominee_mandate,$applicant_nominee_name,$applicant_nominee_dob,$applicant_nominee_parent_name,$applicant_nominee_relationship,$applicant_sip_mandate,$applicant_sip_mandate_years,$appplicant_sip_mandate_maximum_per_month)) {			
+		if (!$stmt->bind_param("sssssssiiissssssssissssiississssississssississssissssiii",$applicant_id,$applicant_account_type,$applicant_name,$applicant_doi,$applicant_pan,$applicant_contact_name,$applicant_contact_designation,$applicant_contact_telephone_residence,$applicant_contact_telephone_office,$applicant_contact_telephone_mobile,$applicant_contact_email,$applicant_occupation,$applicant_status,$applicant_tax_status,$applicant_address_permanant_line1,$applicant_address_permanent_line2,$applicant_address_permanent_city,$applicant_address_permanent_state,$applicant_address_permanent_pincode,$applicant_address_communication_line1,$applicant_address_communication_line2,$applicant_address_communication_city,$applicant_address_communication_state,$applicant_address_communication_pincode,$applicant_bank1_account_number,$bank1_account_type,$bank1_ifsc_code,$bank1_micr_code,$bank1_name,$bank1_branch_address_line1,$bank1_branch_address_line2,$bank1_branch_city,$applicant_bank2_account_number,$bank2_account_type,$bank2_ifsc_code,$bank2_micr_code,$bank2_name,$bank2_branch_address_line1,$bank2_branch_address_line2,$bank2_branch_city,$applicant_bank3_account_number,$bank3_account_type,$bank3_ifsc_code,$bank3_micr_code,$bank3_name,$bank3_branch_address_line1,$bank3_branch_address_line2,$bank3_branch_city,$applicant_nominee_mandate,$applicant_nominee_name,$applicant_nominee_dob,$applicant_nominee_parent_name,$applicant_nominee_relationship,$applicant_sip_mandate,$applicant_sip_mandate_years,$appplicant_sip_mandate_maximum_per_month)) {			
 			$return_array['error'] = "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 		}
 

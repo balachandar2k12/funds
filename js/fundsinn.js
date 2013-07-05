@@ -26,15 +26,12 @@ if($("#applicantpaddrcheck").attr("checked"))
 	else
 		$('#appnomineedetails').show();	
 		
-		
-		
 	$('#investor2').hide();
 	$('#investor3').hide();
 	$('#bankdetails2').hide();
 	$('#bankdetails3').hide();
+	
 	$('#bank3stat').attr('value','bank3false');
 	$('#bank2stat').attr('value','bank2false');
-	
-	
 });
 
