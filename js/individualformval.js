@@ -425,6 +425,46 @@
 			$('#'+fieldname).addClass("error");
 		}
 	}
+function natval(val,fieldname,errocontainer)
+	{
+		var return_attr;
+		if(val=="--Select--")
+			return_attr="Please select Nationality ";
+		else
+			return_attr="TRUE";
+		
+		if(return_attr=="TRUE")
+		{
+			$('#'+errocontainer).html("<small>Select  Nationality</small><br/>");
+			$('#'+fieldname).removeClass("error");
+		}
+		else
+		{
+			$('#'+errocontainer).html("<small>"+return_attr+"</small><br/>");
+			$('#'+fieldname).addClass("error");
+		}
+	}
+	function ocuoval(val,fieldname,errocontainer)
+	{
+		var return_attr;
+		if(val=="--Select--")
+			return_attr="Please select country ";
+		else
+			return_attr="TRUE";
+		
+		if(return_attr=="TRUE")
+		{
+			$('#'+errocontainer).html("<small>Select  country</small><br/>");
+			$('#'+fieldname).removeClass("error");
+		}
+		else
+		{
+			$('#'+errocontainer).html("<small>"+return_attr+"</small><br/>");
+			$('#'+fieldname).addClass("error");
+		}
+	}
+	
+
 	function tstatusval(val,fieldname,errocontainer)
 	{
 		var return_attr;

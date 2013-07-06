@@ -26,7 +26,9 @@
 //form submit ajax option
 	function formReset()
 	{
-		document.getElementById("individualform").reset();
+
+		document.getElementById("corporateform").reset();
+
 		if($("#applicantpaddrcheck").attr("checked"))
 		$('#applicantcommunicationaddress').hide();
 	else
@@ -65,7 +67,8 @@
 		{
 							
 		  // make the AJAX request
-    var dataString = $('#individualform').serialize();
+    var dataString = $('#corporateform').serialize();
+
     $.ajax({
         type: "POST",
         url: 'http://localhost/FundsInn/forms/corporatephp.php',
@@ -216,7 +219,7 @@
       </div>
       <div id="signUp-Container" class="grid_14 gridFirst"> 
        <!-- woofoo forms -->
-        <form id="individualform" name="individualform" class="wufoo leftLabel page"  novalidate method="post" action="javascript:send();">
+        <form id="corporateform" name="corporateform" class="wufoo leftLabel page"  novalidate method="post" action="javascript:send();">
 			<div id="errordis">
 			
 			</div>
@@ -245,6 +248,7 @@
             <li class="date eurodate notranslate">
               <label class="desc"> Date of Incorporation <span class="req">*</span> </label>
               <span>
+
               <input id="applicantdoidd" name="applicantdoidd" type="text" class="field text" value="" size="2" onChange="ddval2(this.value,'applicantdoidd','instructapplicantdoidd')" maxlength="2" tabindex="5" />
               <label for="applicantdoidd">DD</label>
               </span> <span class="symbol">/</span> <span>
@@ -273,6 +277,7 @@
 			<ul>	
             <li class="complex notranslate">
                <div> <label for="applicant2contactname">Contact Person Name</label><span class="full addr1">
+
                 <input id="applicant2contactname" name="applicant2contactname" type="text" class="field text addr" value="" tabindex="9" onChange="alphareq2(this.value,'applicant2contactname','instructapplicant2contact')" maxlength="62" required />
                 
                 </span>  <label for="applicant2contactdes">Designation of Contact Person</label><span class="full addr2">
@@ -320,6 +325,7 @@
               <label class="desc" id="applicantstatus"> Status <span class="req">*</span> </label>
               <div>
                 <div class="styled-select">
+
                   <select  name="applicantstatus" class="field select medium" tabindex="16" onChange="statusval(this.value,'applicantstatus','instructapplicantstatus')" >
                     <option value="--Select--" selected="selected"> --Select-- </option>
                    <option value="Business">Partnership</option>
@@ -390,7 +396,6 @@
                
                 </span><label for="applicantpzip">Postal / Zip Code</label> <span class="left zip">
                 <input id="applicantpzip" name="applicantpzip" type="text" class="field text addr" value="" maxlength="6" tabindex="22" onChange="pinval(this.value,'applicantpzip','instructapplicantpaddr')" required />
-                
                 </span> 
                 </div>
              <p class="complex instruct" id="instructapplicantpaddr"><small>Address here!</small></p>
@@ -436,6 +441,7 @@
 				<li class="notranslate">
 				<label class="desc" for="applicant2name"> Name of the second applicant <span class="req">*</span> </label>
 				<div>
+
                 <input id="applicant2name" name="applicant2name" type="text" class="field text medium" value="" maxlength="62" tabindex="28" onKeyUp="" required autofocus />
               </div>
               <p class="instruct" id="instructapplicant2name"><small>Only letters, maximum only 62 characters all in CAPS</small></p>
@@ -444,6 +450,7 @@
 				 <li class="notranslate">
               <label class="desc" for="applicant2pan"> second applicant PAN Number <span class="req">*</span> </label>
              <div>
+
                 <input id="applicant2pan" class="field text medium" name="applicant2pan" tabindex="29" required  type="number" value="" />
               </div>
 				<p class="instruct" id="instructapplicant2pan"><small>Your pan number</small></p>
@@ -456,6 +463,7 @@
 				<li class="notranslate">
 				<label class="desc" for="applicant3name"> Name of the Third applicant <span class="req">*</span> </label>
               <div>
+
                 <input id="applicant3name" name="applicant3name" type="text" class="field text medium" value="" maxlength="62" tabindex="30" onKeyUp="" required autofocus />
               </div>
               <p class="instruct" id="instructapplicant3name"><small>Only letters, maximum only 62 characters all in CAPS</small></p>
@@ -464,6 +472,7 @@
 				 <li class="notranslate">
               <label class="desc" for="applicant3pan"> Third applicant PAN Number <span class="req">*</span> </label>
               <div>
+
                 <input id="applicant3pan" class="field text medium" name="applicant3pan" tabindex="31" required  type="number" value="" />
               </div>
               <p class="instruct" id="instructapplicant3pan"><small>Your pan number</small></p>
@@ -506,6 +515,7 @@
 			<ul>
             <li class="complex notranslate">
               <div id="bank_details"> <span class="full addr1">
+
                  <label for="bankname">Name of the Bank</label><input id="bankname" maxlength="33"  name="bankname" type="text" class="field text addr" value="" onChange="bankval(this.value,'bankname','instructbank')"  tabindex="32" />
                
                 </span> <label>Account Type</label> 
@@ -516,6 +526,7 @@
 				<span class="full addr2">
                 
 				</span> <label for="bankaccno">Account Number</label><span class="left city">
+
                 <input id="bankaccno" name="bankaccno" type="text" class="field text addr" value="" tabindex="35" onChange="accval(this.value,'bankaccno','instructbank')" maxlength="20" />
                 
                 </span><label>Branch Address</label> <span class="right state">
@@ -558,6 +569,7 @@
 					
             <li class="complex notranslate">
               <div id="bank2details"> <span class="full addr1">
+
                  <label for="bank2name">Name of the Second Bank</label><input id="bank2name" maxlength="33"  name="bank2name" onChange="bankval(this.value,'bank2name','instructbank2')"  type="text" class="field text addr" value="" tabindex="41" />
                
                 </span> <label>Account Type</label> 
@@ -568,11 +580,13 @@
 				<span class="full addr2">
                 
 				</span> <label for="bank2accno">Account Number</label><span class="left city">
+
                 <input id="bank2accno" name="bank2accno" type="text" class="field text addr" value="" maxlength="20"  onChange="accval(this.value,'bank2accno','instructbank2')" tabindex="44" />
                 
                 </span><label>Branch Address</label> <span class="right state">
                 
                 </span> <label for="bank2addr1">Line 1</label><span class="left zip">
+
                 <input id="bank2addr1" name="bank2addr1" type="text" class="field text addr" value="" maxlength="39" onChange="bankaddrval(this.value,'bank2addr1','instructbank2')" tabindex="45" required />
                 
                 </span> <label for="bank2addr2">Line 2	</label><span class="left zip">
@@ -603,6 +617,7 @@
 				<ul>
             <li class="complex notranslate">
               <div id="bank3details"> <span class="full addr1">
+
                  <label for="bank3name">Name of the Third Bank</label><input id="bank3name" name="bank3name" maxlength="33"  onChange="bankval(this.value,'bank3name','instructbank3')"  type="text" class="field text addr" value="" tabindex="50" />
                
                 </span> <label>Account Type</label> 
@@ -613,6 +628,7 @@
 				<span class="full addr2">
                 
 				</span> <label for="bank3accno">Account Number</label><span class="left city">
+
                 <input id="bank3accno" name="bank3accno" type="text" class="field text addr" maxlength="20"  onChange="accval(this.value,'bank3accno','instructbank3')" value="" tabindex="53" />
                 
                 </span><label>Branch Address</label> <span class="right state">
@@ -676,6 +692,7 @@
 			<span class="left zip">
                 
                <label>SIP Mandate</label>
+
                 </span> <label for="applicantsip"><input name="applicantsip" id="applicantsip" onchange="javascript:$('#sipmdetails').toggle();" value="sipmandatefalse" type="checkbox" tabindex="59">
 			
                 &nbsp;&nbsp;I Do not wish to make SIP mandate</label>
@@ -686,6 +703,7 @@
                 <label for="applicantvalidy">Number of years validity</label>
 				</span>
 				 <div class="styled-select">
+
                   <select id="applicantvalidy" name="applicantvalidy" tabindex="60">
                   	<option value="10">10</option>
                   	<option value="11">11</option>
@@ -704,6 +722,7 @@
                 <label for="applicantvalidma">Maximum Per month mandate amount</label>
 				 </span>
 				  <div class="styled-select">
+
                   <select id="applicantvalidma" name="applicantvalidma" tabindex="61">
                   	<option value="10">5000</option>
                   	<option value="11">10000</option>
@@ -726,6 +745,7 @@
 			<ul>
 				  
             <li class="complex notranslate">
+
              <label for="aplicantnomcheckbox"> <input type="checkbox" name="aplicantnomcheckbox" id="aplicantnomcheckbox" onchange="javascript:$('#appnomineedetails').toggle();" value="appnomineefalse" tabindex="62"> &nbsp;&nbsp;I Do not wish to make nomination<br/><br/></label> 
 			  
 			<p class="instruct" id="instructnomineedetailcheckbox"><small>Nominee details</small></p>	
@@ -736,6 +756,7 @@
 			<ul>
 			<li>
 			  <span class="left city">
+
 				<label for="appnomname">Nominee Name</label> <input id="appnomname" name="appnomname" type="text" class="field text addr" onChange="appnominval(this.value,'appnomname','instructappnomname')" value="" tabindex="63" maxlength="33" />
                 
                 </span> 
@@ -743,6 +764,7 @@
                 <li class="date eurodate notranslate      ">
               <label class="desc"> Date Of Birth <span class="req">*</span> </label>
               <span>
+
               <input id="appnomdobd" name="appnomdobd" type="text" class="field text" onChange="ddval(this.value,'appnomdobd','instructappnomdobd')" value="" size="2" maxlength="2" tabindex="64" required />
               <label for="appnomdobd">DD</label>
               </span> <span class="symbol">/</span> <span>
@@ -756,6 +778,7 @@
             </li>
             <li>
                 <span class="left zip"><label for="appnompname">Name Of Parent (In Case of Minor)	</label>
+
                 <input id="appnompname" name="appnompname" type="text" class="field text addr" onChange="nomempval(this.value,'appnompname','instructappnompname')" value="" maxlength="30" tabindex="67" />
                 
                 </span> 
@@ -765,6 +788,7 @@
                 
             <li>
                 <span class="left zip"><label for="appnomrel">Relationship	</label>
+
                 <input id="appnomrel" name="appnomrel" type="text" class="field text addr" onChange="nomemrval(this.value,'appnomrel','instructappnomrel')" value="" maxlength="16" tabindex="68" />
                 
                 </span> 
@@ -777,6 +801,7 @@
 		   <ul>
 			<li>
                 <span class="left zip">
+
             <label for="agreementaccept" id="agreementacceptl"><input tabindex="69" id="agreementaccept" name="agreementaccept" value="agree" type="checkbox">&nbsp;&nbsp;I Have read the terms and Conditions Before investing </label>
             </span><p class="instruct" id="instructagreementaccept"><small>Accept before submitting</small></p></li>
             <li class="buttons ">
@@ -796,6 +821,7 @@
 				}
 			}
 		   </script>
+
                 <input id="saveForm"  name="saveForm" class="btTxt submit fundsInn-btn" type="submit" tabindex="70" value="Submit"/>
                 <input id="clearForm" onclick="formReset()" name="clearForm" class="btTxt submit fundsInn-btn" type="button" tabindex="71" value="Clear"/>
               </div>
