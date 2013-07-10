@@ -39,6 +39,7 @@ $return_array = array();
   
     $applicant_address_overseas_line1 = request("applicantoaddr1", "");
     $applicant_address_overseas_line2 = request("applicantoaddr2", "");
+	$applicant_address_overseas_line3 = request("applicantoaddr3", "");
     $applicant_address_overseas_city = request("applicantocity", "");
     $applicant_address_overseas_state = request("applicantostate", "");
     $applicant_address_overseas_pincode = request("applicantozip", "");
@@ -48,6 +49,7 @@ $return_array = array();
 	 
     $applicant_address_india_line1 = request("applicantiaddr1", "");
     $applicant_address_india_line2 = request("applicantiaddr2", "");
+	$applicant_address_india_line3 = request("applicantiaddr3", "");
     $applicant_address_india_city = request("applicanticity", "");
     $applicant_address_india_state = request("applicantistate","");
     $applicant_address_india_pincode = request("applicantizip", "");
@@ -468,9 +470,23 @@ $return_array = array();
 		if(request("applicantsip", "sipmandatetrue")==="sipmandatefalse")
 		{
 			$applicant_sip_mandate="0";
+			$applicant_sip_mandate_years = "0";
+			$appplicant_sip_mandate_maximum_per_month ="0";
+		
 		}
 		else
 		{
+				
+					if($applicant_sip_mandate_years==="--Select--")
+						$return_attr['applicantvalidy']="Please select the SIP Mandate Years ";
+				else
+						$return_attr['applicantvalidy']="TRUE";
+				
+				if($appplicant_sip_mandate_maximum_per_month==="--Select--")
+					$return_attr['applicantvalidma']="Please select the SIP Mandate amount ";
+				else
+					$return_attr['applicantvalidma']="TRUE";
+			
 				$applicant_sip_mandate="1";
 		}
 		
@@ -510,12 +526,14 @@ if(($return_array['success'])==='1')
 		$sql .= ",nri_customer.applicant_nationality"; 
         $sql .= ",nri_customer.applicant_address_overseas_line1"; 
         $sql .= ",nri_customer.applicant_address_overseas_line2"; 
+		$sql .= ",nri_customer.applicant_address_overseas_line3"; 
         $sql .= ",nri_customer.applicant_address_overseas_city"; 
         $sql .= ",nri_customer.applicant_address_overseas_state"; 
 		$sql .= ",nri_customer.applicant_address_overseas_country"; 
         $sql .= ",nri_customer.applicant_address_overseas_pincode"; 
         $sql .= ",nri_customer.applicant_address_india_line1"; 
         $sql .= ",nri_customer.applicant_address_india_line2"; 
+		$sql .= ",nri_customer.applicant_address_india_line3"; 
         $sql .= ",nri_customer.applicant_address_india_city"; 
         $sql .= ",nri_customer.applicant_address_india_state"; 
         $sql .= ",nri_customer.applicant_address_india_pincode"; 
@@ -526,7 +544,7 @@ if(($return_array['success'])==='1')
         $sql .= ",nri_customer.bank1_name"; 
         $sql .= ",nri_customer.bank1_branch_address_line1"; 
         $sql .= ",nri_customer.bank1_branch_address_line2"; 
-        $sql .= ",nri_customer.bank1_branch_city"; 
+		$sql .= ",nri_customer.bank1_branch_city"; 
         $sql .= ",nri_customer.applicant_bank2_account_number"; 
         $sql .= ",nri_customer.bank2_account_type"; 
         $sql .= ",nri_customer.bank2_ifsc_code"; 
@@ -555,6 +573,8 @@ if(($return_array['success'])==='1')
         $sql .= " VALUES "; 
         $sql .= " (";
         $sql .=  "?" ; 
+		$sql .= " , ?" ;  
+		$sql .= " , ?" ;  
 		$sql .= " , ?" ;  
 		$sql .= " , ?" ;  
 		$sql .= " , ?" ;  
@@ -657,12 +677,14 @@ $applicant_tax_status=mb_strtoupper($applicant_tax_status);
 $applicant_nationality=mb_strtoupper($applicant_nationality);
 $applicant_address_overseas_line1=mb_strtoupper($applicant_address_overseas_line1);
 $applicant_address_overseas_line2=mb_strtoupper($applicant_address_overseas_line2);
+$applicant_address_overseas_line3=mb_strtoupper($applicant_address_overseas_line3);
 $applicant_address_overseas_city=mb_strtoupper($applicant_address_overseas_city);
 $applicant_address_overseas_state=mb_strtoupper($applicant_address_overseas_state);
 $applicant_address_overseas_pincode=mb_strtoupper($applicant_address_overseas_pincode);
 $applicant_address_overseas_country=mb_strtoupper($applicant_address_overseas_country);
 $applicant_address_india_line1=mb_strtoupper($applicant_address_india_line1);
 $applicant_address_india_line2=mb_strtoupper($applicant_address_india_line2);
+$applicant_address_india_line3=mb_strtoupper($applicant_address_india_line3);
 $applicant_address_india_city=mb_strtoupper($applicant_address_india_city);
 $applicant_address_india_state=mb_strtoupper($applicant_address_india_state);
 $applicant_address_india_pincode=mb_strtoupper($applicant_address_india_pincode);
@@ -699,7 +721,7 @@ $applicant_sip_mandate=mb_strtoupper($applicant_sip_mandate);
 $applicant_sip_mandate_years=mb_strtoupper($applicant_sip_mandate_years);
 $appplicant_sip_mandate_maximum_per_month=mb_strtoupper($appplicant_sip_mandate_maximum_per_month);
 
-		if (!$stmt->bind_param("sssssssiiissssssssisssssiississssississssississssissssiii",$applicant_id,$applicant_account_type,$applicant_name,$applicant_father_name,$applicant_dob,$applicant_gender,$applicant_pan,$applicant_telephone_residence,$applicant_telephone_office,$applicant_telephone_mobile,$applicant_email,$applicant_occupation,$applicant_tax_status,$applicant_nationality,$applicant_address_overseas_line1,$applicant_address_overseas_line2,$applicant_address_overseas_city,$applicant_address_overseas_state,$applicant_address_overseas_pincode,$applicant_address_overseas_country,$applicant_address_india_line1,$applicant_address_india_line2,$applicant_address_india_city,$applicant_address_india_state,$applicant_address_india_pincode,$applicant_bank1_account_number,$bank1_account_type,$bank1_ifsc_code,$bank1_micr_code,$bank1_name,$bank1_branch_address_line1,$bank1_branch_address_line2,$bank1_branch_city,$applicant_bank2_account_number,$bank2_account_type,$bank2_ifsc_code,$bank2_micr_code,$bank2_name,$bank2_branch_address_line1,$bank2_branch_address_line2,$bank2_branch_city,$applicant_bank3_account_number,$bank3_account_type,$bank3_ifsc_code,$bank3_micr_code,$bank3_name,$bank3_branch_address_line1,$bank3_branch_address_line2,$bank3_branch_city,$applicant_nominee_mandate,$applicant_nominee_name,$applicant_nominee_dob,$applicant_nominee_parent_name,$applicant_nominee_relationship,$applicant_sip_mandate,$applicant_sip_mandate_years,$appplicant_sip_mandate_maximum_per_month)) {			
+	if (!$stmt->bind_param("sssssssiiisssssssssissssssiississssississssississssissssiii",$applicant_id,$applicant_account_type,$applicant_name,$applicant_father_name,$applicant_dob,$applicant_gender,$applicant_pan,$applicant_telephone_residence,$applicant_telephone_office,$applicant_telephone_mobile,$applicant_email,$applicant_occupation,$applicant_tax_status,$applicant_nationality,$applicant_address_overseas_line1,$applicant_address_overseas_line2,$applicant_address_overseas_line3,$applicant_address_overseas_city,$applicant_address_overseas_state,$applicant_address_overseas_pincode,$applicant_address_overseas_country,$applicant_address_india_line1,$applicant_address_india_line2,$applicant_address_india_line3,$applicant_address_india_city,$applicant_address_india_state,$applicant_address_india_pincode,$applicant_bank1_account_number,$bank1_account_type,$bank1_ifsc_code,$bank1_micr_code,$bank1_name,$bank1_branch_address_line1,$bank1_branch_address_line2,$bank1_branch_city,$applicant_bank2_account_number,$bank2_account_type,$bank2_ifsc_code,$bank2_micr_code,$bank2_name,$bank2_branch_address_line1,$bank2_branch_address_line2,$bank2_branch_city,$applicant_bank3_account_number,$bank3_account_type,$bank3_ifsc_code,$bank3_micr_code,$bank3_name,$bank3_branch_address_line1,$bank3_branch_address_line2,$bank3_branch_city,$applicant_nominee_mandate,$applicant_nominee_name,$applicant_nominee_dob,$applicant_nominee_parent_name,$applicant_nominee_relationship,$applicant_sip_mandate,$applicant_sip_mandate_years,$appplicant_sip_mandate_maximum_per_month)) {			
 			$return_array['error'] = "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 		}
 

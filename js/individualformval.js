@@ -10,7 +10,7 @@
 	{
 		var return_attr;
 		if(val=="")
-			return_attr="Applicant name cannot be empty";
+			return_attr="Applicant Name cannot be empty";
 		else
 		if(alphapattern.test(val))
 			return_attr="TRUE";
@@ -19,7 +19,7 @@
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Only letters, maximum only 62 characters all in CAPS</small><br/>");
+				$('#'+errocontainer).html("<small>Please enter your name as per pancard</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -41,7 +41,7 @@
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Only letters, maximum only 62 characters all in CAPS</small><br/>");
+				$('#'+errocontainer).html("<small>Please enter your contact person name </small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -60,11 +60,11 @@
 		if(alphapattern.test(val))
 			return_attr="TRUE";
 		else
-			return_attr="Only alphabhats are allowed for contact desination";
+			return_attr="Only alphabhats are allowed for contact designation";
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Only letters, maximum only 62 characters all in CAPS</small><br/>");
+				$('#'+errocontainer).html("<small>Please enter contact person's designation </small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -87,7 +87,7 @@
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Enter Date of birth</small><br/>");
+				$('#'+errocontainer).html("<small>Please Enter Date of birth </small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -110,7 +110,7 @@
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Enter Date of incorporation</small><br/>");
+				$('#'+errocontainer).html("<small>Please enter Date of Incorporation</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -135,7 +135,7 @@
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Enter Date of birth</small><br/>");
+				$('#'+errocontainer).html("<small>Please Enter Date of birth </small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -158,7 +158,7 @@
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Enter Date of incorporation</small><br/>");
+				$('#'+errocontainer).html("<small>Please Enter Date of Incorporation</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -183,7 +183,7 @@
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Enter Date of birth</small><br/>");
+				$('#'+errocontainer).html("<small>Please enter Date of Birth</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -208,7 +208,7 @@
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Enter Date of incorporation</small><br/>");
+				$('#'+errocontainer).html("<small>Please Enter Date of incorporation</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -233,7 +233,7 @@
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Enter your PAN card no</small><br/>");
+				$('#'+errocontainer).html("<small>Please Enter your PAN number</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -258,7 +258,7 @@
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Enter Residential phone number</small><br/>");
+				$('#'+errocontainer).html("<small>Please enter Residential number</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -283,7 +283,7 @@
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Enter office phone number</small><br/>");
+				$('#'+errocontainer).html("<small>Please Enter office number</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -308,7 +308,7 @@
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Enter mobile number</small><br/>");
+				$('#'+errocontainer).html("<small>Please Enter your mobile number<br/>9XXXXXXXX9</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -330,7 +330,7 @@
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Enter mobile number</small><br/>");
+				$('#'+errocontainer).html("<small>Please Enter your mobile number</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -355,7 +355,7 @@
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Enter email address</small><br/>");
+				$('#'+errocontainer).html("<small>Re sign-up to change your email address</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -378,7 +378,7 @@
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Enter email address</small><br/>");
+				$('#'+errocontainer).html("<small>Re sign-up to change your email address</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -397,7 +397,7 @@
 		
 		if(return_attr=="TRUE")
 		{
-			$('#'+errocontainer).html("<small>Select  Occupation</small><br/>");
+			$('#'+errocontainer).html("<small>Please Select your Occupation</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -416,7 +416,7 @@
 		
 		if(return_attr=="TRUE")
 		{
-			$('#'+errocontainer).html("<small>Select  Status</small><br/>");
+			$('#'+errocontainer).html("<small>Please select your Status</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -435,7 +435,7 @@ function natval(val,fieldname,errocontainer)
 		
 		if(return_attr=="TRUE")
 		{
-			$('#'+errocontainer).html("<small>Select  Nationality</small><br/>");
+			$('#'+errocontainer).html("<small> Please Select your Nationality</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -454,7 +454,7 @@ function natval(val,fieldname,errocontainer)
 		
 		if(return_attr=="TRUE")
 		{
-			$('#'+errocontainer).html("<small>Select  country</small><br/>");
+			$('#'+errocontainer).html("<small>Please select  your country</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -475,7 +475,7 @@ function natval(val,fieldname,errocontainer)
 		
 		if(return_attr=="TRUE")
 		{
-			$('#'+errocontainer).html("<small>Select  Tax Status</small><br/>");
+			$('#'+errocontainer).html("<small>Please select  your Tax Status</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -495,7 +495,7 @@ function natval(val,fieldname,errocontainer)
 		
 		if(return_attr=="TRUE")
 		{
-			$('#'+errocontainer).html("<small>Enter address</small><br/>");
+			$('#'+errocontainer).html("<small>Please Enter address</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -515,7 +515,7 @@ function natval(val,fieldname,errocontainer)
 		
 		if(return_attr=="TRUE")
 		{
-			$('#'+errocontainer).html("<small>Enter City</small><br/>");
+			$('#'+errocontainer).html("<small>Please Enter City</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -535,7 +535,7 @@ function natval(val,fieldname,errocontainer)
 		
 		if(return_attr=="TRUE")
 		{
-			$('#'+errocontainer).html("<small>Enter State</small><br/>");
+			$('#'+errocontainer).html("<small>Please Enter State</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -560,7 +560,7 @@ function natval(val,fieldname,errocontainer)
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Enter Pincode/Zip</small><br/>");
+				$('#'+errocontainer).html("<small>Please enter Pincode/Zip</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -577,7 +577,7 @@ function natval(val,fieldname,errocontainer)
 	{
 		var return_attr;
 		if(val=="")
-			return_attr="Account nocannot be empty";
+			return_attr="Account number cannot be empty";
 		else
 		if(accpattern.test(val))
 			return_attr="TRUE";
@@ -586,7 +586,7 @@ function natval(val,fieldname,errocontainer)
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Enter account no</small><br/>");
+				$('#'+errocontainer).html("<small>Please Enter your account no</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -607,7 +607,7 @@ function natval(val,fieldname,errocontainer)
 		
 		if(return_attr=="TRUE")
 		{
-			$('#'+errocontainer).html("<small>Enter IFSC CODE</small><br/>");
+			$('#'+errocontainer).html("<small>Please enter your IFSC CODE</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -632,7 +632,7 @@ function natval(val,fieldname,errocontainer)
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Enter MICR No</small><br/>");
+				$('#'+errocontainer).html("<small>Please enter MICR number</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -652,7 +652,7 @@ function natval(val,fieldname,errocontainer)
 		
 		if(return_attr=="TRUE")
 		{
-			$('#'+errocontainer).html("<small>Enter Bank Name</small><br/>");
+			$('#'+errocontainer).html("<small>Please enter your Bank Name</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -694,7 +694,7 @@ function natval(val,fieldname,errocontainer)
 		
 		if(return_attr=="TRUE")
 		{
-			$('#'+errocontainer).html("<small>Enter Nominee Name</small><br/>");
+			$('#'+errocontainer).html("<small>Please Enter your Nominee Name</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -719,7 +719,7 @@ function natval(val,fieldname,errocontainer)
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Enter Nominee Parent</small><br/>");
+				$('#'+errocontainer).html("<small>Please Enter Nominee's Parent name in case of minor</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -742,7 +742,7 @@ function natval(val,fieldname,errocontainer)
 			
 		if(return_attr=="TRUE")
 		{
-				$('#'+errocontainer).html("<small>Enter Nominee Realtion</small><br/>");
+				$('#'+errocontainer).html("<small>Please your enter Nominee Realtion</small><br/>");
 			$('#'+fieldname).removeClass("error");
 		}
 		else
@@ -751,4 +751,41 @@ function natval(val,fieldname,errocontainer)
 			$('#'+fieldname).addClass("error");
 		}
 	}
-	
+	function vyval(val,fieldname,errocontainer)
+	{
+		var return_attr;
+		if(val=="--Select--")
+			return_attr="Please select No years of validity ";
+		else
+			return_attr="TRUE";
+		
+		if(return_attr=="TRUE")
+		{
+			$('#'+errocontainer).html("<small>Enter your SIP Details  </small><br/>");
+			$('#'+fieldname).removeClass("error");
+		}
+		else
+		{
+			$('#'+errocontainer).html("<small>"+return_attr+"</small><br/>");
+			$('#'+fieldname).addClass("error");
+		}
+	}
+	function maval(val,fieldname,errocontainer)
+	{
+		var return_attr;
+		if(val=="--Select--")
+			return_attr="Please select Mandate amount ";
+		else
+			return_attr="TRUE";
+		
+		if(return_attr=="TRUE")
+		{
+			$('#'+errocontainer).html("<small>Enter your SIP Details </small><br/>");
+			$('#'+fieldname).removeClass("error");
+		}
+		else
+		{
+			$('#'+errocontainer).html("<small>"+return_attr+"</small><br/>");
+			$('#'+fieldname).addClass("error");
+		}
+	}

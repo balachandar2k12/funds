@@ -35,11 +35,13 @@ $return_array = array();
     $applicant_occupation = request("applicantocc", "");
     $applicant_address_permanant_line1 = request("applicantpaddr1", "");
     $applicant_address_permanent_line2 = request("applicantpaddr2", "");
+    $applicant_address_permanent_line3 = request("applicantpaddr3", "");
     $applicant_address_permanent_city = request("applicantpcity", "");
     $applicant_address_permanent_state = request("applicantpstate", "");
     $applicant_address_permanent_pincode = request("applicantpzip", "");
     $applicant_address_communication_line1 = request("applicantcaddr1", "");
     $applicant_address_communication_line2 = request("applicantcaddr2", "");
+    $applicant_address_communication_line3 = request("applicantcaddr3", "");
     $applicant_address_communication_city = request("applicantccity", "");
     $applicant_address_communication_state = request("applicantcstate","");
     $applicant_address_communication_pincode = request("applicantczip", "");
@@ -215,6 +217,7 @@ $return_array = array();
 		
 		$applicant_address_communication_line1=$applicant_address_permanant_line1;
 		$applicant_address_communication_line2=$applicant_address_permanent_line2;
+		$applicant_address_communication_line3=$applicant_address_permanent_line3;
 		$applicant_address_communication_city=$applicant_address_permanent_city;
 		$applicant_address_communication_state=$applicant_address_permanent_state;
 		$applicant_address_communication_pincode=$applicant_address_permanent_pincode;
@@ -452,10 +455,22 @@ $return_array = array();
 		if(request("applicantsip", "sipmandatetrue")==="sipmandatefalse")
 		{
 			$applicant_sip_mandate="0";
+			$applicant_sip_mandate_years = "0";
+			$appplicant_sip_mandate_maximum_per_month ="0";
 		}
 		else
 		{
-				$applicant_sip_mandate="1";
+				
+				if($applicant_sip_mandate_years==="--Select--")
+						$return_attr['applicantvalidy']="Please select the SIP Mandate Years ";
+				else
+						$return_attr['applicantvalidy']="TRUE";
+				
+				if($appplicant_sip_mandate_maximum_per_month==="--Select--")
+					$return_attr['applicantvalidma']="Please select the SIP Mandate amount ";
+				else
+					$return_attr['applicantvalidma']="TRUE";
+			$applicant_sip_mandate="1";
 		}
 		
 		
@@ -492,11 +507,13 @@ if(($return_array['success'])==='1')
         $sql .= ",individual_customer.applicant_occupation"; 
         $sql .= ",individual_customer.applicant_address_permanant_line1"; 
         $sql .= ",individual_customer.applicant_address_permanent_line2"; 
+        $sql .= ",individual_customer.applicant_address_permanent_line3"; 
         $sql .= ",individual_customer.applicant_address_permanent_city"; 
         $sql .= ",individual_customer.applicant_address_permanent_state"; 
         $sql .= ",individual_customer.applicant_address_permanent_pincode"; 
         $sql .= ",individual_customer.applicant_address_communication_line1"; 
         $sql .= ",individual_customer.applicant_address_communication_line2"; 
+        $sql .= ",individual_customer.applicant_address_communication_line3"; 
         $sql .= ",individual_customer.applicant_address_communication_city"; 
         $sql .= ",individual_customer.applicant_address_communication_state"; 
         $sql .= ",individual_customer.applicant_address_communication_pincode"; 
@@ -536,6 +553,8 @@ if(($return_array['success'])==='1')
         $sql .= " VALUES "; 
         $sql .= " (";
         $sql .=  "?" ; 
+		$sql .= " , ?" ;  
+		$sql .= " , ?" ;  
 		$sql .= " , ?" ;  
 		$sql .= " , ?" ;  
 		$sql .= " , ?" ;  
@@ -633,11 +652,13 @@ $applicant_email=mb_strtoupper($applicant_email);
 $applicant_occupation=mb_strtoupper($applicant_occupation);
 $applicant_address_permanant_line1=mb_strtoupper($applicant_address_permanant_line1);
 $applicant_address_permanent_line2=mb_strtoupper($applicant_address_permanent_line2);
+$applicant_address_permanent_line3=mb_strtoupper($applicant_address_permanent_line3);
 $applicant_address_permanent_city=mb_strtoupper($applicant_address_permanent_city);
 $applicant_address_permanent_state=mb_strtoupper($applicant_address_permanent_state);
 $applicant_address_permanent_pincode=mb_strtoupper($applicant_address_permanent_pincode);
 $applicant_address_communication_line1=mb_strtoupper($applicant_address_communication_line1);
 $applicant_address_communication_line2=mb_strtoupper($applicant_address_communication_line2);
+$applicant_address_communication_line3=mb_strtoupper($applicant_address_communication_line3);
 $applicant_address_communication_city=mb_strtoupper($applicant_address_communication_city);
 $applicant_address_communication_state=mb_strtoupper($applicant_address_communication_state);
 $applicant_address_communication_pincode=mb_strtoupper($applicant_address_communication_pincode);
@@ -674,7 +695,7 @@ $applicant_sip_mandate=mb_strtoupper($applicant_sip_mandate);
 $applicant_sip_mandate_years=mb_strtoupper($applicant_sip_mandate_years);
 $appplicant_sip_mandate_maximum_per_month=mb_strtoupper($appplicant_sip_mandate_maximum_per_month);
 
-		if (!$stmt->bind_param("sssssssiiissssssissssiississssississssississssissssiii",$applicant_id,$applicant_account_type,$applicant_name,$applicant_father_name,$applicant_dob,$applicant_gender,$applicant_pan,$applicant_telephone_residence,$applicant_telephone_office,$applicant_telephone_mobile,$applicant_email,$applicant_occupation,$applicant_address_permanant_line1,$applicant_address_permanent_line2,$applicant_address_permanent_city,$applicant_address_permanent_state,$applicant_address_permanent_pincode,$applicant_address_communication_line1,$applicant_address_communication_line2,$applicant_address_communication_city,$applicant_address_communication_state,$applicant_address_communication_pincode,$applicant_bank1_account_number,$bank1_account_type,$bank1_ifsc_code,$bank1_micr_code,$bank1_name,$bank1_branch_address_line1,$bank1_branch_address_line2,$bank1_branch_city,$applicant_bank2_account_number,$bank2_account_type,$bank2_ifsc_code,$bank2_micr_code,$bank2_name,$bank2_branch_address_line1,$bank2_branch_address_line2,$bank2_branch_city,$applicant_bank3_account_number,$bank3_account_type,$bank3_ifsc_code,$bank3_micr_code,$bank3_name,$bank3_branch_address_line1,$bank3_branch_address_line2,$bank3_branch_city,$applicant_nominee_mandate,$applicant_nominee_name,$applicant_nominee_dob,$applicant_nominee_parent_name,$applicant_nominee_relationship,$applicant_sip_mandate,$applicant_sip_mandate_years,$appplicant_sip_mandate_maximum_per_month)) {			
+		if (!$stmt->bind_param("sssssssiiisssssssisssssiississssississssississssissssiii",$applicant_id,$applicant_account_type,$applicant_name,$applicant_father_name,$applicant_dob,$applicant_gender,$applicant_pan,$applicant_telephone_residence,$applicant_telephone_office,$applicant_telephone_mobile,$applicant_email,$applicant_occupation,$applicant_address_permanant_line1,$applicant_address_permanent_line2,$applicant_address_permanent_line3,$applicant_address_permanent_city,$applicant_address_permanent_state,$applicant_address_permanent_pincode,$applicant_address_communication_line1,$applicant_address_communication_line2,$applicant_address_communication_line3,$applicant_address_communication_city,$applicant_address_communication_state,$applicant_address_communication_pincode,$applicant_bank1_account_number,$bank1_account_type,$bank1_ifsc_code,$bank1_micr_code,$bank1_name,$bank1_branch_address_line1,$bank1_branch_address_line2,$bank1_branch_city,$applicant_bank2_account_number,$bank2_account_type,$bank2_ifsc_code,$bank2_micr_code,$bank2_name,$bank2_branch_address_line1,$bank2_branch_address_line2,$bank2_branch_city,$applicant_bank3_account_number,$bank3_account_type,$bank3_ifsc_code,$bank3_micr_code,$bank3_name,$bank3_branch_address_line1,$bank3_branch_address_line2,$bank3_branch_city,$applicant_nominee_mandate,$applicant_nominee_name,$applicant_nominee_dob,$applicant_nominee_parent_name,$applicant_nominee_relationship,$applicant_sip_mandate,$applicant_sip_mandate_years,$appplicant_sip_mandate_maximum_per_month)) {			
 			$return_array['error'] = "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 		}
 

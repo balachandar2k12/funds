@@ -249,6 +249,7 @@ html, body {
 	font-size:14px;
 	padding:5px 10px;
 	font-weight:700;
+	border-radius:3px;
 }
 /**********FOOTER**********/
 .footer, .push {

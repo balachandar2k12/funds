@@ -14,10 +14,47 @@
 <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script type="text/javascript" src="../js/scripts.js"></script>
+
+<style type="text/css">
+.er {
+border-color:red;
+}
+</style>
+
 <script>
+
 $(document).ready(function(){
    $('#tab-container').easytabs();
 });
+
+var empattern=/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,3})$/;
+	
+	function emval(val,fieldname)
+	{
+		var return_attr;
+		if(val=="")
+			return_attr="Email cannot be empty";
+		else
+		if(empattern.test(val))
+			return_attr="TRUE";
+		else
+			return_attr="Invalid Email";
+			
+		if(return_attr=="TRUE")
+		{
+			$('#'+fieldname).removeClass("er");
+			return true;
+		}
+		else
+		{
+			$('#'+fieldname).addClass("er");
+			
+			return false;
+		}
+		return false;
+		
+	}
+	
 </script>
 </head>
 <body>
@@ -57,15 +94,15 @@ $(document).ready(function(){
       <div id="signUp-Container" class="grid_14 gridFirst">
         <div id="tab-container" class="tab-container">
           <ul class='etabs'>
-            <li class='tab'><a href="#signup">SIGN-UP</a></li>
-            <li class='tab'><a href="#loginTab">LOGIN</a></li>
+          <li class='tab'><a href="#signup">SIGN-UP</a></li>
+           <li style="display:none" class='tab'><a href="#loginTab">LOGIN</a></li>
           </ul>
           <div id="signup">
-            <form name="RegistrationForm" id="signupForm" method="post" action="" class="">
+            <form name="RegistrationForm" id="signupForm" method="post" onsubmit="return emval(email.value,'emailId')" action="Individual_acc_opening.php" class="">
               <h3>Open an Account with FundsInn</h3>
               <label for="uname" class="signUpLabel">Email:</label>
               <br />
-              <input type="text" name="usrEmailId" id="emailId" class="formInput" />
+              <input type="text" style="outline: 0px;" maxlength="37"  name="email" id="emailId" class="formInput" />
               <br/>
               <br />
               <br />
@@ -160,7 +197,7 @@ $(document).ready(function(){
       <div id="mc_embed_signup">
         <form action="http://basilapparel.us6.list-manage2.com/subscribe/post?u=a853f89dd76f2587cf7e299a8&amp;id=4c947b8c4d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
           <div class="mc-field-group">
-            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+            <input type="email" value="" name="EMAIL" class="required email"  id="mce-EMAIL">
           </div>
           <div id="mce-responses">
             <div class="response" id="mce-error-response" style="display:none"></div>

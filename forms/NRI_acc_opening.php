@@ -1,3 +1,48 @@
+<?php
+
+function request($param, $default){
+    return (isset($_REQUEST[$param]) && (trim($_REQUEST[$param]) != "")) ? trim($_REQUEST[$param]) : $default;
+}
+
+function Redirect($Str_Location, $Bln_Replace = 1, $Int_HRC = NULL)
+{
+        if(!headers_sent())
+        {
+            header('location: ' . urldecode($Str_Location), $Bln_Replace, $Int_HRC);
+            exit;
+        }
+
+    exit('<meta http-equiv="refresh" content="0; url=' . urldecode($Str_Location) . '"/>'); # | exit('<script>document.location.href=' . urldecode($Str_Location) . ';</script>');
+    return;
+}
+$email="";
+$ref=@$_SERVER['HTTP_REFERER'];
+if($ref)
+{
+	$pattern="/.*corporate_account_opening.*/";
+	$pattern2="/.*Individual_acc_opening.*/";
+	$pattern3="/.*signup-landing.*/";
+	$mat=0;
+	if(preg_match($pattern,$ref))
+		$mat=1;
+	if(preg_match($pattern2,$ref))
+		$mat=1;
+	if(preg_match($pattern3,$ref))
+		$mat=1;
+	if(!$mat)
+		Redirect("./signup-landing.html");
+}
+else
+	Redirect("./signup-landing.html");
+
+
+$email=request("email","");
+if($email=="")
+{
+	Redirect("./signup-landing.html");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +67,26 @@
 .su {color:green;}
 </style>
 <script type="text/javascript">
-
+$(function() {
+	$("#redirectIndividual").click(function(){
+		
+		var email;
+		email=$("#applicantemail").val();
+		if(!email)
+		email=$("#applicant2contactemail").val();
+		window.location.href='./Individual_acc_opening.php?email="'+email+'"';
+	
+	});
+		$("#redirectCorp").click(function(){
+		var email;
+		email=$("#applicantemail").val();
+		if(!email)
+		email=$("#applicant2contactemail").val();
+		window.location.href='./corporate_account_opening.php?email="'+email+'"';
+	
+	
+	});
+	});
 //form submit ajax option
 	function formReset()
 	{
@@ -64,7 +128,7 @@
     var dataString = $('#nriform').serialize();
     $.ajax({
         type: "POST",
-        url: 'http://localhost/FundsInn/forms/nriphp.php',
+        url: './nriphp.php',
         data: dataString,
         dataType: 'json',
         success: function (data) {
@@ -79,6 +143,7 @@
 							$('#errordis').html("<h3>You Pan No is already registered with us</h3>");
 							$('#errordis').addClass("er");
 							window.location.hash = '#topfundsinn';
+							
 					
 						}	 
 						else
@@ -91,11 +156,12 @@
 					else
 						{
 							eattr=data.attr;
-							var tempaddrp="corrrect following address errors<br/>";
-							var tempaddrc="corrrect following address errors<br/>";
-							var tempaddrb="";
-							var tempaddrb2="";
-							var tempaddrb3="";
+							var tempaddrp="Permanent Address Details<br/>";
+							var tempaddrc="Current address Details<br/>";
+							var tempaddrb="Bank Details<br/>";
+							var tempaddrb2=" Second Bank Details<br/>";
+							var tempaddrb3="Third Bank Details<br/>";
+							var tempsip="SIP Details <br/>";
 							for ( var attrname in eattr)
 							{
 								if(eattr[attrname]!="TRUE")
@@ -127,6 +193,10 @@
 													tempaddrb3=tempaddrb3+eattr[attrname]+"<br/>";
 												$('#instructbank3').html("<small>"+tempaddrb3+"</small><br/>");
 												
+												if(!(attrname.search("applicantvalid")))
+													tempsip=tempsip+eattr[attrname]+"<br/>";
+												$('#instructapplicantsip').html("<small>"+tempsip+"</small><br/>");
+												
 											}
 									}
 								}
@@ -136,11 +206,11 @@
 				{
 							$('#errordis').html("<h3>Form submitted you will be redirected shortly</h3>");
 							$('#errordis').addClass("su");
-							//window.location.hash = '#topfundsinn';
-							$("#headerMenu").scrollTop();
+							window.location.hash = '#topfundsinn';
 							
 				}
 					//dump(data.attr);
+					//dump(data);
 				
 		},
         error: function (error) {
@@ -150,7 +220,7 @@
 							$('#errordis').addClass("er");
 							window.location.hash = '#topfundsinn';
 					
-					dump(error);
+					//dump(error);
 					
 			}
 	}
@@ -303,7 +373,7 @@ Gender
 			  <li class="notranslate">
               <label class="desc" for="applicantemail"> Email address :  <span class="req">*</span> </label>
               <div>
-                <input id="applicantemail" class="field text medium" name="applicantemail" tabindex="14" required  onChange="emval(this.value,'applicantemail','instructapplicantemail')" maxlength="37" type="email" value="" />
+                <input id="applicantemail" value=<?php echo $email?> class="field text medium" name="applicantemail" tabindex="14" required  onChange="emval(this.value,'applicantemail','instructapplicantemail')" maxlength="37" type="email" readonly />
               </div>
               <p class="instruct" id="instructapplicantemail"><small>Enter your valid email address</small></p>
             </li>
@@ -624,7 +694,10 @@ Gender
                 </span>  <label for="applicantoaddr2">Address Line 2</label><span class="full addr2">
                 <input id="applicantoaddr2" name="applicantoaddr2" type="text" class="field text addr" value="" tabindex="17" maxlength="39" />
                
-                </span> <label for="applicantocity">City</label> <span class="left city">
+                </span> <label for="applicantoaddr3">Address Line 3</label><span class="full addr2">
+                <input id="applicantoaddr3" name="applicantoaddr3" type="text" class="field text addr" value="" tabindex="17" maxlength="39" />
+               
+                </span><label for="applicantocity">City</label> <span class="left city">
                 <input id="applicantocity" name="applicantocity" type="text" class="field text addr" value="" tabindex="18" maxlength="27" onChange="cityval(this.value,'applicantocity','instructapplicantoaddr')" required />
                
                 </span>  <label for="applicantostate">State</label><span class="right state">
@@ -905,6 +978,9 @@ Gender
                 </span>  <label for="applicantiaddr2">Address Line 2</label><span class="full addr2">
                 <input id="applicantiaddr2" name="applicantiaddr2" type="text" class="field text addr" value="" tabindex="17" maxlength="39" />
                
+                </span> <label for="applicantiaddr3">Address Line 3</label><span class="full addr2">
+                <input id="applicantiaddr3" name="applicantiaddr3" type="text" class="field text addr" value="" tabindex="17" maxlength="39" />
+               
                 </span> <label for="applicanticity">City</label> <span class="left city">
                 <input id="applicanticity" name="applicanticity" type="text" class="field text addr" value="" tabindex="18" maxlength="27" onChange="cityval(this.value,'applicanticity','instructapplicantiaddr')" required />
                
@@ -937,7 +1013,7 @@ Gender
 				 <li class="notranslate">
               <label class="desc" for="applicant2pan"> second applicant PAN Number <span class="req">*</span> </label>
              <div>
-                <input id="applicant2pan" class="field text medium" name="applicant2pan" tabindex="27" required  type="number" value="" />
+                <input id="applicant2pan" class="field text medium" name="applicant2pan" tabindex="27" required  type="text" value="" />
               </div>
 				<p class="instruct" id="instructapplicant2pan"><small>Your pan number</small></p>
 				</li>
@@ -957,7 +1033,7 @@ Gender
 				 <li class="notranslate">
               <label class="desc" for="applicant3pan"> Third applicant PAN Number <span class="req">*</span> </label>
               <div>
-                <input id="applicant3pan" class="field text medium" name="applicant3pan" tabindex="29" required  type="number" value="" />
+                <input id="applicant3pan" class="field text medium" name="applicant3pan" tabindex="29" required  type="text" value="" />
               </div>
               <p class="instruct" id="instructapplicant3pan"><small>Your pan number</small></p>
 				</li>
@@ -1169,18 +1245,19 @@ Gender
 			<span class="left zip">
                 
                <label>SIP Mandate</label>
-                </span> <label for="applicantsip"><input name="applicantsip" id="applicantsip" onchange="javascript:$('#sipmdetails').toggle();" value="sipmandatefalse" type="checkbox" tabindex="57">
+                </span> <label for="applicantsip"><input name="applicantsip" id="applicantsip" onchange="javascript:$('#sipmdetails').toggle();$('#instructapplicantsip').html('<small>SIP Details</small><br/>');"  value="sipmandatefalse" type="checkbox" tabindex="57">
 			
                 &nbsp;&nbsp;I Do not wish to make SIP mandate</label>
 					
                 
 				<div id="sipmdetails">
                 <span class="left zip">
-                <label for="applicantvalidy">Number of years validity</label>
+                <label for="applicantvalidyfield" id="applicantvalidy">Number of years validity</label>
 				</span>
 				 <div class="styled-select">
-                  <select id="applicantvalidy" name="applicantvalidy" tabindex="58">
-                  	<option value="10">10</option>
+                  <select id="applicantvalidyfield" name="applicantvalidy" onChange="vyval(this.value,'applicantvalidy','instructapplicantsip')" class="field select medium" tabindex="58">
+                  	<option value="--Select--" selected="selected"> --Select-- </option>
+					<option value="10">10</option>
                   	<option value="11">11</option>
                   	<option value="12">12</option>
                     <option value="13">13</option>
@@ -1194,11 +1271,12 @@ Gender
                   </select>
                   </div>
 				  <span class="left zip">
-                <label for="applicantvalidma">Maximum Per month mandate amount</label>
+                <label for="applicantvalidmafield" id="applicantvalidma">Maximum Per month mandate amount</label>
 				 </span>
 				  <div class="styled-select">
-                  <select id="applicantvalidma" name="applicantvalidma" tabindex="59">
-                  	<option value="10">5000</option>
+                  <select id="applicantvalidmafield" name="applicantvalidma" onChange="maval(this.value,'applicantvalidma','instructapplicantsip')" class="field select medium" tabindex="59">
+<option value="--Select--" selected="selected"> --Select-- </option>                  
+				  <option value="10">5000</option>
                   	<option value="11">10000</option>
                   	<option value="12">25000</option>
                     <option value="13">50000</option>
