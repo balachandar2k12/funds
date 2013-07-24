@@ -134,97 +134,98 @@ Redirect("./signup-landing.html");
 
     $.ajax({
         type: "POST",
-        url: './corporatephp.php',
+        url: 'corporate_db_store.php',
         data: dataString,
         dataType: 'json',
-        success: function (data) {
-			if(data.success==0)
-					if(data.error)
-					{	
-						var	err=data.error;
+       success: function (data) {
+
+			// if(data.success==0)
+			// 		if(data.error)
+			// 		{	
+			// 			var	err=data.error;
 						
-						if(err.search("Duplicate"))
-						{	
+			// 			if(err.search("Duplicate"))
+			// 			{	
 							
-							$('#errordis').html("<h3>You Pan No is already registered with us</h3>");
-							$('#errordis').addClass("er");
-							window.location.hash = '#topfundsinn';
+			// 				$('#errordis').html("<h3>You Pan No is already registered with us</h3>");
+			// 				$('#errordis').addClass("er");
+			// 				window.location.hash = '#topfundsinn';
 					
-						}	 
-						else
-						{
-							$('#errordis').html("<h3>connection problem please try agian</h3>");
-							$('#errordis').addClass("er");
-							window.location.hash = '#topfundsinn';
-						}
-					}
-					else
-						{
+			// 			}	 
+			// 			else
+			// 			{
+			// 				$('#errordis').html("<h3>connection problem please try agian</h3>");
+			// 				$('#errordis').addClass("er");
+			// 				window.location.hash = '#topfundsinn';
+			// 			}
+			// 		}
+			// 		else
+			// 			{
 							
-							eattr=data.attr;
-							var tempaddrp="Permanent Address Details<br/>";
-							var tempaddrc="Current address Details<br/>";
-							var tempaddrb="Bank Details<br/>";
-							var tempaddrb2=" Second Bank Details<br/>";
-							var tempaddrb3="Third Bank Details<br/>";
-							var tempsip="SIP Details <br/>";
-							var tempci="Contact Person Details<br/>";
-							for ( var attrname in eattr)
-							{
-								if(eattr[attrname]!="TRUE")
-								{
-									if(document.getElementById(attrname))
-									{	
-										$('#'+attrname).addClass("error");
-										if(document.getElementById('instruct'+attrname))
-										   $('#instruct'+attrname).html("<small>"+eattr[attrname]+"</small>");
-										 else
-											{
-												if(!(attrname.search("applicantp")))
-													tempaddrp=tempaddrp+eattr[attrname]+"<br/>";
-												$('#instructapplicantpaddr').html("<small>"+tempaddrp+"</small><br/>");
+			// 				eattr=data.attr;
+			// 				var tempaddrp="Permanent Address Details<br/>";
+			// 				var tempaddrc="Current address Details<br/>";
+			// 				var tempaddrb="Bank Details<br/>";
+			// 				var tempaddrb2=" Second Bank Details<br/>";
+			// 				var tempaddrb3="Third Bank Details<br/>";
+			// 				var tempsip="SIP Details <br/>";
+			// 				var tempci="Contact Person Details<br/>";
+			// 				for ( var attrname in eattr)
+			// 				{
+			// 					if(eattr[attrname]!="TRUE")
+			// 					{
+			// 						if(document.getElementById(attrname))
+			// 						{	
+			// 							$('#'+attrname).addClass("error");
+			// 							if(document.getElementById('instruct'+attrname))
+			// 							   $('#instruct'+attrname).html("<small>"+eattr[attrname]+"</small>");
+			// 							 else
+			// 								{
+			// 									if(!(attrname.search("applicantp")))
+			// 										tempaddrp=tempaddrp+eattr[attrname]+"<br/>";
+			// 									$('#instructapplicantpaddr').html("<small>"+tempaddrp+"</small><br/>");
 												
-												if(!(attrname.search("applicantc")))
-													tempaddrc=tempaddrc+eattr[attrname]+"<br/>";
-												$('#instructapplicantcaddr').html("<small>"+tempaddrc+"</small><br/>");
+			// 									if(!(attrname.search("applicantc")))
+			// 										tempaddrc=tempaddrc+eattr[attrname]+"<br/>";
+			// 									$('#instructapplicantcaddr').html("<small>"+tempaddrc+"</small><br/>");
 												
-												if(!(attrname.search("bank")))
-													tempaddrb=tempaddrb+eattr[attrname]+"<br/>";
-												$('#instructbank').html("<small>"+tempaddrb+"</small><br/>");
+			// 									if(!(attrname.search("bank")))
+			// 										tempaddrb=tempaddrb+eattr[attrname]+"<br/>";
+			// 									$('#instructbank').html("<small>"+tempaddrb+"</small><br/>");
 												
-												if(!(attrname.search("bank2")))
-													tempaddrb2=tempaddrb2+eattr[attrname]+"<br/>";
-												$('#instructbank2').html("<small>"+tempaddrb2+"</small><br/>");
+			// 									if(!(attrname.search("bank2")))
+			// 										tempaddrb2=tempaddrb2+eattr[attrname]+"<br/>";
+			// 									$('#instructbank2').html("<small>"+tempaddrb2+"</small><br/>");
 												
-												if(!(attrname.search("bank3")))
-													tempaddrb3=tempaddrb3+eattr[attrname]+"<br/>";
-												$('#instructbank3').html("<small>"+tempaddrb3+"</small><br/>");
+			// 									if(!(attrname.search("bank3")))
+			// 										tempaddrb3=tempaddrb3+eattr[attrname]+"<br/>";
+			// 									$('#instructbank3').html("<small>"+tempaddrb3+"</small><br/>");
 												
-												if(!(attrname.search("applicant2c")))
-													tempci=tempci+eattr[attrname]+"<br/>";
-												$('#instructapplicant2contact').html("<small>"+tempci+"</small><br/>");
+			// 									if(!(attrname.search("applicant2c")))
+			// 										tempci=tempci+eattr[attrname]+"<br/>";
+			// 									$('#instructapplicant2contact').html("<small>"+tempci+"</small><br/>");
 												
-													if(!(attrname.search("applicantvalid")))
-													tempsip=tempsip+eattr[attrname]+"<br/>";
-												$('#instructapplicantsip').html("<small>"+tempsip+"</small><br/>");
+			// 										if(!(attrname.search("applicantvalid")))
+			// 										tempsip=tempsip+eattr[attrname]+"<br/>";
+			// 									$('#instructapplicantsip').html("<small>"+tempsip+"</small><br/>");
 											
 											
-											}
-									}
-								}
-							}
-						}
-			else
-				{
-							$('#errordis').html("<h3>Form submitted you will be redirected shortly</h3>");
-							$('#errordis').addClass("su");
-							window.location.hash = '#topfundsinn';
-						//	$("#headerMenu").scrollTop();
+			// 								}
+			// 						}
+			// 					}
+			// 				}
+			// 			}
+			// else
+			// 	{
+			// 				$('#errordis').html("<h3>Form submitted you will be redirected shortly</h3>");
+			// 				$('#errordis').addClass("su");
+			// 				window.location.hash = '#topfundsinn';
+			// 			//	$("#headerMenu").scrollTop();
 							
-				}
-			//	dump(data.attr);
-				dump(data);
-				
+			// 	}
+			// //	dump(data.attr);
+			// 	dump(data);
+				alert(data);
 		},
         error: function (error) {
 			{
@@ -233,7 +234,7 @@ Redirect("./signup-landing.html");
 							$('#errordis').addClass("er");
 							window.location.hash = '#topfundsinn';
 					
-					dump(error);
+					//dump(error);
 					
 			}
 	}
@@ -242,6 +243,7 @@ Redirect("./signup-landing.html");
 	}
 	
 	}
+	
 	function dump(obj) {
     var out = '';
     for (var i in obj) {

@@ -392,7 +392,7 @@ background-color: #F4C235;
 	box-shadow:  0px 0px 5px 3px rgba(70, 70, 70, 0.5);
 }
 #contentBody_inner2 {
-	background:#ffffff url(../img/innerbg2.png) top center no-repeat;
+	background:#ffffff url(../img/innerbgp.png) top center no-repeat;
 	margin-bottom: 20px;
     min-height: 820px;
 	-webkit-box-shadow:  0px 0px 5px 3px rgba(70, 70, 70, 0.5);
@@ -413,10 +413,27 @@ background-color: #F4C235;
     text-align: justify;
     width: 620px;
 }
+.inner_content_text2{
+	display: inline;
+    float: right;
+    font-family: 'Raleway',sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    margin-right: 60px;
+    margin-top: 40px;
+    text-align: justify;
+    width: 820px;
+}
 .inner_content_text_header1{
 	color:#6e6d6d;
 	font-family:'Raleway', sans-serif;
 	font-size:22px;
+	font-weight:bold;
+}
+.inner_content_text_header12{
+	color:#6e6d6d;
+	font-family:'Raleway', sans-serif;
+	font-size:16px;
 	font-weight:bold;
 }
 .inner_content_text_header2{

@@ -128,7 +128,7 @@ $(function() {
     var dataString = $('#nriform').serialize();
     $.ajax({
         type: "POST",
-        url: './nriphp.php',
+        url: 'nri_db_store.php',
         data: dataString,
         dataType: 'json',
         success: function (data) {

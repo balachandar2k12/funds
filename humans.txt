@@ -1,0 +1,31 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+	Chef:chandhar sunramani
+	Contact: chnadharsubramani [at] gmail [dot] com
+	From:Bangalore, Karnataka, India
+
+	Developer:Charan Raj T C 
+	Contact: charanraj [dot] tc [at] coresoft [dot] co [dot] in
+	google_talk: charanraj.tc
+	From:Kolar, Karnataka, India 
+
+# THANKS
+
+	Coding Mart Technologies
+	websit:www.codingmart.com
+	Location: Bangalore,Karnataka,India
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    jQuery, Modernizr
+	PHP
+	
+# SITE 
+	Last update:2013/07/15
+	Language: English 
+	Doctype:HTML5
+	IDE: Eclipse, Notepad++, FileZilla, Photoshop

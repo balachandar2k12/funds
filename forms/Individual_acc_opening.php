@@ -129,7 +129,7 @@ $("#redirectNRI").click(function(){
     var dataString = $('#individualform').serialize();
     $.ajax({
         type: "POST",
-        url: './individualphp.php',
+        url: 'individual_db_store.php',
         data: dataString,
         dataType: 'json',
         success: function (data) {
@@ -299,24 +299,24 @@ $("#redirectNRI").click(function(){
             <!-- investor_details -->
             <li class="notranslate">
              
-              <label class="desc" for="applicantname"> Name of the applicant <span class="req">*</span> </label>
+              <label class="desc" for="applicant_name"> Name of the applicant <span class="req">*</span> </label>
               <div>
-                <input id="applicantname" name="applicantname" type="text" class="field text medium" value="" maxlength="62" tabindex="4" onChange="alphareq(this.value,'applicantname','instructapplicantname')" />
+                <input id="applicantname" name="applicant_name" type="text" class="field text medium" value="" maxlength="62" tabindex="4" onChange="alphareq(this.value,'applicantname','instructapplicantname')" />
               </div>
               <p class="instruct" id="instructapplicantname"><small>Please Enter your name as per PAN card </small></p>
             </li>
             <li class="notranslate">
-              <label class="desc " for="applicantfname"> Father's Name <span class="req">*</span> </label>
+              <label class="desc " for="applicant_father_name"> Father's Name <span class="req">*</span> </label>
               <div>
-                <input id="applicantfname" name="applicantfname" type="text" class="field text nospin medium" onChange="alphareq(this.value,'applicantfname','instructapplicantfname')" value="" maxlength="54" tabindex="5" onKeyUp="" />
+                <input id="applicantfname" name="applicant_father_name" type="text" class="field text nospin medium" onChange="alphareq(this.value,'applicantfname','instructapplicantfname')" value="" maxlength="54" tabindex="5" onKeyUp="" />
               </div>
               <p class="instruct " id="instructapplicantfname"><small>Please enter your father's name as per PAN card</small></p>
             </li>
             <li class="date eurodate notranslate">
               <label class="desc"> Date of Birth <span class="req">*</span> </label>
               <span>
-              <input id="applicantdobdd" name="applicantdobdd" type="text" class="field text" value="" size="2" onChange="ddval(this.value,'applicantdobdd','instructapplicantdobdd')" maxlength="2" tabindex="6" />
-              <label for="applicantdobdd">DD</label>
+              <input id="applicantdobdd" name="applicant_dob" type="text" class="field text" value="" size="2" onChange="ddval(this.value,'applicantdobdd','instructapplicantdobdd')" maxlength="2" tabindex="6" />
+              <label for="applicant_dobdd">DD</label>
               </span> <span class="symbol">/</span> <span>
               <input id="applicantdobmm" name="applicantdobmm" type="text" class="field text" value="" onChange="mmval(this.value,'applicantdobmm','instructapplicantdobdd')" size="2" maxlength="2" tabindex="7" />
               <label for="applicantdobmm">MM</label>
@@ -330,17 +330,17 @@ $("#redirectNRI").click(function(){
               <fieldset>
                 <legend class="desc"> Gender <span class="req">*</span> </legend>
              <!--[if lt IE 8]>
-<label class="desc">
-Gender
-<span  class="req">*</span>
-</label>
-<![endif]-->
+							<label class="desc">
+							Gender
+							<span  class="req">*</span>
+							</label>
+							<![endif]-->
                 <div>
                   <span>
-                  <input id="applicantmaleradio" name="applicantgenderradio" type="radio" class="field radio" value="Male" tabindex="9" checked="checked" />
+                  <input id="applicantmaleradio" name="applicant_gender" type="radio" class="field radio" value="Male" tabindex="9" checked="checked" />
                   <label class="choice" for="applicantmaleradio" > Male</label>
                   </span> <span>
-                  <input id="applicantfemaleradio" name="applicantgenderradio" type="radio" class="field radio" value="Female" tabindex="10" />
+                  <input id="applicantfemaleradio" name="applicant_gender" type="radio" class="field radio" value="Female" tabindex="10" />
                   <label class="choice" for="applicantfemaleradio" > Female</label>
                   </span> 
 				 </div>
@@ -350,43 +350,43 @@ Gender
             <li class="notranslate">
               <label class="desc" for="applicantpan"> PAN Number <span class="req">*</span> </label>
               <div>
-                <input id="applicantpan" class="field text medium" name="applicantpan" onChange="panval(this.value,'applicantpan','instructapplicantpan')" tabindex="11" required maxlength="10" type="text" value="" />
+                <input id="applicantpan" class="field text medium" name="applicant_pan" onChange="panval(this.value,'applicantpan','instructapplicantpan')" tabindex="11" required maxlength="10" type="text" value="" />
               </div>
               <p class="instruct" id="instructapplicantpan"><small>Please Enter your PAN card number</small></p>
             </li>
             <li class="notranslate">
-              <label class="desc"  for="applicanttelr"> Tele Number (Residential) </label>
+              <label class="desc"  for="phone_resi"> Tele Number (Residential) </label>
               <div>
-                <input id="applicanttelr" class="field text medium" name="applicanttelr" onChange="terval(this.value,'applicanttelr','instructapplicanttelr')" tabindex="12" required  type="tel" maxlength="12" value="" />
+                <input id="applicanttelr" class="field text medium" name="phone_resi" onChange="terval(this.value,'applicanttelr','instructapplicanttelr')" tabindex="12" required  type="tel" maxlength="12" value="" />
               </div>
               <p class="instruct" id="instructapplicanttelr"><small>Please Enter your Residential number</small></p>
             </li>
             <li class="notranslate">
-              <label class="desc" for="applicanttelo"> Tele Number (Office):  </label>
+              <label class="desc" for="phone_office"> Tele Number (Office):  </label>
               <div>
-                <input id="applicanttelo" class="field text medium" name="applicanttelo" tabindex="13" onChange="teoval(this.value,'applicanttelo','instructapplicanttelo')" required  type="tel" maxlength="15" value="" />
+                <input id="applicanttelo" class="field text medium" name="phone_office" tabindex="13" onChange="teoval(this.value,'applicanttelo','instructapplicanttelo')" required  type="tel" maxlength="15" value="" />
               </div>
               <p class="instruct" id="instructapplicanttelo"><small>Please Enter your office Number</small></p>
             </li>
             <li class="notranslate">
-              <label class="desc" for="applicanttelm"> Moblie Number:  <span class="req">*</span> </label>
+              <label class="desc" for="mobile"> Moblie Number:  <span class="req">*</span> </label>
               <div>
-                <input id="applicanttelm" class="field text medium" name="applicanttelm" tabindex="14" required  onChange="temval(this.value,'applicanttelm','instructapplicanttelm')" type="tel" maxlength="11" value="" />
+                <input id="applicanttelm" class="field text medium" name="mobile" tabindex="14" required  onChange="temval(this.value,'applicanttelm','instructapplicanttelm')" type="tel" maxlength="11" value="" />
               </div>
               <p class="instruct" id="instructapplicanttelm"><small>Please Enter your mobile no </br> 9XXXXXXXX9</small></p>
             </li>
 			  <li class="notranslate">
-              <label class="desc" for="applicantemail"> Email address :  <span class="req">*</span> </label>
+              <label class="desc" for="email"> Email address :  <span class="req">*</span> </label>
               <div>
-                <input id="applicantemail" class="field text medium" name="applicantemail" tabindex="15" required  onChange="emval(this.value,'applicantemail','instructapplicantemail')" maxlength="37" type="email" value=<?php echo $email?> readonly />
+                <input id="applicantemail" class="field text medium" name="email" tabindex="15" required  onChange="emval(this.value,'applicantemail','instructapplicantemail')" maxlength="37" type="email" value=<?php echo $email?> readonly />
               </div>
               <p class="instruct" id="instructapplicantemail"><small>Re sign-up to change your email address</small></p>
             </li>
             <li class="notranslate">
-              <label class="desc" id="applicantocc"> Occupation <span class="req">*</span> </label>
+              <label class="desc" id="occupation"> Occupation <span class="req">*</span> </label>
               <div>
                 <div class="styled-select">
-                  <select  name="applicantocc" class="field select medium" tabindex="16" onChange="ocval(this.value,'applicantocc','instructapplicantocc')" >
+                  <select  name="occupation" class="field select medium" tabindex="16" onChange="ocval(this.value,'applicantocc','instructapplicantocc')" >
                     <option value="--Select--" selected="selected"> --Select-- </option>
                     <option value="Business">Business</option>
                     <option value="Service">Service</option>
@@ -412,22 +412,22 @@ Gender
             <li class="complex notranslate">
               <label class="desc"> Permanent Address <span class="req">*</span> </label>
               <div> <label for="applicantpaddr1">Address Line 1</label><span class="full addr1">
-                <input id="applicantpaddr1" name="applicantpaddr1" type="text" class="field text addr" onChange="addrval(this.value,'applicantpaddr1','instructapplicantpaddr')" value="" tabindex="17" maxlength="39" required />
+                <input id="applicantpaddr1" name="perm_addr1" type="text" class="field text addr" onChange="addrval(this.value,'applicantpaddr1','instructapplicantpaddr')" value="" tabindex="17" maxlength="39" required />
                 
                 </span>  <label for="applicantpaddr2">Address Line 2</label><span class="full addr2">
-                <input id="applicantpaddr2" name="applicantpaddr2" type="text" class="field text addr" value="" tabindex="18" maxlength="39" />
+                <input id="applicantpaddr2" name="perm_addr2" type="text" class="field text addr" value="" tabindex="18" maxlength="39" />
                
                 </span>  <label for="applicantpaddr3">Address Line 3</label><span class="full addr2">
-                <input id="applicantpaddr3" name="applicantpaddr3" type="text" class="field text addr" value="" tabindex="18" maxlength="39" />
+                <input id="applicantpaddr3" name="perm_paddr3" type="text" class="field text addr" value="" tabindex="18" maxlength="39" />
                
                 </span> <label for="applicantpcity">City</label> <span class="left city">
-                <input id="applicantpcity" name="applicantpcity" type="text" class="field text addr" value="" tabindex="19" maxlength="27" onChange="cityval(this.value,'applicantpcity','instructapplicantpaddr')" required />
+                <input id="applicantpcity" name="perm_city" type="text" class="field text addr" value="" tabindex="19" maxlength="27" onChange="cityval(this.value,'applicantpcity','instructapplicantpaddr')" required />
                
                 </span>  <label for="applicantpstate">State</label><span class="right state">
-                <input id="applicantpstate" name="applicantpstate" type="text" class="field text addr" value="" tabindex="20" maxlength="20" onChange="stateval(this.value,'applicantpstate','instructapplicantpaddr')" required />
+                <input id="applicantpstate" name="perm_state" type="text" class="field text addr" value="" tabindex="20" maxlength="20" onChange="stateval(this.value,'applicantpstate','instructapplicantpaddr')" required />
                
-                </span><label for="applicantpzip">Postal / Zip Code</label> <span class="left zip">
-                <input id="applicantpzip" name="applicantpzip" type="text" class="field text addr" value="" maxlength="6" tabindex="21" onChange="pinval(this.value,'applicantpzip','instructapplicantpaddr')" required />
+                </span><label for="perm_zip">Postal / Zip Code</label> <span class="left zip">
+                <input id="applicantpzip" name="perm_zip" type="text" class="field text addr" value="" maxlength="6" tabindex="21" onChange="pinval(this.value,'applicantpzip','instructapplicantpaddr')" required />
                 
                 </span> 
                 </div>
@@ -445,22 +445,22 @@ Gender
 		    <li class="complex notranslate">
               <label class="desc" > Communication Address <span class="req">*</span> </label>
               <div> <label for="applicantcaddr1">Address Line 1</label><span class="full addr1">
-                <input id="applicantcaddr1" name="applicantcaddr1" type="text" class="field text addr" value="" tabindex="22" onChange="addrval(this.value,'applicantcaddr1','instructapplicantcaddr')" maxlength="39" required />
+                <input id="applicantcaddr1" name="temp_addr1" type="text" class="field text addr" value="" tabindex="22" onChange="addrval(this.value,'applicantcaddr1','instructapplicantcaddr')" maxlength="39" required />
                 
                 </span>  <label for="applicantcaddr2">Address Line 2</label><span class="full addr2">
-                <input id="applicantcaddr2" name="applicantcaddr2" type="text" class="field text addr" value="" tabindex="23"  maxlength="39" />
+                <input id="applicantcaddr2" name="temp_addr2" type="text" class="field text addr" value="" tabindex="23"  maxlength="39" />
                
                 </span> <label for="applicantcaddr3">Address Line 3</label><span class="full addr2">
-                <input id="applicantcaddr3" name="applicantcaddr3" type="text" class="field text addr" value="" tabindex="23"  maxlength="39" />
+                <input id="applicantcaddr3" name="temp_addr3" type="text" class="field text addr" value="" tabindex="23"  maxlength="39" />
                
                 </span><label for="applicantccity">City</label> <span class="left city">
-                <input id="applicantccity" name="applicantccity" type="text" class="field text addr" value="" tabindex="24" onChange="cityval(this.value,'applicantccity','instructapplicantcaddr')" maxlength="27" required />
+                <input id="applicantccity" name="temp_city" type="text" class="field text addr" value="" tabindex="24" onChange="cityval(this.value,'applicantccity','instructapplicantcaddr')" maxlength="27" required />
                
                 </span>  <label for="applicantcstate">State</label><span class="right state">
-                <input id="applicantcstate" name="applicantcstate" type="text" class="field text addr" value="" tabindex="25" onChange="stateval(this.value,'applicantcstate','instructapplicantcaddr')"  maxlength="20" required />
+                <input id="applicantcstate" name="temp_state" type="text" class="field text addr" value="" tabindex="25" onChange="stateval(this.value,'applicantcstate','instructapplicantcaddr')"  maxlength="20" required />
                
                 </span><label for="applicantczip">Postal / Zip Code</label> <span class="left zip">
-                <input id="applicantczip" name="applicantczip" type="text" class="field text addr" value="" maxlength="6" onChange="pinval(this.value,'applicantczip','instructapplicantcaddr')"  tabindex="26" required />
+                <input id="applicantczip" name="temp_zip" type="text" class="field text addr" value="" maxlength="6" onChange="pinval(this.value,'applicantczip','instructapplicantcaddr')"  tabindex="26" required />
                 </span> 
                 </div>
              <p class="complex instruct" id="instructapplicantcaddr"><small>Please enter your address As per your communication address proof</small></p>
@@ -477,7 +477,7 @@ Gender
 				<li class="notranslate">
 				<label class="desc" for="applicant2name"> Name of the second applicant <span class="req">*</span> </label>
 				<div>
-                <input id="applicant2name" name="applicant2name" type="text" class="field text medium" value="" maxlength="62" tabindex="27" onKeyUp="" required autofocus />
+                <input id="applicant2name" name="applicant2_name" type="text" class="field text medium" value="" maxlength="62" tabindex="27" onKeyUp="" required autofocus />
               </div>
               <p class="instruct" id="instructapplicant2name"><small>Please Enter your second applicant's name</small></p>
 				</li>
@@ -485,9 +485,9 @@ Gender
 				 <li class="notranslate">
               <label class="desc" for="applicant2pan"> second applicant PAN Number <span class="req">*</span> </label>
              <div>
-                <input id="applicant2pan" class="field text medium" name="applicant2pan" tabindex="28" required  type="text" value="" />
+                <input id="applicant2pan" class="field text medium" name="applicant2_pan" tabindex="28" required  type="text" value="" />
               </div>
-				<p class="instruct" id="instructapplicant2pan"><small>Pleasa Enter second Applicant's PAN card NO</small></p>
+				<p class="instruct" id="instructapplicant2pan"><small>Please Enter second Applicant's PAN card NO</small></p>
 				</li>
 				</ul>
 				</div>
@@ -497,7 +497,7 @@ Gender
 				<li class="notranslate">
 				<label class="desc" for="applicant3name"> Name of the Third applicant <span class="req">*</span> </label>
               <div>
-                <input id="applicant3name" name="applicant3name" type="text" class="field text medium" value="" maxlength="62" tabindex="29" onKeyUp="" required autofocus />
+                <input id="applicant3name" name="applicant3_name" type="text" class="field text medium" value="" maxlength="62" tabindex="29" onKeyUp="" required autofocus />
               </div>
               <p class="instruct" id="instructapplicant3name"><small>Please Enter your Third applicant's name</small></p>
 				</li>
@@ -505,7 +505,7 @@ Gender
 				 <li class="notranslate">
               <label class="desc" for="applicant3pan"> Third applicant PAN Number <span class="req">*</span> </label>
               <div>
-                <input id="applicant3pan" class="field text medium" name="applicant3pan" tabindex="30" required  type="text" value="" />
+                <input id="applicant3pan" class="field text medium" name="applicant3_pan" tabindex="30" required  type="text" value="" />
               </div>
               <p class="instruct" id="instructapplicant3pan"><small>Please Enter your second applicant's PAN card number</small></p>
 				</li>
@@ -551,33 +551,33 @@ Gender
                
                 </span> <label>Account Type</label> 
 				<div>
-					<input type="radio" checked id="bankacctypes" name="bankacctype" value="saving" tabindex="32"/>&nbsp;Savings&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="radio" id="bankacctypec" name="bankacctype" value="current" tabindex="33"/>&nbsp;Current
+					<input type="radio" checked id="bankacctypes" name="bank_acc_type" value="saving" tabindex="32"/>&nbsp;Savings&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" id="bankacctypec" name="bank_acc_type" value="current" tabindex="33"/>&nbsp;Current
 				</div>
 				<span class="full addr2">
-                
-				</span> <label for="bankaccno">Account Number</label><span class="left city">
-                <input id="bankaccno" name="bankaccno" type="text" class="field text addr" value="" tabindex="34" onChange="accval(this.value,'bankaccno','instructbank')" maxlength="20" />
-                
-                </span><label>Branch Address</label> <span class="right state">
-                
-                </span> <label for="bankaddr1">Line 1</label><span class="left zip">
-                <input id="bankaddr1" name="bankaddr1" type="text" class="field text addr" value="" maxlength="39" tabindex="35" onChange="bankaddrval(this.value,'bankaddr1','instructbank')" required />
-                
-                </span> <label for="bankaddr2">Line 2	</label><span class="left zip">
-                <input id="bankaddr2" name="bankaddr2" type="text" class="field text addr" value="" maxlength="39" tabindex="36" required />
-                
-                
-                </span> <label for="bankcity">Branch City</label><span class="left zip">
-                <input id="bankcity" name="bankcity" type="text" class="field text addr" value="" maxlength="27" onChange="cityval(this.value,'bankcity','instructbank')" tabindex="37"  />
-                
-                
-                </span> <label for="bankmicr">MICR Code</label><span class="left zip">
+         </span> <label for="bank_micr">MICR Code</label><span class="left zip">
                 <input id="bankmicr" name="bankmicr" type="text" class="field text addr" value="" onChange="micrval(this.value,'bankmicr','instructbank')" maxlength="9" tabindex="38"  />
                 
                
                 </span> <label for="bankifsc">IFSC Code</label><span class="left zip">
-                <input id="bankifsc" name="bankifsc" type="text" class="field text addr" value="" onChange="ifscval(this.value,'bankifsc','instructbank')" maxlength="11"  tabindex="39"  />
+                <input id="bankifsc" name="bankifsc" type="text" class="field text addr" value="" onChange="ifscval(this.value,'bankifsc','instructbank')" maxlength="11"  tabindex="39"  />       
+				</span> <label for="bankaccno">Account Number</label><span class="left city">
+                <input id="bankaccno" name="bank_acc_no" type="text" class="field text addr" value="" tabindex="34" onChange="accval(this.value,'bankaccno','instructbank')" maxlength="20" />
+                
+                </span><label>Branch Address</label> <span class="right state">
+                
+                </span> <label for="bankaddr1">Line 1</label><span class="left zip">
+                <input id="bankaddr1" name="bank_addr1" type="text" class="field text addr" value="" maxlength="39" tabindex="35" onChange="bankaddrval(this.value,'bankaddr1','instructbank')" required />
+                
+                </span> <label for="bankaddr2">Line 2	</label><span class="left zip">
+                <input id="bankaddr2" name="bank_addr2" type="text" class="field text addr" value="" maxlength="39" tabindex="36" required />
+                
+                
+                </span> <label for="bankcity">Branch City</label><span class="left zip">
+                <input id="bankcity" name="bank_city" type="text" class="field text addr" value="" maxlength="27" onChange="cityval(this.value,'bankcity','instructbank')" tabindex="37"  />
+                
+                
+                
                </span>
             </div>
 			  <p class="complex instruct" id="instructbank"><small>Please Enter your Bank details </small></p>
@@ -779,27 +779,27 @@ Gender
 			<ul>
 			<li>
 			  <span class="left city">
-				<label for="appnomname">Nominee Name</label> <input id="appnomname" name="appnomname" type="text" class="field text addr" onChange="appnominval(this.value,'appnomname','instructappnomname')" value="" tabindex="62" maxlength="33" />
+				<label for="appnomname">Nominee Name</label> <input id="appnomname" name="nomineename" type="text" class="field text addr" onChange="appnominval(this.value,'appnomname','instructappnomname')" value="" tabindex="62" maxlength="33" />
                 
                 </span> 
                 <p class="instruct" id="instructappnomname"><small>About Nominee</small></p>
                 <li class="date eurodate notranslate      ">
               <label class="desc"> Date Of Birth <span class="req">*</span> </label>
               <span>
-              <input id="appnomdobd" name="appnomdobd" type="text" class="field text" onChange="ddval(this.value,'appnomdobd','instructappnomdobd')" value="" size="2" maxlength="2" tabindex="63" required />
+              <input id="appnomdobd" name="nomineedobd" type="text" class="field text" onChange="ddval(this.value,'appnomdobd','instructappnomdobd')" value="" size="2" maxlength="2" tabindex="63" required />
               <label for="appnomdobd">DD</label>
               </span> <span class="symbol">/</span> <span>
-              <input id="appnomdobm" name="appnomdobm" type="text" class="field text" onChange="mmval(this.value,'appnomdobm','instructappnomdobd')" value="" size="2" maxlength="2" tabindex="64" required />
+              <input id="appnomdobm" name="nomineedobm" type="text" class="field text" onChange="mmval(this.value,'appnomdobm','instructappnomdobd')" value="" size="2" maxlength="2" tabindex="64" required />
               <label for="appnomdobm">MM</label>
               </span> <span class="symbol">/</span> <span>
-              <input id="appnomdoby" name="appnomdoby" type="text" class="field text" onChange="yyval(this.value,'appnomdoby','instructappnomdobd')" value="" size="4" maxlength="4" tabindex="65" required />
+              <input id="appnomdoby" name="nomineedoby" type="text" class="field text" onChange="yyval(this.value,'appnomdoby','instructappnomdobd')" value="" size="4" maxlength="4" tabindex="65" required />
               <label for="appnomdoby">YYYY</label>
               </span>
               <p class="instruct" id="instructappnomdobd"><small>Your date of birth</small></p>
             </li>
             <li>
                 <span class="left zip"><label for="appnompname">Name Of Parent (In Case of Minor)	</label>
-                <input id="appnompname" name="appnompname" type="text" class="field text addr" onChange="nomempval(this.value,'appnompname','instructappnompname')" value="" maxlength="30" tabindex="66" />
+                <input id="appnompname" name="nominee_parent_name" type="text" class="field text addr" onChange="nomempval(this.value,'appnompname','instructappnompname')" value="" maxlength="30" tabindex="66" />
                 
                 </span> 
                 <p class="instruct" id="instructappnompname"><small>Name Of Parent (In Case of Minor)</small></p>
@@ -808,7 +808,7 @@ Gender
                 
             <li>
                 <span class="left zip"><label for="appnomrel">Relationship	</label>
-                <input id="appnomrel" name="appnomrel" type="text" class="field text addr" onChange="nomemrval(this.value,'appnomrel','instructappnomrel')" value="" maxlength="16" tabindex="67" />
+                <input id="appnomrel" name="nominee_relationship" type="text" class="field text addr" onChange="nomemrval(this.value,'appnomrel','instructappnomrel')" value="" maxlength="16" tabindex="67" />
                 
                 </span> 
                 <p class="instruct" id="instructappnomrel"><small>Relationship</small></p>
