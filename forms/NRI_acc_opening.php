@@ -403,23 +403,24 @@ Gender
                 <div class="styled-select">
                   <select  name="applicanttaxstatus" class="field select medium" onChange="statusval(this.value,'applicanttaxstatus','instructapplicanttaxstatus')" >
                     <option value="--Select--" selected="selected"> --Select-- </option>
-                <option value="Business">Bank/ Financial Institutuion</option>
-                    <option value="Service">Sole Proprietorship</option>
-                    <option value="Professional">NRI- Non Repatriable (NRO)</option>
-                    <option value="Agriculturist">NRI- Repatriable (NRE)</option>
-                    <option value="Retired">Overseas Corporate Body</option>
-                    <option value="Housewife">Foreign Institutional Investor</option>
-                    <option value="Student">HUF</option>
-                    <option value="Others">Provident Fund/EPF</option>
-                    <option value="Others">Superammuation Fund</option>
-                    <option value="Others">Gratuity Fund</option>
-                    <option value="Others">Pension Fund</option>
-                    <option value="Others">Company</option>
-                    <option value="Others">AOP/BOI</option>
-                    <option value="Others">Partnership Firm</option>
-                    <option value="Others">Body Corporate</option>
-                    <option value="Others">Trust</option>
-                    <option value="Others">Society</option>
+                <option value="Bank/ Financial Institutuion">Bank/ Financial Institutuion</option>
+                    <option value="Sole Proprietorship">Sole Proprietorship</option>
+                    <option value="NRI- Non Repatriable (NRO)">NRI- Non Repatriable (NRO)</option>
+                    <option value="NRI- Repatriable (NRE)">NRI- Repatriable (NRE)</option>
+                    <option value="Overseas Corporate Body">Overseas Corporate Body</option>
+                    <option value="Foreign Institutional Investor">Foreign Institutional Investor</option>
+                    <option value="HUF">HUF</option>
+                    <option value="Provident Fund/EPF">Provident Fund/EPF</option>
+                    <option value="Superammuation Fund">Superammuation Fund</option>
+                    <option value="Gratuity Fund">Gratuity Fund</option>
+                    <option value="Pension Fund">Pension Fund</option>
+                    <option value="Company">Company</option>
+                    <option value="AOP/BOI">AOP/BOI</option>
+                    <option value="Partnership Firm">Partnership Firm</option>
+                    <option value="Body Corporate">Body Corporate</option>
+                    <option value="Trust">Trust</option>
+                    <option value="Society">Society</option>
+                    <option value="Others">Others</option>
 				</select>
                 </div>
               </div>
@@ -433,23 +434,23 @@ Gender
                   <select  name="applicantnat" class="field select medium" onChange="natval(this.value,'applicantnat','instructapplicantnat')" >
                     <option value="--Select--" selected="selected"> --Select-- </option>      
 <option value="--">none</option>
-<option value="AF">Afghanistan</option>
-<option value="AL">Albania</option>
-<option value="DZ">Algeria</option>
-<option value="AS">American Samoa</option>
-<option value="AD">Andorra</option>
-<option value="AO">Angola</option>
-<option value="AI">Anguilla</option>
-<option value="AQ">Antarctica</option>
-<option value="AG">Antigua and Barbuda</option>
-<option value="AR">Argentina</option>
-<option value="AM">Armenia</option>
-<option value="AW">Aruba</option>
-<option value="AU">Australia</option>
-<option value="AT">Austria</option>
-<option value="AZ">Azerbaijan</option>
-<option value="BS">Bahamas</option>
-<option value="BH">Bahrain</option>
+<option value="Afghanistan">Afghanistan</option>
+<option value="Albania">Albania</option>
+<option value="Algeria">Algeria</option>
+<option value="American Samoa">American Samoa</option>
+<option value="Andorra">Andorra</option>
+<option value="Angola">Angola</option>
+<option value="Anguilla">Anguilla</option>
+<option value="Antarctica">Antarctica</option>
+<option value="Antigua and Barbuda">Antigua and Barbuda</option>
+<option value="Argentina">Argentina</option>
+<option value="Armenia">Armenia</option>
+<option value="Aruba">Aruba</option>
+<option value="Australia">Australia</option>
+<option value="Austria">Austria</option>
+<option value="Azerbaijan">Azerbaijan</option>
+<option value="Bahamas">Bahamas</option>
+<option value="Bahrain">Bahrain</option>
 <option value="BD">Bangladesh</option>
 <option value="BB">Barbados</option>
 <option value="BY">Belarus</option>

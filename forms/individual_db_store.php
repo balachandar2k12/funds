@@ -72,10 +72,14 @@ mysqli_query($con,$customer_sql);
 
 
 $account_number=account_id_gen();
-if($applicant2_pan!=""){
-	$application_no=application_id_gen("I","J");
+$age=get_age_by_dob($applicant_dob);
+if ($age < 18){
+  $application_no=application_id_gen("I","M");
 }else{
-	$application_no=application_id_gen("I","S");
+  $application_no=application_id_gen("I","S");
+}
+if($applicant2_pan!=""){
+  $application_no=application_id_gen("I","J");
 }
 
 $reference_id=reference_id_gen($application_no);
