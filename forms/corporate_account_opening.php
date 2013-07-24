@@ -113,19 +113,19 @@ Redirect("./signup-landing.html");
 	function send()
 	{ 	
 	
-							$('#errordis').html("");
-							$('#errordis').removeClass("er");
-							$('#errordis').removeClass("su");
-							for ( var attrname in eattr)
-							{
-								if(eattr[attrname]!="TRUE")
-								{
-									if(document.getElementById(attrname))
-									{	
-										$('#'+attrname).removeClass("error");
-									}
-								}
-							}
+		$('#errordis').html("");
+		$('#errordis').removeClass("er");
+		$('#errordis').removeClass("su");
+		for ( var attrname in eattr)
+		{
+			if(eattr[attrname]!="TRUE")
+			{
+				if(document.getElementById(attrname))
+				{	
+					$('#'+attrname).removeClass("error");
+				}
+			}
+		}
 		if(acceptagreement())
 		{
 							
@@ -835,7 +835,7 @@ Redirect("./signup-landing.html");
 			<li>
 			  <span class="left city">
 
-				<label for="appnomname">Nominee Name</label> <input id="appnomname" name="appnomname" type="text" class="field text addr" onChange="appnominval(this.value,'appnomname','instructappnomname')" value="" tabindex="63" maxlength="33" />
+				<label for="appnomname">Nominee Name</label> <input id="appnomname" name="appnomname" type="text" class="field text addr medium" onChange="appnominval(this.value,'appnomname','instructappnomname')" value="" tabindex="63" maxlength="33" />
                 
                 </span> 
                 <p class="instruct" id="instructappnomname"><small>About Nominee</small></p>
@@ -857,7 +857,7 @@ Redirect("./signup-landing.html");
             <li>
                 <span class="left zip"><label for="appnompname">Name Of Parent (In Case of Minor)	</label>
 
-                <input id="appnompname" name="appnompname" type="text" class="field text addr" onChange="nomempval(this.value,'appnompname','instructappnompname')" value="" maxlength="30" tabindex="67" />
+                <input id="appnompname" name="appnompname" type="text" class="field text addr medium" onChange="nomempval(this.value,'appnompname','instructappnompname')" value="" maxlength="30" tabindex="67" />
                 
                 </span> 
                 <p class="instruct" id="instructappnompname"><small>Name Of Parent (In Case of Minor)</small></p>
@@ -867,7 +867,7 @@ Redirect("./signup-landing.html");
             <li>
                 <span class="left zip"><label for="appnomrel">Relationship	</label>
 
-                <input id="appnomrel" name="appnomrel" type="text" class="field text addr" onChange="nomemrval(this.value,'appnomrel','instructappnomrel')" value="" maxlength="16" tabindex="68" />
+                <input id="appnomrel" name="appnomrel" type="text" class="field text addr medium" onChange="nomemrval(this.value,'appnomrel','instructappnomrel')" value="" maxlength="16" tabindex="68" />
                 
                 </span> 
                 <p class="instruct" id="instructappnomrel"><small>Relationship</small></p>

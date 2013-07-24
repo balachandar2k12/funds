@@ -58,7 +58,8 @@ Redirect("./signup-landing.html");
 <link href='http://fonts.googleapis.com/css?family=Raleway:400,700,500,600,800' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/jquery.validate.js"></script>
 <script type="text/javascript" src="../js/fundsinn.js"></script>
 <script type="text/javascript" src="../js/individualformval.js"></script>
 <style type="text/css">
@@ -779,7 +780,7 @@ $("#redirectNRI").click(function(){
 			<ul>
 			<li>
 			  <span class="left city">
-				<label for="appnomname">Nominee Name</label> <input id="appnomname" name="nomineename" type="text" class="field text addr" onChange="appnominval(this.value,'appnomname','instructappnomname')" value="" tabindex="62" maxlength="33" />
+				<label for="appnomname">Nominee Name</label> <input id="appnomname" name="nomineename" type="text" class="field text addr medium" onChange="appnominval(this.value,'appnomname','instructappnomname')" value="" tabindex="62" maxlength="33" />
                 
                 </span> 
                 <p class="instruct" id="instructappnomname"><small>About Nominee</small></p>
@@ -789,17 +790,17 @@ $("#redirectNRI").click(function(){
               <input id="appnomdobd" name="nomineedobd" type="text" class="field text" onChange="ddval(this.value,'appnomdobd','instructappnomdobd')" value="" size="2" maxlength="2" tabindex="63" required />
               <label for="appnomdobd">DD</label>
               </span> <span class="symbol">/</span> <span>
-              <input id="appnomdobm" name="nomineedobm" type="text" class="field text" onChange="mmval(this.value,'appnomdobm','instructappnomdobd')" value="" size="2" maxlength="2" tabindex="64" required />
+              <input id="appnomdobm" name="nomineedobm" type="text" class="field text " onChange="mmval(this.value,'appnomdobm','instructappnomdobd')" value="" size="2" maxlength="2" tabindex="64" required />
               <label for="appnomdobm">MM</label>
               </span> <span class="symbol">/</span> <span>
-              <input id="appnomdoby" name="nomineedoby" type="text" class="field text" onChange="yyval(this.value,'appnomdoby','instructappnomdobd')" value="" size="4" maxlength="4" tabindex="65" required />
+              <input id="appnomdoby" name="nomineedoby" type="text" class="field text " onChange="yyval(this.value,'appnomdoby','instructappnomdobd')" value="" size="4" maxlength="4" tabindex="65" required />
               <label for="appnomdoby">YYYY</label>
               </span>
               <p class="instruct" id="instructappnomdobd"><small>Your date of birth</small></p>
             </li>
             <li>
                 <span class="left zip"><label for="appnompname">Name Of Parent (In Case of Minor)	</label>
-                <input id="appnompname" name="nominee_parent_name" type="text" class="field text addr" onChange="nomempval(this.value,'appnompname','instructappnompname')" value="" maxlength="30" tabindex="66" />
+                <input id="appnompname" name="nominee_parent_name" type="text" class="field text addr medium" onChange="nomempval(this.value,'appnompname','instructappnompname')" value="" maxlength="30" tabindex="66" />
                 
                 </span> 
                 <p class="instruct" id="instructappnompname"><small>Name Of Parent (In Case of Minor)</small></p>
@@ -808,7 +809,7 @@ $("#redirectNRI").click(function(){
                 
             <li>
                 <span class="left zip"><label for="appnomrel">Relationship	</label>
-                <input id="appnomrel" name="nominee_relationship" type="text" class="field text addr" onChange="nomemrval(this.value,'appnomrel','instructappnomrel')" value="" maxlength="16" tabindex="67" />
+                <input id="appnomrel" name="nominee_relationship" type="text" class="field text addr medium" onChange="nomemrval(this.value,'appnomrel','instructappnomrel')" value="" maxlength="16" tabindex="67" />
                 
                 </span> 
                 <p class="instruct" id="instructappnomrel"><small>Relationship</small></p>

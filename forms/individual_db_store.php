@@ -15,15 +15,23 @@ $phone_office=$_POST["phone_office"];
 $mobile=$_POST["mobile"];
 $email=$_POST["email"];
 $occupation=$_POST["occupation"];
-$perm_addrress=$_POST["perm_addr1"].", ".$_POST["perm_addr2"].", ".$_POST["perm_addr3"];
+$tax_status="N/A";
+$perm_address=$_POST["perm_addr1"].", ".$_POST["perm_addr2"].", ".$_POST["perm_addr3"];
 $perm_city=$_POST["perm_city"];
 $perm_state=$_POST["perm_state"];
 $perm_zip=$_POST["perm_zip"];
-$temp_address=$_POST["temp_addr1"].", ".$_POST["temp_addr2"].", ".$_POST["temp_addr3"];
-$temp_city=$_POST["temp_city"];
-$temp_state=$_POST["temp_state"];
-$temp_zip=$_POST["temp_zip"];
-
+if($_POST['applicantpaddrcheck']!="same")
+{
+  $temp_address=$_POST["temp_addr1"].", ".$_POST["temp_addr2"].", ".$_POST["temp_addr3"];
+  $temp_city=$_POST["temp_city"];
+  $temp_state=$_POST["temp_state"];
+  $temp_zip=$_POST["temp_zip"];
+ } else{
+  $temp_address=$perm_address;
+  $temp_city=$perm_city;
+  $temp_state=$perm_state;
+  $temp_zip=$perm_zip;
+ }
 
 $applicant2_name=$_POST["applicant2_name"];
 $applicant2_pan=$_POST["applicant2_pan"];
@@ -60,10 +68,10 @@ $bank3city=$_POST["bank3city"];
 $bank3micr=$_POST["bank3micr"];
 $bank3ifsc=$_POST["bank3ifsc"];
 
-$applicantvalidity=$_POST["applicantvalidy"];
-$applicantvalidma=$_POST["applicantvalidma"];
+$sip_validity_years=$_POST["applicantvalidy"];
+$sip_mandate_amount=$_POST["applicantvalidma"];
 $nomineename=$_POST["nomineename"];
-$nominee_dob=$_POST["nomineedobd"]."/".$_POST["nomineedobm"]."/".$_POST["nomineedoby"];
+$nominee_dob=$_POST["nomineedoby"]."-".$_POST["nomineedobm"]."-".$_POST["nomineedobd"];
 $nominee_relationship=$_POST["nominee_relationship"];
 //  Customer tabel entry
 $customer_id=customer_id_gen();
@@ -153,19 +161,20 @@ $details_sql = "INSERT INTO `account_details` (`application_id`,`account_type`, 
 									   `temp_state`, `temp_zip`, `perm_address`,
 									    `perm_city`, `perm_state`, `perm_zip`, 
 									    `invester_id1`, `invester_id2`, `bank_id1`, 
-									    `bank_id2`, `bank_id3`, `nominee_name`,
-									     `nominee_dob`, `nominee_parent`, `nominee_relationship`, 
-									     `mode_of_holding`) VALUES ('".$applicantion_no."',
-										'".$account_type."','".$applicant_name."','".$applicant_father_name."',
-										'".$applicant_dob."','".$applicant_gender."','".$applicant_pan."',
-										'".$phone_office."','".$phone_resi."','".$mobile."',
-										'".$email."','".$occupation."','".$tax_status."',
-										'".$nationality."','".$temp_address."','".$temp_city."',
-										'".$temp_state."','".$temp_zip."','".$perm_address."','".$perm_city."',
-										'".$perm_state."','".$perm_zip."','".$invester_id1."',
-										'".$invester_id2."','".$bank_id1."','".$bank_id2."','".$bank_id3."',
-										'".$nomineename."','".$nominee_dob."','".$nominee_parent_name."',
-										'".$nominee_relationship."','".$mode."');";
+									    `bank_id2`, `bank_id3`,`sip_validity_years`,`sip_mandate_amount`,
+                       `nominee_name`,`nominee_dob`, `nominee_parent`, `nominee_relationship`, 
+									     `mode_of_holding`) VALUES ('".$application_no."',
+    										'".$account_type."','".$applicant_name."','".$applicant_father_name."',
+    										'".$applicant_dob."','".$applicant_gender."','".$applicant_pan."',
+    										'".$phone_office."','".$phone_resi."','".$mobile."',
+    										'".$email."','".$occupation."','".$tax_status."',
+    										'".$nationality."','".$temp_address."','".$temp_city."',
+    										'".$temp_state."','".$temp_zip."','".$perm_address."','".$perm_city."',
+    										'".$perm_state."','".$perm_zip."','".$invester_id1."',
+    										'".$invester_id2."','".$bank_id1."','".$bank_id2."','".$bank_id3."',
+                        '".$sip_validity_years."','".$sip_mandate_amount."',
+    										'".$nomineename."','".$nominee_dob."','".$nominee_parent_name."',
+    										'".$nominee_relationship."','".$mode."');";
 
 //echo ($details_sql);
  $result=mysqli_query($con,$details_sql);
