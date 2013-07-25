@@ -388,7 +388,7 @@ $("#redirectNRI").click(function(){
               <div>
                 <div class="styled-select">
                   <select  name="occupation" class="field select medium" tabindex="16" onChange="ocval(this.value,'applicantocc','instructapplicantocc')" >
-                    <option value="--Select--" selected="selected"> --Select-- </option>
+                    <option value="" selected="selected"> --Select-- </option>
                     <option value="Business">Business</option>
                     <option value="Service">Service</option>
                     <option value="Professional">Professional</option>
@@ -729,7 +729,7 @@ $("#redirectNRI").click(function(){
 				</span>
 				 <div class="styled-select">
                   <select class="field select medium" id="applicantvalidyfield" onChange="vyval(this.value,'applicantvalidy','instructapplicantsip')"   name="applicantvalidy" tabindex="59">
-				<option value="--Select--" selected="selected"> --Select-- </option>                  
+				<option value="" selected="selected"> --Select-- </option>                  
 				  <option value="10">10</option>
                   	<option value="11">11</option>
                   	<option value="12">12</option>
@@ -748,7 +748,7 @@ $("#redirectNRI").click(function(){
 				 </span>
 				  <div class="styled-select">
                   <select id="applicantvalidmafield"  onChange="maval(this.value,'applicantvalidma','instructapplicantsip')" class="field select medium" name="applicantvalidma" tabindex="60">
-                  	<option value="--Select--" selected="selected"> --Select-- </option>
+                  	<option value="" selected="selected"> --Select-- </option>
 					<option value="10">5000</option>
                   	<option value="11">10000</option>
                   	<option value="12">25000</option>
@@ -919,6 +919,115 @@ $("#redirectNRI").click(function(){
   </div>
 </div>
 </div>
+ <!-- validations -->
+<script type="text/javascript">
+$(document).ready(function(){
+
+ 	var post_code_regx = /^\d{5}$|^\d{9}$|^\d{5}-\d{4}$/;
+	var panPat = /^([a-zA-Z]{5})(\d{4})([cphfatbljgCPHFATBLGJ]{1})$/;
+	var ifscPat = /^([a-zA-Z]{4})(\d{3-10})$/;
+	var currentTime = new Date();
+	var month = currentTime.getMonth() + 1;
+	var day = currentTime.getDate();
+	var cyear = currentTime.getFullYear();
+
+	$.validator.addMethod('postalCode',function (value, element){
+	    return this.optional(element) || post_code_regx.test(value);
+	}, 'Please enter a valid Postal/Zip  Code');
+
+	$.validator.addMethod('isPAN',function (value, element){
+	    return this.optional(element) || panPat.test(value);
+	},'Please enter a valid PAN number');
+
+	$.validator.addMethod('isValidAge',function (value, element){
+	    if( ( cyear-( Number(value) ) ) <= 100){
+	    	return true;
+	    }else{
+	    	return false;
+	    }
+	},'this is a Not valid D.O.B');
+
+	$.validator.addMethod('isIFSC',function (value, element){
+	    return this.optional(element) || ifscPat.test(value);
+	}, 'Please enter a valid IFSC code');
+
+  $("#individualform").validate({
+        rules:{
+         	"account_type":{required:true},
+			"applicant_name":{required:true, maxlength: 62 },
+			"applicant_father_name":{required:true, maxlength: 54 },
+			"applicant_dob":{required:true, min: 1, max: 31  },
+			"applicantdobmm":{required:true, min: 1, max: 12  },
+			"applicantdobyyyy" : {required:true, isValidAge:true },
+			"applicant_gender": {required:true},
+			"applicant_pan" : {required:true, isPAN:true },
+			"phone_resi": {digits: true},
+			"phone_office" : {digits: true},
+			"mobile" : {required:true, digits: true, minlength:10, maxlength: 10},
+			"applicantocc": {required:true}, 
+			"perm_addr1": {required:true, maxlength:39},
+			"perm_addr2" : {maxlength:39},
+			"perm_addr3" : {maxlength:39},
+			"perm_city"  : {required:true, maxlength:24}, 
+			"perm_state" : {required:true, maxlength:24}, 
+			"perm_zip"  : {required:true, postalCode:true}, 
+			"temp_addr1" : {required:true, maxlength:39},
+			"temp_addr2" : {maxlength:39},
+			"temp_addr3" : {maxlength:39},
+			"temp_city" : {required:true, maxlength:24}, 
+			"temp_state" : {required:true, maxlength:24}, 
+			"temp_zip"  : {required:true, postalCode:true}, 
+			"applicant2_name" : {maxlength: 62 },
+			"applicant2_pan" : { isPan:true },
+			"applicant3_name" : {maxlength: 62 },
+			"applicant3_pan" : { isPan:true }, 
+			"bankname" :{ required:true, minlength:2},
+			"bank_acc_type" :{ required:true},
+			"bank_acc_no"   :{ required:true, digits:true, maxlength:20},
+			"bank_addr1" : { required:true, maxlength:39},
+			"bank_addr2" : { maxlength:39},
+			"bank_city" : {required:true, maxlength:24},
+			"bankmicr" : {required:true,digits:true,max:999999999},
+			"bankifsc" : {required:true, isIFSC:true},
+			"bank2name" : {minlength:2},
+			"bank2accno" :{digits:true, maxlength:20},
+			"bank2addr1" : { maxlength:39},
+			"bank2addr2" : { maxlength:39},
+			"bank2city" :{maxlength:24},
+			"bank2micr" :{digits:true,max:999999999},
+			"bank2ifsc" :{isIFSC:true},
+			"bank3name" : {minlength:2}, 
+			"bank3accno" :{digits:true, maxlength:20},
+			"bank3addr1" : { maxlength:39},
+			"bank3addr2" :{ maxlength:39},
+			"bank3city" :{maxlength:24},
+			"bank3micr" : {digits:true,max:999999999},
+			"bank3ifsc" :{isIFSC:true},
+			"nomineename" :{ minlength:2},
+			"nomineedobd" :{ min: 1, max: 31  },
+			'nomineedobm' :{ min: 1, max: 12  },
+			"nomineedoby" :{isValidAge:true },
+			"nominee_parent_name": { minlength:2},
+			"appnomrel" :{ maxlength:39},
+			"agreementaccept" :{required:true}
+        },
+        messages:{
+          'applicant_name':"Enter Your Full Name!",
+          "applicant_dob":{required:"0-31", min:"0-31", max: "0-31"  },
+		  "applicantdobmm":{required:"0-12", min:"0-12", max:"0-12"  },
+		  "applicantdobyyyy" : {required:"ex : 1980"}, 
+		  "mobile" : {required:"Enter Your Mobile Number", digits:"Enter Your Mobile Number", minlength:"Enter Your Mobile Number", maxlength: "Enter Your Mobile Number"},
+          "nomineedobd" :{required:"0-31", min:"0-31", max: "0-31"  },
+		  'nomineedobm' :{required:"0-12", min:"0-12", max:"0-12"  },
+		  "appnomdoby" :{required:"ex : 1980"},
+		  "agreementaccept" :{required:"Please Accept Terms & Conditions !"}
+        },
+       errorPlacement: function (error, element) {
+           error.insertAfter(element);
+       }
+   });
+});
+</script>
 
 </body>
 </html>

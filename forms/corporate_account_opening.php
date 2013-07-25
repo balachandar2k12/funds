@@ -378,7 +378,7 @@ Redirect("./signup-landing.html");
               <div>
                 <div class="styled-select">
                   <select  name="applicantocc" class="field select medium" tabindex="15" onChange="ocval(this.value,'applicantocc','instructapplicantocc')" >
-                    <option value="--Select--" selected="selected"> --Select-- </option>
+                    <option value="" selected="selected"> --Select-- </option>
                     <option value="Business">Business</option>
                     <option value="Service">Service</option>
                     <option value="Professional">Professional</option>
@@ -398,7 +398,7 @@ Redirect("./signup-landing.html");
                 <div class="styled-select">
 
                   <select  name="applicantstatus" class="field select medium" tabindex="16" onChange="statusval(this.value,'applicantstatus','instructapplicantstatus')" >
-                    <option value="--Select--" selected="selected"> --Select-- </option>
+                    <option value="" selected="selected"> --Select-- </option>
                    <option value="Business">Partnership</option>
                     <option value="Service">Society</option>
                     <option value="Professional">Trust</option>
@@ -419,7 +419,7 @@ Redirect("./signup-landing.html");
               <div>
                 <div class="styled-select">
                   <select  name="applicanttaxstatus" class="field select medium" tabindex="17" onChange="statusval(this.value,'applicanttaxstatus','instructapplicanttaxstatus')" >
-                    <option value="--Select--" selected="selected"> --Select-- </option>
+                    <option value="" selected="selected"> --Select-- </option>
                 	<option value="Bank/ Financial Institutuion">Bank/ Financial Institutuion</option>
                     <option value="Sole Proprietorship">Sole Proprietorship</option>
                     <option value="NRI- Non Repatriable (NRO)">NRI- Non Repatriable (NRO)</option>
@@ -782,7 +782,7 @@ Redirect("./signup-landing.html");
 				 <div class="styled-select">
 
                   <select id="applicantvalidyfield" name="applicantvalidy" onChange="vyval(this.value,'applicantvalidy','instructapplicantsip')" class="field select medium" tabindex="60">
-                  	<option value="--Select--" selected="selected"> --Select-- </option>
+                  	<option value="" selected="selected"> --Select-- </option>
 					<option value="10">10</option>
                   	<option value="11">11</option>
                   	<option value="12">12</option>
@@ -802,7 +802,7 @@ Redirect("./signup-landing.html");
 				  <div class="styled-select">
 
                   <select id="applicantvalidmafield" name="applicantvalidma" onChange="maval(this.value,'applicantvalidma','instructapplicantsip')" class="field select medium" tabindex="61">
-                  <option value="--Select--" selected="selected"> --Select-- </option>
+                  <option value="" selected="selected"> --Select-- </option>
 				  <option value="10">5000</option>
                   	<option value="11">10000</option>
                   	<option value="12">25000</option>
@@ -980,6 +980,117 @@ Redirect("./signup-landing.html");
   </div>
 </div>
 </div>
+  <!-- validations -->
+<script type="text/javascript">
+$(document).ready(function(){
+
+ 	var post_code_regx = /^\d{5}$|^\d{9}$|^\d{5}-\d{4}$/;
+	var panPat = /^([a-zA-Z]{5})(\d{4})([cphfatbljgCPHFATBLGJ]{1})$/;
+	var ifscPat = /^([a-zA-Z]{4})(\d{3-10})$/;
+	var currentTime = new Date();
+	var month = currentTime.getMonth() + 1;
+	var day = currentTime.getDate();
+	var cyear = currentTime.getFullYear();
+
+	$.validator.addMethod('postalCode',function (value, element){
+	    return this.optional(element) || post_code_regx.test(value);
+	}, 'Please enter a valid Postal/Zip  Code');
+
+	$.validator.addMethod('isPAN',function (value, element){
+	    return this.optional(element) || panPat.test(value);
+	},'Please enter a valid PAN number');
+
+	$.validator.addMethod('isValidAge',function (value, element){
+	    if( ( cyear-( Number(value) ) ) <= 100){
+	    	return true;
+	    }else{
+	    	return false;
+	    }
+	},'this is a Not valid D.O.B');
+
+	$.validator.addMethod('isIFSC',function (value, element){
+	    return this.optional(element) || ifscPat.test(value);
+	}, 'Please enter a valid IFSC code');
+
+
+  $("#corporateform").validate({
+        rules:{
+         	"account_type":{required:true},
+			"applicantname":{required:true, maxlength: 62 },
+			"applicantdoidd":{required:true, min: 1, max: 31  },
+			"applicantdoimm":{required:true, min: 1, max: 12  },
+			"applicantdoiyyyy" : {required:true},
+			"applicantpan" : {required:true, isPAN:true },
+			"applicant2contactname" : {required:true},
+			"applicant2contactdes":{required:true},
+			//"applicant2contactemail":{required:true},
+			"applicant2contacttelr": {digits: true},
+			"applicant2contacttelo" : {required:true},
+			"applicant2contacttelm" : {required:true, digits: true, minlength:10, maxlength: 10},
+			"applicantocc": {required:true}, 
+			"applicantpaddr1": {required:true, maxlength:39},
+			"applicantpaddr2" : {maxlength:39},
+			"applicantpaddr3" : {maxlength:39},
+			"applicantpcity"  : {required:true, maxlength:24}, 
+			"applicantpstate" : {required:true, maxlength:24}, 
+			"applicantpzip"  : {required:true, postalCode:true}, 
+			"applicantcaddr1" : {required:true, maxlength:39},
+			"applicantcaddr2" : {maxlength:39},
+			"applicantcaddr3" : {maxlength:39},
+			"applicantccity" : {required:true, maxlength:24}, 
+			"applicantcstate" : {required:true, maxlength:24}, 
+			"applicantczip"  : {required:true, postalCode:true}, 
+			"applicant2_name" : {maxlength: 62 },
+			"applicant2pan" : { isPan:true },
+			"applicant3name" : {maxlength: 62 },
+			"applicant3pan" : { isPan:true }, 
+			"bankname" :{ required:true, minlength:2},
+			"bankacctype" :{ required:true},
+			"bankaccno"   :{ required:true, digits:true, maxlength:20},
+			"bankaddr1" : { required:true, maxlength:39},
+			"bankaddr2" : { maxlength:39},
+			"bankcity" : {required:true, maxlength:24},
+			"bankmicr" : {required:true,digits:true,max:999999999},
+			"bankifsc" : {required:true, isIFSC:true},
+			"bank2name" : {minlength:2},
+			"bank2accno" :{digits:true, maxlength:20},
+			"bank2addr1" : { maxlength:39},
+			"bank2addr2" : { maxlength:39},
+			"bank2city" :{maxlength:24},
+			"bank2micr" :{digits:true,max:999999999},
+			"bank2ifsc" :{isIFSC:true},
+			"bank3name" : {minlength:2}, 
+			"bank3accno" :{digits:true, maxlength:20},
+			"bank3addr1" : { maxlength:39},
+			"bank3addr2" :{ maxlength:39},
+			"bank3city" :{maxlength:24},
+			"bank3micr" : {digits:true,max:999999999},
+			"bank3ifsc" :{isIFSC:true},
+			"appnomname" :{ minlength:2},
+			"appnomdobd" :{ min: 1, max: 31  },
+			'appnomdobm' :{ min: 1, max: 12  },
+			"appnomdoby" :{isValidAge:true },
+			"appnompname": { minlength:2},
+			"nominee_relationship" :{ maxlength:39},
+			"agreementaccept" :{required:true}
+        },
+        messages:{
+          'applicantname':"Enter Your Full Name!",
+          "applicantdoidd":{required:"0-31", min:"0-31", max: "0-31"  },
+		  "applicantdoimm":{required:"0-12", min:"0-12", max:"0-12"  },
+		  "applicantdoiyyyy" : {required:"ex : 1980"}, 
+		  "applicant2contacttelm" : {required:"Enter Your Mobile Number", digits:"Enter Your Mobile Number", minlength:"Enter Your Mobile Number", maxlength: "Enter Your Mobile Number"},
+          "appnomdobd" :{required:"0-31", min:"0-31", max: "0-31"  },
+		  'appnomdobm' :{required:"0-12", min:"0-12", max:"0-12"  },
+		  "appnomdoby" :{required:"ex : 1980"},
+		  "agreementaccept" :{required:"Please Accept Terms & Conditions !"}
+        },
+       errorPlacement: function (error, element) {
+           error.insertAfter(element);
+       }
+   });
+});
+</script>
 
 </body>
 </html>

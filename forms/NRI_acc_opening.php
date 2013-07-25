@@ -304,20 +304,20 @@ $(function() {
             <li class="notranslate">
               <label class="desc " for="applicantfname"> Father's Name <span class="req">*</span> </label>
               <div>
-                <input id="applicantfname" name="applicantfname" type="text" class="field text nospin medium" onChange="alphareq(this.value,'applicantfname','instructapplicantfname')" value="" maxlength="54" tabindex="5" onKeyUp="" />
+                <input id="applicantfname" name="applicantfname" type="text" class="field text nospin medium" value="" maxlength="54" tabindex="5" onKeyUp="" />
               </div>
               <p class="instruct " id="instructapplicantfname"><small>Only letters, Maximum Only 54 Characters all in CAPS</small></p>
             </li>
             <li class="date eurodate notranslate">
               <label class="desc"> Date of Birth <span class="req">*</span> </label>
               <span>
-              <input id="applicantdobdd" name="applicantdobdd" type="text" class="field text" value="" size="2" onChange="ddval(this.value,'applicantdobdd','instructapplicantdobdd')" maxlength="2" tabindex="6" />
+              <input id="applicantdobdd" name="applicantdobdd" type="text" class="field text" value="" size="2" maxlength="2" tabindex="6" />
               <label for="applicantdobdd">DD</label>
               </span> <span class="symbol">/</span> <span>
-              <input id="applicantdobmm" name="applicantdobmm" type="text" class="field text" value="" onChange="mmval(this.value,'applicantdobmm','instructapplicantdobdd')" size="2" maxlength="2" tabindex="7" />
+              <input id="applicantdobmm" name="applicantdobmm" type="text" class="field text" value="" size="2" maxlength="2" tabindex="7" />
               <label for="applicantdobmm">MM</label>
               </span> <span class="symbol">/</span> <span>
-              <input id="applicantdobyyyy" name="applicantdobyyyy" type="text" class="field text" value="" onChange="yyval(this.value,'applicantdobyyyy','instructapplicantdobdd')" size="4" maxlength="4" tabindex="8" />
+              <input id="applicantdobyyyy" name="applicantdobyyyy" type="text" class="field text" value="" size="4" maxlength="4" tabindex="8" />
               <label for="applicantdobyyyy">YYYY</label>
               </span>
               <p class="instruct" id="instructapplicantdobdd"><small>Enter date of birth</small></p>
@@ -346,28 +346,28 @@ Gender
             <li class="notranslate">
               <label class="desc" for="applicantpan"> PAN Number <span class="req">*</span> </label>
               <div>
-                <input id="applicantpan" class="field text medium" name="applicantpan" onChange="panval(this.value,'applicantpan','instructapplicantpan')" tabindex="11" required maxlength="10" type="text" value="" />
+                <input id="applicantpan" class="field text medium" name="applicantpan" tabindex="11" maxlength="10" type="text" value="" />
               </div>
               <p class="instruct" id="instructapplicantpan"><small>Your pan number</small></p>
             </li>
             <li class="notranslate">
               <label class="desc"  for="applicanttelr"> Tele Number (Residential) </label>
               <div>
-                <input id="applicanttelr" class="field text medium" name="applicanttelr" onChange="terval(this.value,'applicanttelr','instructapplicanttelr')" tabindex="12" required  type="tel" maxlength="12" value="" />
+                <input id="applicanttelr" class="field text medium" name="applicanttelr" tabindex="12" type="tel" maxlength="12" value="" />
               </div>
               <p class="instruct" id="instructapplicanttelr"><small>Only Number 10 Digits</small></p>
             </li>
             <li class="notranslate">
               <label class="desc" for="applicanttelo"> Tele Number (Office):  </label>
               <div>
-                <input id="applicanttelo" class="field text medium" name="applicanttelo" tabindex="13" onChange="teoval(this.value,'applicanttelo','instructapplicanttelo')" required  type="tel" maxlength="15" value="" />
+                <input id="applicanttelo" class="field text medium" name="applicanttelo" tabindex="13" type="tel" maxlength="15" value="" />
               </div>
               <p class="instruct" id="instructapplicanttelo"><small>Only Number 10 Digits</small></p>
             </li>
             <li class="notranslate">
               <label class="desc" for="applicanttelm"> Moblie Number:  <span class="req">*</span> </label>
               <div>
-                <input id="applicanttelm" class="field text medium" name="applicanttelm" tabindex="14" required  onChange="temval(this.value,'applicanttelm','instructapplicanttelm')" type="tel" maxlength="11" value="" />
+                <input id="applicanttelm" class="field text medium" name="applicanttelm" tabindex="14" onChange="temval(this.value,'applicanttelm','instructapplicanttelm')" type="tel" maxlength="11" value="" />
               </div>
               <p class="instruct" id="instructapplicanttelm"><small>+91 (only ten Digits Number)</small></p>
             </li>
@@ -383,7 +383,7 @@ Gender
               <div>
                 <div class="styled-select">
                   <select  name="applicantocc" class="field select medium" tabindex="15" onChange="ocval(this.value,'applicantocc','instructapplicantocc')" >
-                    <option value="--Select--" selected="selected"> --Select-- </option>
+                    <option value="" selected="selected"> --Select-- </option>
                     <option value="Business">Business</option>
                     <option value="Service">Service</option>
                     <option value="Professional">Professional</option>
@@ -403,7 +403,7 @@ Gender
               <div>
                 <div class="styled-select">
                   <select  name="applicanttaxstatus" class="field select medium" onChange="statusval(this.value,'applicanttaxstatus','instructapplicanttaxstatus')" >
-                    <option value="--Select--" selected="selected"> --Select-- </option>
+                    <option value="" selected="selected"> --Select-- </option>
                 <option value="Bank/ Financial Institutuion">Bank/ Financial Institutuion</option>
                     <option value="Sole Proprietorship">Sole Proprietorship</option>
                     <option value="NRI- Non Repatriable (NRO)">NRI- Non Repatriable (NRO)</option>
@@ -433,7 +433,7 @@ Gender
               <div>
                 <div class="styled-select">
                   <select  name="applicantnat" class="field select medium" onChange="natval(this.value,'applicantnat','instructapplicantnat')" >
-                    <option value="--Select--" selected="selected"> --Select-- </option>      
+                    <option value="" selected="selected"> --Select-- </option>      
 					<option value="--">none</option>
 					<option value="Afghanistan">Afghanistan</option>
 					<option value="Albania">Albania</option>
@@ -712,7 +712,7 @@ Gender
                 <div class="styled-select">
 				 
                   <select  name="applicantocou" class="field select medium" onChange="ocuoval(this.value,'applicantocou','instructapplicantoaddr')" >
-                    <option value="--Select--" selected="selected"> --Select-- </option>      
+                    <option value="" selected="selected"> --Select-- </option>      
 <option value="--">none</option>
 					<option value="Afghanistan">Afghanistan</option>
 					<option value="Albania">Albania</option>
@@ -1257,8 +1257,8 @@ Gender
                 <label for="applicantvalidyfield" id="applicantvalidy">Number of years validity</label>
 				</span>
 				 <div class="styled-select">
-                  <select id="applicantvalidyfield" name="applicantvalidy" onChange="vyval(this.value,'applicantvalidy','instructapplicantsip')" class="field select medium" tabindex="58">
-                  	<option value="--Select--" selected="selected"> --Select-- </option>
+                  <select id="applicantvalidyfield" name="applicantvalidy" class="field select medium" tabindex="58">
+                  	<option value="" selected="selected"> --Select-- </option>
 					<option value="10">10</option>
                   	<option value="11">11</option>
                   	<option value="12">12</option>
@@ -1277,7 +1277,7 @@ Gender
 				 </span>
 				  <div class="styled-select">
                   <select id="applicantvalidmafield" name="applicantvalidma" onChange="maval(this.value,'applicantvalidma','instructapplicantsip')" class="field select medium" tabindex="59">
-<option value="--Select--" selected="selected"> --Select-- </option>                  
+                  <option value="" selected="selected"> --Select-- </option>                  
 				  <option value="10">5000</option>
                   	<option value="11">10000</option>
                   	<option value="12">25000</option>
@@ -1316,13 +1316,13 @@ Gender
                 <li class="date eurodate notranslate      ">
               <label class="desc"> Date Of Birth <span class="req">*</span> </label>
               <span>
-              <input id="appnomdobd" name="appnomdobd" type="text" class="field text" onChange="ddval(this.value,'appnomdobd','instructappnomdobd')" value="" size="2" maxlength="2" tabindex="62" required />
+              <input id="appnomdobd" name="appnomdobd" type="text" class="field text" onChange="ddval(this.value,'appnomdobd','instructappnomdobd')" value="" size="2" maxlength="2" tabindex="62"/>
               <label for="appnomdobd">DD</label>
               </span> <span class="symbol">/</span> <span>
-              <input id="appnomdobm" name="appnomdobm" type="text" class="field text" onChange="mmval(this.value,'appnomdobm','instructappnomdobd')" value="" size="2" maxlength="2" tabindex="63" required />
+              <input id="appnomdobm" name="appnomdobm" type="text" class="field text" onChange="mmval(this.value,'appnomdobm','instructappnomdobd')" value="" size="2" maxlength="2" tabindex="63"/>
               <label for="appnomdobm">MM</label>
               </span> <span class="symbol">/</span> <span>
-              <input id="appnomdoby" name="appnomdoby" type="text" class="field text" onChange="yyval(this.value,'appnomdoby','instructappnomdobd')" value="" size="4" maxlength="4" tabindex="64" required />
+              <input id="appnomdoby" name="appnomdoby" type="text" class="field text" onChange="yyval(this.value,'appnomdoby','instructappnomdobd')" value="" size="4" maxlength="4" tabindex="64" />
               <label for="appnomdoby">YYYY</label>
               </span>
               <p class="instruct" id="instructappnomdobd"><small>Your date of birth</small></p>
@@ -1415,7 +1415,7 @@ Gender
       <div id="mc_embed_signup">
         <form action="http://basilapparel.us6.list-manage2.com/subscribe/post?u=a853f89dd76f2587cf7e299a8&amp;id=4c947b8c4d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
           <div class="mc-field-group">
-            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL">
           </div>
           <div id="mce-responses">
             <div class="response" id="mce-error-response" style="display:none"></div>
@@ -1453,53 +1453,106 @@ Gender
 <!-- validations -->
 <script type="text/javascript">
 $(document).ready(function(){
+
+ 	var post_code_regx = /^\d{5}$|^\d{9}$|^\d{5}-\d{4}$/;
+	var panPat = /^([a-zA-Z]{5})(\d{4})([cphfatbljgCPHFATBLGJ]{1})$/;
+	var ifscPat = /^([a-zA-Z]{4})(\d{3-10})$/;
+	var currentTime = new Date();
+	var month = currentTime.getMonth() + 1;
+	var day = currentTime.getDate();
+	var cyear = currentTime.getFullYear();
+
+	$.validator.addMethod('postalCode',function (value, element){
+	    return this.optional(element) || post_code_regx.test(value);
+	}, 'Please enter a valid Postal/Zip  Code');
+
+	$.validator.addMethod('isPAN',function (value, element){
+	    return this.optional(element) || panPat.test(value);
+	},'Please enter a valid PAN number');
+
+	$.validator.addMethod('isValidAge',function (value, element){
+	    if( ( cyear-( Number(value) ) ) <= 100){
+	    	return true;
+	    }else{
+	    	return false;
+	    }
+	},'this is a Not valid D.O.B');
+
+	$.validator.addMethod('isIFSC',function (value, element){
+	    return this.optional(element) || ifscPat.test(value);
+	}, 'Please enter a valid IFSC code');
+
+
   $("#nriform").validate({
         rules:{
-          // uname:"required",
-          'applicantname': "required"
-             
-          
-          // 'user[password]':{
-          //   required:true,
-          //   minlength: 8
-          // },
-          // 'user[password_confirmation]':{
-          //   required:true,
-          //   equalTo : "#user_password"
-          // },
-          // 'user[first_name]':{
-          //   required:true
-          // },
-          // 'user[last_name]':{
-          //   required:true
-          // },
-          // 'user[stripe_card_token]':{
-          //   required:true
-          // },
-          // 'user[company]':{
-          //   required:true
-          // },
-          // 'user[plan_id]':{
-          //   required:true
-          // }
-          
+         	"account_type":{required:true},
+			"applicantname":{required:true, maxlength: 62 },
+			"applicantfname":{required:true, maxlength: 54 },
+			"applicantdobdd":{required:true, min: 1, max: 31  },
+			"applicantdobmm":{required:true, min: 1, max: 12  },
+			"applicantdobyyyy" : {required:true, isValidAge:true },
+			"applicantgenderradio": {required:true},
+			"applicantpan" : {required:true, isPAN:true },
+			"applicanttelr": {digits: true},
+			"applicanttelo" : {digits: true},
+			"applicanttelm" : {required:true, digits: true, minlength:10, maxlength: 10},
+			"applicantocc": {required:true}, 
+			"applicantoaddr1": {required:true, maxlength:39},
+			"applicantoaddr2" : {maxlength:39},
+			"applicantoaddr3" : {maxlength:39},
+			"applicantocity"  : {required:true, maxlength:24}, 
+			"applicantostate" : {required:true, maxlength:24}, 
+			"applicantozip"  : {required:true, postalCode:true}, 
+			"applicantiaddr1" : {required:true, maxlength:39},
+			"applicantiaddr2" : {maxlength:39},
+			"applicantiaddr3" : {maxlength:39},
+			"applicanticity" : {required:true, maxlength:24}, 
+			"applicantistate" : {required:true, maxlength:24}, 
+			"applicantizip"  : {required:true, postalCode:true}, 
+			"applicant2name" : {maxlength: 62 },
+			"applicant2pan" : { isPan:true },
+			"applicant3name" : {maxlength: 62 },
+			"applicant3pan" : { isPan:true }, 
+			"bankname" :{ required:true, minlength:2},
+			"bankacctype" :{ required:true},
+			"bankaccno"   :{ required:true, digits:true, maxlength:20},
+			"bankaddr1" : { required:true, maxlength:39},
+			"bankaddr2" : { maxlength:39},
+			"bankcity" : {required:true, maxlength:24},
+			"bankmicr" : {required:true,digits:true,max:999999999},
+			"bankifsc" : {required:true, isIFSC:true},
+			"bank2name" : {minlength:2},
+			"bank2accno" :{digits:true, maxlength:20},
+			"bank2addr1" : { maxlength:39},
+			"bank2addr2" : { maxlength:39},
+			"bank2city" :{maxlength:24},
+			"bank2micr" :{digits:true,max:999999999},
+			"bank2ifsc" :{isIFSC:true},
+			"bank3name" : {minlength:2}, 
+			"bank3accno" :{digits:true, maxlength:20},
+			"bank3addr1" : { maxlength:39},
+			"bank3addr2" :{ maxlength:39},
+			"bank3city" :{maxlength:24},
+			"bank3micr" : {digits:true,max:999999999},
+			"bank3ifsc" :{isIFSC:true},
+			"appnomname" :{ minlength:2},
+			"appnomdobd" :{ min: 1, max: 31  },
+			'appnomdobm' :{ min: 1, max: 12  },
+			"appnomdoby" :{isValidAge:true },
+			"appnompname": { minlength:2},
+			"appnomrel" :{ maxlength:39},
+			"agreementaccept" :{required:true}
         },
         messages:{
-          'applicantname':"Enter Valid Name!" //,
-          // // 'user[stripe_card_token]':" ",
-          // // 'user[password]':{
-          // //   required:"Enter your Password",
-          // //   minlength:"Password must be atleast 8 characters"
-          // },
-          // 'user[password_confirmation]':{
-          //   required:"Repeat your password",
-          //   equalTo:"These passwords don't match. Try again?"
-          // },
-          // 'user[first_name]':"Enter the First Name",
-          // 'user[last_name]':"Enter the Last Name",
-          // 'user[company]':"Enter Your Company",
-          // 'user[plan_id]':"Selct the Number of Users"
-          
+          'applicantname':"Enter Your Full Name!",
+          "applicantdobdd":{required:"0-31", min:"0-31", max: "0-31"  },
+		  "applicantdobmm":{required:"0-12", min:"0-12", max:"0-12"  },
+		  "applicantdobyyyy" : {required:"ex : 1980"}, 
+		  "applicanttelm" : {required:"Enter Your Mobile Number", digits:"Enter Your Mobile Number", minlength:"Enter Your Mobile Number", maxlength: "Enter Your Mobile Number"},
+          "appnomdobd" :{required:"0-31", min:"0-31", max: "0-31"  },
+		  'appnomdobm' :{required:"0-12", min:"0-12", max:"0-12"  },
+		  "appnomdoby" :{required:"ex : 1980"},
+		  "agreementaccept" :{required:"Please Accept Terms & Conditions !"}
         },
        errorPlacement: function (error, element) {
            error.insertAfter(element);
