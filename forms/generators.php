@@ -30,14 +30,16 @@ function application_id_gen($code1,$code2){
   $res=mysqli_query($con,$sql);
   $row=mysqli_fetch_array($res,MYSQLI_ASSOC);
   $today_count=$row['count(*)'];
-
+  if ($today_count ==0)(
+     $today_count+=1;
+    )
 	$id=$code1.$code2.$ids.$today_count;
 	return $id;
 }
 
 function account_id_gen(){
-	$no=rand(10,100);
-	$id="acc".$no;
+	$count=rand(10,100);
+	$id=date("Ym");.$count;
 	return $id;
 }
 

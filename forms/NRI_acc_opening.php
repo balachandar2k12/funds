@@ -382,8 +382,8 @@ Gender
               <label class="desc" id="applicantocc"> Occupation <span class="req">*</span> </label>
               <div>
                 <div class="styled-select">
-                  <select  name="applicantocc" class="field select medium" tabindex="15" onChange="ocval(this.value,'applicantocc','instructapplicantocc')" >
-                    <option value="" selected="selected"> --Select-- </option>
+                  <select  name="applicantocc" class="field select medium required" tabindex="15">
+                    <option value=""> --Select-- </option>
                     <option value="Business">Business</option>
                     <option value="Service">Service</option>
                     <option value="Professional">Professional</option>

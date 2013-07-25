@@ -377,7 +377,7 @@ Redirect("./signup-landing.html");
               <label class="desc" id="applicantocc"> Occupation <span class="req">*</span> </label>
               <div>
                 <div class="styled-select">
-                  <select  name="applicantocc" class="field select medium" tabindex="15" onChange="ocval(this.value,'applicantocc','instructapplicantocc')" >
+                  <select  name="applicantocc" class="field select medium required" tabindex="15" >
                     <option value="" selected="selected"> --Select-- </option>
                     <option value="Business">Business</option>
                     <option value="Service">Service</option>
@@ -802,7 +802,7 @@ Redirect("./signup-landing.html");
 				  <div class="styled-select">
 
                   <select id="applicantvalidmafield" name="applicantvalidma" onChange="maval(this.value,'applicantvalidma','instructapplicantsip')" class="field select medium" tabindex="61">
-                  <option value="" selected="selected"> --Select-- </option>
+                  <option value=" " selected="selected"> --Select-- </option>
 				  <option value="10">5000</option>
                   	<option value="11">10000</option>
                   	<option value="12">25000</option>
@@ -1011,6 +1011,14 @@ $(document).ready(function(){
 	$.validator.addMethod('isIFSC',function (value, element){
 	    return this.optional(element) || ifscPat.test(value);
 	}, 'Please enter a valid IFSC code');
+    
+    $.validator.addMethod('isSelected',function (value, element){
+	    if( value !=" "){
+	    	return true;
+	    }else{
+	    	return false;
+	    }
+	},'this is a Not valid D.O.B');
 
 
   $("#corporateform").validate({
@@ -1027,7 +1035,7 @@ $(document).ready(function(){
 			"applicant2contacttelr": {digits: true},
 			"applicant2contacttelo" : {required:true},
 			"applicant2contacttelm" : {required:true, digits: true, minlength:10, maxlength: 10},
-			"applicantocc": {required:true}, 
+			"applicantocc": {required:true, isSelected:true }, 
 			"applicantpaddr1": {required:true, maxlength:39},
 			"applicantpaddr2" : {maxlength:39},
 			"applicantpaddr3" : {maxlength:39},
