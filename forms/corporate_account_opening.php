@@ -377,8 +377,8 @@ Redirect("./signup-landing.html");
               <label class="desc" id="applicantocc"> Occupation <span class="req">*</span> </label>
               <div>
                 <div class="styled-select">
-                  <select  name="applicantocc" class="field select medium required" tabindex="15" >
-                    <option value="" selected="selected"> --Select-- </option>
+                  <select  name="applicantocc" id="applicantocc" class="field select medium" tabindex="15" required>
+                    <option value="0"> --Select-- </option>
                     <option value="Business">Business</option>
                     <option value="Service">Service</option>
                     <option value="Professional">Professional</option>
@@ -398,7 +398,7 @@ Redirect("./signup-landing.html");
                 <div class="styled-select">
 
                   <select  name="applicantstatus" class="field select medium" tabindex="16" onChange="statusval(this.value,'applicantstatus','instructapplicantstatus')" >
-                    <option value="" selected="selected"> --Select-- </option>
+                    <option value="0" > --Select-- </option>
                    <option value="Business">Partnership</option>
                     <option value="Service">Society</option>
                     <option value="Professional">Trust</option>
@@ -419,7 +419,7 @@ Redirect("./signup-landing.html");
               <div>
                 <div class="styled-select">
                   <select  name="applicanttaxstatus" class="field select medium" tabindex="17" onChange="statusval(this.value,'applicanttaxstatus','instructapplicanttaxstatus')" >
-                    <option value="" selected="selected"> --Select-- </option>
+                    <option value="0" > --Select-- </option>
                 	<option value="Bank/ Financial Institutuion">Bank/ Financial Institutuion</option>
                     <option value="Sole Proprietorship">Sole Proprietorship</option>
                     <option value="NRI- Non Repatriable (NRO)">NRI- Non Repatriable (NRO)</option>
@@ -782,7 +782,7 @@ Redirect("./signup-landing.html");
 				 <div class="styled-select">
 
                   <select id="applicantvalidyfield" name="applicantvalidy" onChange="vyval(this.value,'applicantvalidy','instructapplicantsip')" class="field select medium" tabindex="60">
-                  	<option value="" selected="selected"> --Select-- </option>
+                  	<option value="0" > --Select-- </option>
 					<option value="10">10</option>
                   	<option value="11">11</option>
                   	<option value="12">12</option>
@@ -802,7 +802,7 @@ Redirect("./signup-landing.html");
 				  <div class="styled-select">
 
                   <select id="applicantvalidmafield" name="applicantvalidma" onChange="maval(this.value,'applicantvalidma','instructapplicantsip')" class="field select medium" tabindex="61">
-                  <option value=" " selected="selected"> --Select-- </option>
+                  <option value="0" > --Select-- </option>
 				  <option value="10">5000</option>
                   	<option value="11">10000</option>
                   	<option value="12">25000</option>
@@ -1012,13 +1012,18 @@ $(document).ready(function(){
 	    return this.optional(element) || ifscPat.test(value);
 	}, 'Please enter a valid IFSC code');
     
-    $.validator.addMethod('isSelected',function (value, element){
-	    if( value !=" "){
-	    	return true;
-	    }else{
-	    	return false;
-	    }
-	},'this is a Not valid D.O.B');
+ //    $.validator.addMethod('isSelected',function (value, element){
+ //    	alert(value);
+	//     if( value != ""){
+	//     	return false;
+	//     }else{
+	//     	return true;
+	//     }
+	// },'this is a Not valid D.O.B');
+
+	 $.validator.addMethod("valueNotEquals", function(value, element, arg){
+		  return arg != value;
+     }, "Please Select the options!");
 
 
   $("#corporateform").validate({
@@ -1030,54 +1035,56 @@ $(document).ready(function(){
 			"applicantdoiyyyy" : {required:true},
 			"applicantpan" : {required:true, isPAN:true },
 			"applicant2contactname" : {required:true},
-			"applicant2contactdes":{required:true},
+			"applicant2contactdes" : {required:true},
 			//"applicant2contactemail":{required:true},
-			"applicant2contacttelr": {digits: true},
+			"applicant2contacttelr" : {digits: true},
 			"applicant2contacttelo" : {required:true},
 			"applicant2contacttelm" : {required:true, digits: true, minlength:10, maxlength: 10},
-			"applicantocc": {required:true, isSelected:true }, 
-			"applicantpaddr1": {required:true, maxlength:39},
+			"applicantocc": {valueNotEquals: "0" }, 
+			"applicantstatus" : {valueNotEquals: "0"},
+			"applicanttaxstatus" : {valueNotEquals: "0"},
+			"applicantpaddr1" : {required:true, maxlength:39},
 			"applicantpaddr2" : {maxlength:39},
 			"applicantpaddr3" : {maxlength:39},
 			"applicantpcity"  : {required:true, maxlength:24}, 
 			"applicantpstate" : {required:true, maxlength:24}, 
-			"applicantpzip"  : {required:true, postalCode:true}, 
+			"applicantpzip"   : {required:true, postalCode:true}, 
 			"applicantcaddr1" : {required:true, maxlength:39},
 			"applicantcaddr2" : {maxlength:39},
 			"applicantcaddr3" : {maxlength:39},
-			"applicantccity" : {required:true, maxlength:24}, 
+			"applicantccity"  : {required:true, maxlength:24}, 
 			"applicantcstate" : {required:true, maxlength:24}, 
 			"applicantczip"  : {required:true, postalCode:true}, 
 			"applicant2_name" : {maxlength: 62 },
 			"applicant2pan" : { isPan:true },
 			"applicant3name" : {maxlength: 62 },
 			"applicant3pan" : { isPan:true }, 
-			"bankname" :{ required:true, minlength:2},
-			"bankacctype" :{ required:true},
-			"bankaccno"   :{ required:true, digits:true, maxlength:20},
+			"bankname" : { required:true, minlength:2},
+			"bankacctype" : { required:true},
+			"bankaccno" : { required:true, digits:true, maxlength:20},
 			"bankaddr1" : { required:true, maxlength:39},
 			"bankaddr2" : { maxlength:39},
 			"bankcity" : {required:true, maxlength:24},
 			"bankmicr" : {required:true,digits:true,max:999999999},
 			"bankifsc" : {required:true, isIFSC:true},
 			"bank2name" : {minlength:2},
-			"bank2accno" :{digits:true, maxlength:20},
+			"bank2accno" : {digits:true, maxlength:20},
 			"bank2addr1" : { maxlength:39},
 			"bank2addr2" : { maxlength:39},
-			"bank2city" :{maxlength:24},
-			"bank2micr" :{digits:true,max:999999999},
-			"bank2ifsc" :{isIFSC:true},
+			"bank2city" : {maxlength:24},
+			"bank2micr" : {digits:true,max:999999999},
+			"bank2ifsc" : {isIFSC:true},
 			"bank3name" : {minlength:2}, 
-			"bank3accno" :{digits:true, maxlength:20},
+			"bank3accno" : {digits:true, maxlength:20},
 			"bank3addr1" : { maxlength:39},
-			"bank3addr2" :{ maxlength:39},
-			"bank3city" :{maxlength:24},
+			"bank3addr2" : { maxlength:39},
+			"bank3city" : {maxlength:24},
 			"bank3micr" : {digits:true,max:999999999},
-			"bank3ifsc" :{isIFSC:true},
-			"appnomname" :{ minlength:2},
-			"appnomdobd" :{ min: 1, max: 31  },
-			'appnomdobm' :{ min: 1, max: 12  },
-			"appnomdoby" :{isValidAge:true },
+			"bank3ifsc" : {isIFSC:true},
+			"appnomname" : { minlength:2},
+			"appnomdobd" : { min: 1, max: 31  },
+			'appnomdobm' : { min: 1, max: 12  },
+			"appnomdoby" : {isValidAge:true },
 			"appnompname": { minlength:2},
 			"nominee_relationship" :{ maxlength:39},
 			"agreementaccept" :{required:true}
@@ -1094,7 +1101,10 @@ $(document).ready(function(){
 		  "agreementaccept" :{required:"Please Accept Terms & Conditions !"}
         },
        errorPlacement: function (error, element) {
-           error.insertAfter(element);
+       		if($(element).prop("tagName") =="SELECT")
+       			error.insertAfter(element.closest(".styled-select"));
+       		else
+           		error.insertAfter(element);
        }
    });
 });

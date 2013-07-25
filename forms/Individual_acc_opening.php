@@ -110,19 +110,19 @@ $("#redirectNRI").click(function(){
 	function send()
 	{ 	
 	
-							$('#errordis').html("");
-							$('#errordis').removeClass("er");
-							$('#errordis').removeClass("su");
-							for ( var attrname in eattr)
-							{
-								if(eattr[attrname]!="TRUE")
-								{
-									if(document.getElementById(attrname))
-									{	
-										$('#'+attrname).removeClass("error");
-									}
-								}
-							}
+		$('#errordis').html("");
+		$('#errordis').removeClass("er");
+		$('#errordis').removeClass("su");
+		for ( var attrname in eattr)
+		{
+			if(eattr[attrname]!="TRUE")
+			{
+				if(document.getElementById(attrname))
+				{	
+					$('#'+attrname).removeClass("error");
+				}
+			}
+		}
 		if(acceptagreement())
 		{
 							
@@ -388,7 +388,7 @@ $("#redirectNRI").click(function(){
               <div>
                 <div class="styled-select">
                   <select  name="occupation" class="field select medium" tabindex="16" onChange="ocval(this.value,'applicantocc','instructapplicantocc')" >
-                    <option value="" selected="selected"> --Select-- </option>
+                    <option value="0" selected="selected"> --Select-- </option>
                     <option value="Business">Business</option>
                     <option value="Service">Service</option>
                     <option value="Professional">Professional</option>
@@ -951,6 +951,10 @@ $(document).ready(function(){
 	    return this.optional(element) || ifscPat.test(value);
 	}, 'Please enter a valid IFSC code');
 
+	$.validator.addMethod("valueNotEquals", function(value, element, arg){
+		  return arg != value;
+     }, "Please Select the options!");
+
   $("#individualform").validate({
         rules:{
          	"account_type":{required:true},
@@ -964,7 +968,7 @@ $(document).ready(function(){
 			"phone_resi": {digits: true},
 			"phone_office" : {digits: true},
 			"mobile" : {required:true, digits: true, minlength:10, maxlength: 10},
-			"applicantocc": {required:true}, 
+			"occupation": {required:true, valueNotEquals: "0" },  
 			"perm_addr1": {required:true, maxlength:39},
 			"perm_addr2" : {maxlength:39},
 			"perm_addr3" : {maxlength:39},
@@ -1023,6 +1027,9 @@ $(document).ready(function(){
 		  "agreementaccept" :{required:"Please Accept Terms & Conditions !"}
         },
        errorPlacement: function (error, element) {
+       	if($(element).prop("tagName") =="SELECT")
+       		 error.insertAfter(element.closest(".styled-select"));
+       		else
            error.insertAfter(element);
        }
    });

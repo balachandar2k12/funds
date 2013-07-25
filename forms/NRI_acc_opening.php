@@ -383,7 +383,7 @@ Gender
               <div>
                 <div class="styled-select">
                   <select  name="applicantocc" class="field select medium required" tabindex="15">
-                    <option value=""> --Select-- </option>
+                    <option value="0"> --Select-- </option>
                     <option value="Business">Business</option>
                     <option value="Service">Service</option>
                     <option value="Professional">Professional</option>
@@ -403,7 +403,7 @@ Gender
               <div>
                 <div class="styled-select">
                   <select  name="applicanttaxstatus" class="field select medium" onChange="statusval(this.value,'applicanttaxstatus','instructapplicanttaxstatus')" >
-                    <option value="" selected="selected"> --Select-- </option>
+                    <option value="0" selected="selected"> --Select-- </option>
                 <option value="Bank/ Financial Institutuion">Bank/ Financial Institutuion</option>
                     <option value="Sole Proprietorship">Sole Proprietorship</option>
                     <option value="NRI- Non Repatriable (NRO)">NRI- Non Repatriable (NRO)</option>
@@ -433,7 +433,7 @@ Gender
               <div>
                 <div class="styled-select">
                   <select  name="applicantnat" class="field select medium" onChange="natval(this.value,'applicantnat','instructapplicantnat')" >
-                    <option value="" selected="selected"> --Select-- </option>      
+                    <option value="0" selected="selected"> --Select-- </option>      
 					<option value="--">none</option>
 					<option value="Afghanistan">Afghanistan</option>
 					<option value="Albania">Albania</option>
@@ -712,7 +712,7 @@ Gender
                 <div class="styled-select">
 				 
                   <select  name="applicantocou" class="field select medium" onChange="ocuoval(this.value,'applicantocou','instructapplicantoaddr')" >
-                    <option value="" selected="selected"> --Select-- </option>      
+                    <option value="0" selected="selected"> --Select-- </option>      
 <option value="--">none</option>
 					<option value="Afghanistan">Afghanistan</option>
 					<option value="Albania">Albania</option>
@@ -1481,6 +1481,10 @@ $(document).ready(function(){
 	$.validator.addMethod('isIFSC',function (value, element){
 	    return this.optional(element) || ifscPat.test(value);
 	}, 'Please enter a valid IFSC code');
+	
+	$.validator.addMethod("valueNotEquals", function(value, element, arg){
+		  return arg != value;
+     }, "Please Select the options!");
 
 
   $("#nriform").validate({
@@ -1496,7 +1500,9 @@ $(document).ready(function(){
 			"applicanttelr": {digits: true},
 			"applicanttelo" : {digits: true},
 			"applicanttelm" : {required:true, digits: true, minlength:10, maxlength: 10},
-			"applicantocc": {required:true}, 
+			"applicantocc": {required:true, valueNotEquals: "0" },
+			"applicanttaxstatus": {required:true, valueNotEquals: "0" }, 
+			"applicantnat": {required:true, valueNotEquals: "0" },  
 			"applicantoaddr1": {required:true, maxlength:39},
 			"applicantoaddr2" : {maxlength:39},
 			"applicantoaddr3" : {maxlength:39},
@@ -1555,6 +1561,9 @@ $(document).ready(function(){
 		  "agreementaccept" :{required:"Please Accept Terms & Conditions !"}
         },
        errorPlacement: function (error, element) {
+       	if($(element).prop("tagName") =="SELECT")
+       			error.insertAfter(element.closest(".styled-select"));
+       		else
            error.insertAfter(element);
        }
    });
