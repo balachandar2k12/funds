@@ -59,7 +59,8 @@ if($email=="")
 <link href='http://fonts.googleapis.com/css?family=Raleway:400,700,500,600,800' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/jquery.validate.js"></script>
 <script type="text/javascript" src="../js/fundsinn.js"></script>
 <script type="text/javascript" src="../js/individualformval.js"></script>
 <style type="text/css">
@@ -107,20 +108,19 @@ $(function() {
 	var eattr;
 	function send()
 	{ 	
-	
-							$('#errordis').html("");
-							$('#errordis').removeClass("er");
-							$('#errordis').removeClass("su");
-							for ( var attrname in eattr)
-							{
-								if(eattr[attrname]!="TRUE")
-								{
-									if(document.getElementById(attrname))
-									{	
-										$('#'+attrname).removeClass("error");
-									}
-								}
-							}
+		$('#errordis').html("");
+		$('#errordis').removeClass("er");
+		$('#errordis').removeClass("su");
+		for ( var attrname in eattr)
+		{
+			if(eattr[attrname]!="TRUE")
+			{
+				if(document.getElementById(attrname))
+				{	
+					$('#'+attrname).removeClass("error");
+				}
+			}
+		}
 		if(acceptagreement())
 		{
 							
@@ -296,7 +296,8 @@ $(function() {
              
               <label class="desc" for="applicantname"> Name of the applicant <span class="req">*</span> </label>
               <div>
-                <input id="applicantname" name="applicantname" type="text" class="field text medium" value="" maxlength="62" tabindex="4" onChange="alphareq(this.value,'applicantname','instructapplicantname')" />
+                <input id="applicantname" name="applicantname" type="text" class="field text medium" value="" maxlength="62" tabindex="4"  />
+                <!-- onChange="alphareq(this.value,'applicantname','instructapplicantname') -->
               </div>
               <p class="instruct" id="instructapplicantname"><small>Only letters, maximum only 62 characters all in CAPS</small></p>
             </li>
@@ -1447,6 +1448,67 @@ Gender
   </div>
 </div>
 </div>
+
+
+<!-- validations -->
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#nriform").validate({
+        rules:{
+          // uname:"required",
+          'applicantname': "required"
+             
+          
+          // 'user[password]':{
+          //   required:true,
+          //   minlength: 8
+          // },
+          // 'user[password_confirmation]':{
+          //   required:true,
+          //   equalTo : "#user_password"
+          // },
+          // 'user[first_name]':{
+          //   required:true
+          // },
+          // 'user[last_name]':{
+          //   required:true
+          // },
+          // 'user[stripe_card_token]':{
+          //   required:true
+          // },
+          // 'user[company]':{
+          //   required:true
+          // },
+          // 'user[plan_id]':{
+          //   required:true
+          // }
+          
+        },
+        messages:{
+          'applicantname':"Enter Valid Name!" //,
+          // // 'user[stripe_card_token]':" ",
+          // // 'user[password]':{
+          // //   required:"Enter your Password",
+          // //   minlength:"Password must be atleast 8 characters"
+          // },
+          // 'user[password_confirmation]':{
+          //   required:"Repeat your password",
+          //   equalTo:"These passwords don't match. Try again?"
+          // },
+          // 'user[first_name]':"Enter the First Name",
+          // 'user[last_name]':"Enter the Last Name",
+          // 'user[company]':"Enter Your Company",
+          // 'user[plan_id]':"Selct the Number of Users"
+          
+        },
+       errorPlacement: function (error, element) {
+           error.insertAfter(element);
+       }
+   });
+});
+</script>
+
+
 
 </body>
 </html>

@@ -60,7 +60,8 @@ Redirect("./signup-landing.html");
 <link href='http://fonts.googleapis.com/css?family=Raleway:400,700,500,600,800' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/jquery.validate.js"></script>
 <script type="text/javascript" src="../js/fundsinn.js"></script>
 <script type="text/javascript" src="../js/individualformval.js"></script>
 <style type="text/css">
@@ -419,23 +420,23 @@ Redirect("./signup-landing.html");
                 <div class="styled-select">
                   <select  name="applicanttaxstatus" class="field select medium" tabindex="17" onChange="statusval(this.value,'applicanttaxstatus','instructapplicanttaxstatus')" >
                     <option value="--Select--" selected="selected"> --Select-- </option>
-                <option value="Business">Bank/ Financial Institutuion</option>
-                    <option value="Service">Sole Proprietorship</option>
-                    <option value="Professional">NRI- Non Repatriable (NRO)</option>
-                    <option value="Agriculturist">NRI- Repatriable (NRE)</option>
-                    <option value="Retired">Overseas Corporate Body</option>
-                    <option value="Housewife">Foreign Institutional Investor</option>
-                    <option value="Student">HUF</option>
-                    <option value="Others">Provident Fund/EPF</option>
-                    <option value="Others">Superammuation Fund</option>
-                    <option value="Others">Gratuity Fund</option>
-                    <option value="Others">Pension Fund</option>
-                    <option value="Others">Company</option>
-                    <option value="Others">AOP/BOI</option>
-                    <option value="Others">Partnership Firm</option>
-                    <option value="Others">Body Corporate</option>
-                    <option value="Others">Trust</option>
-                    <option value="Others">Society</option>
+                	<option value="Bank/ Financial Institutuion">Bank/ Financial Institutuion</option>
+                    <option value="Sole Proprietorship">Sole Proprietorship</option>
+                    <option value="NRI- Non Repatriable (NRO)">NRI- Non Repatriable (NRO)</option>
+                    <option value="NRI- Repatriable (NRE)">NRI- Repatriable (NRE)</option>
+                    <option value="Overseas Corporate Body">Overseas Corporate Body</option>
+                    <option value="Foreign Institutional Investor">Foreign Institutional Investor</option>
+                    <option value="HUF">HUF</option>
+                    <option value="Provident Fund/EPF">Provident Fund/EPF</option>
+                    <option value="Superammuation Fund">Superammuation Fund</option>
+                    <option value="Gratuity Fund">Gratuity Fund</option>
+                    <option value="Pension Fund">Pension Fund</option>
+                    <option value="Company">Company</option>
+                    <option value="AOP/BOI">AOP/BOI</option>
+                    <option value="Partnership Firm">Partnership Firm</option>
+                    <option value="Body Corporate">Body Corporate</option>
+                    <option value="Trust">Trust</option>
+                    <option value="Society">Society</option>
 				</select>
                 </div>
               </div>
