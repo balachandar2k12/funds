@@ -242,7 +242,7 @@ $("#redirectNRI").click(function(){
 <body>
 <!--MAIN WRAPPER-->
 <div class="wrapper">
-<div id="headerBox">
+<!-- <div id="headerBox">
   <div id="header" class="container_16">
     <div id="headerLeft" class="grid_5">
       <div class="theLogo"><a href="../index.html"><img src="../img/logo.png" alt="FundsInn Logo"></a></div>
@@ -261,7 +261,8 @@ $("#redirectNRI").click(function(){
       </ul>
     </div>
   </div>
-</div>
+</div> -->
+<?php include("header.php"); ?>
 <div id="contentBody" class="container_16 signUpPage">
   <div class="pageContent">
     <div class="contentTitleBox">
@@ -957,7 +958,7 @@ $(document).ready(function(){
 
   $("#individualform").validate({
         rules:{
-         	"account_type":{required:true},
+      "account_type":{required:true},
 			"applicant_name":{required:true, maxlength: 62 },
 			"applicant_father_name":{required:true, maxlength: 54 },
 			"applicant_dob":{required:true, min: 1, max: 31  },

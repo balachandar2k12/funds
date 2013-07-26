@@ -30,7 +30,7 @@
             <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,3})$" oninvalid="setCustomValidity('Enter Valid Email address')"
 									onchange="try{setCustomValidity('')}catch(e){}">
           </div>
-           <div>
+           <div id="subscribe_container">
             <input type="submit" value="Sign-Up" name="subscribe" id="mc-embedded-subscribe" class="button">
           </div>
         </form>
@@ -41,7 +41,7 @@
           <li><a href="https://twitter.com/fundsinn"><img src="img/twitter.png" alt=""></a></li>
           <li><a href="https://www.facebook.com/Fundsinn"><img src="img/fbk.png" alt=""></a></li>
           <li><a href="#"><img src="img/linkedin.png" alt=""></a></li>
-		  <li><a href="http://www.youtube.com/fundsinn"><img src="img/you.png" alt=""></a></li>
+		      <li><a href="http://www.youtube.com/fundsinn"><img src="img/you.png" alt=""></a></li>
         </ul>
       </div>
     </div>

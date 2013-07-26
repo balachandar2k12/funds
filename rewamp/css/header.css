@@ -1,0 +1,13 @@
+#header{
+	width: 100%;
+	background: #222222;
+	position: fixed;
+	height: 65px;
+	-webkit-box-shadow: 0px 6px 4px rgba(50, 50, 50, 0.43);
+	-moz-box-shadow: 0px 6px 4px rgba(50, 50, 50, 0.43);
+	box-shadow: 0px 6px 4px rgba(50, 50, 50, 0.43);
+}
+.header-container{
+	margin-right: 0px;
+    margin-left: 0px;
+}

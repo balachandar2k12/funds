@@ -74,11 +74,15 @@ html, body {
 	background:#f4c235;
 }
 .loggingContainer li a {
-	font-size:14px;
-	display:block;
-	text-align:center;
-	padding-top:1px;
-	color:#222222;
+	margin-top: 1px;
+	font-size: 14px;
+	display: block;
+	text-align: center;
+	padding-top: 1px;
+	color: #222222;
+}
+#subscribe_container{
+	margin-top: 1px;
 }
 .loggingContainer li a:hover {
 	color:#ffffff;
@@ -468,4 +472,8 @@ background-color: #F4C235;
     padding-left: 20px;
     padding-top: 2px;
     width: 100px;
+}
+
+#twitter-link{
+	background:url(../img/icon_set.png);
 }

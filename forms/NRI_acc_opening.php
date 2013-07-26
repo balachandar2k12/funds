@@ -1114,9 +1114,6 @@ Gender
             </li>
 		</ul>
 			 
-			 
-			 
-			 
 			  <diV id="Addbankdetailsblock">
 				<div id="bankdetails2" hidden>
 					<div class="formHeaderTitle">
