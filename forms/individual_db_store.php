@@ -1,4 +1,3 @@
-
 <?php
 include("../inc/dbConnect.inc.php");
 include("generators.php");

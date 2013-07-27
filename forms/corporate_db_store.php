@@ -91,12 +91,12 @@ $account_number=account_id_gen();
  
 $age=get_age_by_dob($applicant_dob);
 if ($age < 18){
-  $application_no=application_id_gen("C","M");
+  $application_no=application_id_gen("C","");
 }else{
-  $application_no=application_id_gen("C","S");
+  $application_no=application_id_gen("C","");
 }
 if($applicant2_pan!=""){
-	$application_no=application_id_gen("C","J");
+	$application_no=application_id_gen("C","");
 }
 
 $reference_id=reference_id_gen($application_no);

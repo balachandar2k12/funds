@@ -1352,70 +1352,9 @@ $(function() {
     </div>
   </div>
 </div>
+<?php require("footer.php"); ?>
 <!--MAIN WRAPPER-->
-<div class="footer">
-  <div class="footerBox container_16 ">
-    <div class="footerCol grid_3 gridFirst">
-      <ul>
-        <li class="footerTitle">THE COMPANY</li>
-        <li><a href="#">Investments</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Our Team</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
-    </div>
-    <div class="footerCol grid_3 ">
-      <ul>
-        <li class="footerTitle">HELP</li>
-        <li><a href="#">FAQ's</a></li>
-        <li><a href="#">Terms of Use</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Support</a></li>
-      </ul>
-    </div>
-    <div class="footer-Midbox grid_5">
-      <ul>
-        <li class="footerTitle">SUBSCRIBE TO OUR NEWSLETTER</li>
-      </ul>
-      
-      <!-- Begin MailChimp Signup Form -->
-      <div id="mc_embed_signup">
-        <form action="http://basilapparel.us6.list-manage2.com/subscribe/post?u=a853f89dd76f2587cf7e299a8&amp;id=4c947b8c4d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-          <div class="mc-field-group">
-            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL">
-          </div>
-          <div id="mce-responses">
-            <div class="response" id="mce-error-response" style="display:none"></div>
-            <div class="response" id="mce-success-response" style="display:none"></div>
-          </div>
-          <div class="">
-            <input type="submit" value="Sign-Up" name="subscribe" id="mc-embedded-subscribe" class="button">
-          </div>
-        </form>
-      </div>
-      
-      <!--End mc_embed_signup-->
-      <div class="socialIcons grid_5 gridFirst">
-        <ul>
-          <li><a href="#"><img src="../img/twitter.png" alt=""></a></li>
-          <li><a href="#"><img src="../img/fbk.png" alt=""></a></li>
-          <li><a href="#"><img src="../img/linkedin.png" alt=""></a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footerCopy grid_5 gridLast">
-      <div class="footerLogo"><img src="../img/logo-white.png" alt="Logo"></div>
-      <div class="footer-Rights">
-        <p>&copy; 2013. All Rights Reserved<br>
-          *Mutual Fund investments are subject to market risks,
-          Read offer documents carefully.<br>
-          ARN - 86384</p>
-      </div>
-    </div>
-  </div>
 </div>
-</div>
-
 
 <!-- validations -->
 <script type="text/javascript">

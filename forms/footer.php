@@ -3,10 +3,10 @@
     <div class="footerCol grid_3 gridFirst">
       <ul>
         <li class="footerTitle">THE COMPANY</li>
-        <li><a href="Investments.php">Investments</a></li>
-        <li><a href="aboutus.php">About Us</a></li>
+        <li><a href="../Investments.php">Investments</a></li>
+        <li><a href="../aboutus.php">About Us</a></li>
         <li><a href="#">Partners</a></li>
-        <li><a href="contactus.php">Contact Us</a></li>
+        <li><a href="../contactus.php">Contact Us</a></li>
       </ul>
     </div>
     <div class="footerCol grid_3 ">
@@ -14,7 +14,7 @@
         <li class="footerTitle">HELP</li>
         <li><a href="#">FAQ's</a></li>
         <li><a href="#">Terms of Use</a></li>
-        <li><a href="privacy_terms.php">Privacy Policy</a></li>
+        <li><a href="../privacy_terms.php">Privacy Policy</a></li>
         <li><a href="#">Knowledge Centre</a></li>
       </ul>
     </div>
@@ -28,7 +28,7 @@
         <form action="javascript:mcsubscribe();" >
           <div class="mc-field-group">
             <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,3})$" oninvalid="setCustomValidity('Enter Valid Email address')"
-                  onchange="try{setCustomValidity('')}catch(e){}" style="margin-top: 0.5px; height: 35px;">
+                  onchange="try{setCustomValidity('')}catch(e){}" style="">
           </div>
            <div id="subscribe_container">
             <input type="submit" value="Sign-Up" name="subscribe" id="mc-embedded-subscribe" class="button" style="margin-left: -12px;">

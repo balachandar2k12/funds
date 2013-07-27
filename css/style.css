@@ -479,7 +479,7 @@ background-color: #F4C235;
 }
 
 #mce-EMAIL{
-	margin-top: 0.5px;
+	margin-top: 1.5px !important;
   height: 35px;
 }
 

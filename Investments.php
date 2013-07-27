@@ -28,7 +28,7 @@
       
       <div class="serviceBox grid_4 gridFirst">
         <div class="serviceImg"> <img src="img/mutualicon.png" alt=""> </div>
-        <h2>MUTUAL FUNDS</h2>
+        <h2>SIP</h2>
          <p>Aliquam sed nibh quis orci dapibus condimentum ut vitae metus.</p>
       </div>
       </a> <a href="">
