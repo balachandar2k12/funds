@@ -5,7 +5,6 @@
   	<div class="inner_content2">
     	<span class="inner_header">INVESTMENTS</span>
   	</div>
-    
     <div class="serviceContainer container_16"> <a href="">
       <div class="serviceBox grid_4 gridFirst">
         <div class="serviceImg"> <img src="img/fdIcon.png" alt=""> </div>
