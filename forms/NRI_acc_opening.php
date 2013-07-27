@@ -121,7 +121,7 @@ $(function() {
 				}
 			}
 		}
-		if(acceptagreement())
+		if($('#nriform').valid())
 		{
 							
 		  // make the AJAX request
@@ -325,12 +325,6 @@ $(function() {
             <li class="notranslate">
               <fieldset>
                 <legend class="desc"> Gender <span class="req">*</span> </legend>
-             <!--[if lt IE 8]>
-<label class="desc">
-Gender
-<span  class="req">*</span>
-</label>
-<![endif]-->
                 <div>
                   <span>
                   <input id="applicantmaleradio" name="applicantgenderradio" type="radio" class="field radio" value="Male" tabindex="9" checked="checked" />
@@ -367,14 +361,14 @@ Gender
             <li class="notranslate">
               <label class="desc" for="applicanttelm"> Moblie Number:  <span class="req">*</span> </label>
               <div>
-                <input id="applicanttelm" class="field text medium" name="applicanttelm" tabindex="14" onChange="temval(this.value,'applicanttelm','instructapplicanttelm')" type="tel" maxlength="11" value="" />
+                <input id="applicanttelm" class="field text medium" name="applicanttelm" tabindex="14" type="tel" maxlength="11" value="" />
               </div>
               <p class="instruct" id="instructapplicanttelm"><small>+91 (only ten Digits Number)</small></p>
             </li>
 			  <li class="notranslate">
               <label class="desc" for="applicantemail"> Email address :  <span class="req">*</span> </label>
               <div>
-                <input id="applicantemail" value=<?php echo $email?> class="field text medium" name="applicantemail" tabindex="14" required  onChange="emval(this.value,'applicantemail','instructapplicantemail')" maxlength="37" type="email" readonly />
+                <input id="applicantemail" value=<?php echo $email?> class="field text medium" name="applicantemail" tabindex="14" maxlength="37" type="email" readonly />
               </div>
               <p class="instruct" id="instructapplicantemail"><small>Enter your valid email address</small></p>
             </li>
@@ -402,7 +396,7 @@ Gender
               <label class="desc" id="applicanttaxstatus">Tax Status <span class="req">*</span> </label>
               <div>
                 <div class="styled-select">
-                  <select  name="applicanttaxstatus" class="field select medium" onChange="statusval(this.value,'applicanttaxstatus','instructapplicanttaxstatus')" >
+                  <select  name="applicanttaxstatus" class="field select medium" >
                     <option value="0" selected="selected"> --Select-- </option>
                 <option value="Bank/ Financial Institutuion">Bank/ Financial Institutuion</option>
                     <option value="Sole Proprietorship">Sole Proprietorship</option>
@@ -432,7 +426,7 @@ Gender
               <label class="desc" id="applicantnat">Nationality <span class="req">*</span> </label>
               <div>
                 <div class="styled-select">
-                  <select  name="applicantnat" class="field select medium" onChange="natval(this.value,'applicantnat','instructapplicantnat')" >
+                  <select  name="applicantnat" class="field select medium">
                     <option value="0" selected="selected"> --Select-- </option>      
 					<option value="--">none</option>
 					<option value="Afghanistan">Afghanistan</option>
@@ -675,23 +669,22 @@ Gender
 					<option value="Zambia">Zambia</option>
 					<option value="Zimbabwe">Zimbabwe</option>
 				</select>
-                </div>
-              </div>
-              <p class="instruct" id="instructapplicantnat"><small>Your Tax Status</small></p>
-            </li>
-			
-           </ul>
-	   
-            <!--FORM 2-->
-              <div class="formHeaderTitle">
-                <h3 > Address Information</h3>
+      </div>
+    </div>
+    <p class="instruct" id="instructapplicantnat"><small>Your Tax Status</small></p>
+  </li>
+
+ </ul>
+  <!--FORM 2-->
+    <div class="formHeaderTitle">
+      <h3 > Address Information</h3>
 			</div>
 			
 			<ul>	
             <li class="complex notranslate">
               <label class="desc"> Over Seas Address <span class="req">*</span> </label>
               <div> <label for="applicantoaddr1">Address Line 1</label><span class="full addr1">
-                <input id="applicantoaddr1" name="applicantoaddr1" type="text" class="field text addr" onChange="addrval(this.value,'applicantoaddr1','instructapplicantoaddr')" value="" tabindex="16" maxlength="39" required />
+                <input id="applicantoaddr1" name="applicantoaddr1" type="text" class="field text addr" value="" tabindex="16" maxlength="39" />
                 
                 </span>  <label for="applicantoaddr2">Address Line 2</label><span class="full addr2">
                 <input id="applicantoaddr2" name="applicantoaddr2" type="text" class="field text addr" value="" tabindex="17" maxlength="39" />
@@ -700,10 +693,10 @@ Gender
                 <input id="applicantoaddr3" name="applicantoaddr3" type="text" class="field text addr" value="" tabindex="17" maxlength="39" />
                
                 </span><label for="applicantocity">City</label> <span class="left city">
-                <input id="applicantocity" name="applicantocity" type="text" class="field text addr" value="" tabindex="18" maxlength="27" onChange="cityval(this.value,'applicantocity','instructapplicantoaddr')" required />
+                <input id="applicantocity" name="applicantocity" type="text" class="field text addr" value="" tabindex="18" maxlength="27" />
                
                 </span>  <label for="applicantostate">State</label><span class="right state">
-                <input id="applicantostate" name="applicantostate" type="text" class="field text addr" value="" tabindex="19" maxlength="20" onChange="stateval(this.value,'applicantostate','instructapplicantoaddr')" required />
+                <input id="applicantostate" name="applicantostate" type="text" class="field text addr" value="" tabindex="19" maxlength="20" />
                
                 </span> 
 				  <label class="desc" id="applicantocou">Country <span class="req">*</span> </label>
@@ -711,7 +704,7 @@ Gender
 			  <div>
                 <div class="styled-select">
 				 
-                  <select  name="applicantocou" class="field select medium" onChange="ocuoval(this.value,'applicantocou','instructapplicantoaddr')" >
+                  <select  name="applicantocou" class="field select medium">
                     <option value="0" selected="selected"> --Select-- </option>      
 <option value="--">none</option>
 					<option value="Afghanistan">Afghanistan</option>
@@ -959,23 +952,19 @@ Gender
               </div>
 			 
 			 <span>  </span><label for="applicantozip">Postal / Zip Code</label> <span class="left zip">
-                <input id="applicantozip" name="applicantozip" type="text" class="field text addr" value="" maxlength="6" tabindex="20" onChange="pinval(this.value,'applicantozip','instructapplicantoaddr')" required />
+                <input id="applicantozip" name="applicantozip" type="text" class="field text addr" value="" maxlength="6" tabindex="20"/>
                 
                 </span>
                 </div>
              <p class="complex instruct" id="instructapplicantoaddr"><small>Address here!</small></p>
-            </li>
-			
-			
-			
+            </li>			
            </ul>
-		  
 		   	
 			<ul>	
             <li class="complex notranslate">
               <label class="desc"> Indian address <span class="req">*</span> </label>
               <div> <label for="applicantiaddr1">Address Line 1</label><span class="full addr1">
-                <input id="applicantiaddr1" name="applicantiaddr1" type="text" class="field text addr" onChange="addrval(this.value,'applicantiaddr1','instructapplicantiaddr')" value="" tabindex="16" maxlength="39" required />
+                <input id="applicantiaddr1" name="applicantiaddr1" type="text" class="field text addr" value="" tabindex="16" maxlength="39"/>
                 
                 </span>  <label for="applicantiaddr2">Address Line 2</label><span class="full addr2">
                 <input id="applicantiaddr2" name="applicantiaddr2" type="text" class="field text addr" value="" tabindex="17" maxlength="39" />
@@ -984,13 +973,13 @@ Gender
                 <input id="applicantiaddr3" name="applicantiaddr3" type="text" class="field text addr" value="" tabindex="17" maxlength="39" />
                
                 </span> <label for="applicanticity">City</label> <span class="left city">
-                <input id="applicanticity" name="applicanticity" type="text" class="field text addr" value="" tabindex="18" maxlength="27" onChange="cityval(this.value,'applicanticity','instructapplicantiaddr')" required />
+                <input id="applicanticity" name="applicanticity" type="text" class="field text addr" value="" tabindex="18" maxlength="27"/>
                
                 </span>  <label for="applicantistate">State</label><span class="right state">
-                <input id="applicantistate" name="applicantistate" type="text" class="field text addr" value="" tabindex="19" maxlength="20" onChange="stateval(this.value,'applicantistate','instructapplicantiaddr')" required />
+                <input id="applicantistate" name="applicantistate" type="text" class="field text addr" value="" tabindex="19" maxlength="20"/>
                
                 </span><label for="applicantizip">Postal / Zip Code</label> <span class="left zip">
-                <input id="applicantizip" name="applicantizip" type="text" class="field text addr" value="" maxlength="6" tabindex="20" onChange="pinval(this.value,'applicantizip','instructapplicantiaddr')" required />
+                <input id="applicantizip" name="applicantizip" type="text" class="field text addr" value="" maxlength="6" tabindex="20"/>
                 
                 </span> 
                 </div>
@@ -1077,7 +1066,7 @@ Gender
 			<ul>
             <li class="complex notranslate">
               <div id="bank_details"> <span class="full addr1">
-                 <label for="bankname">Name of the Bank</label><input id="bankname" maxlength="33"  name="bankname" type="text" class="field text addr" value="" onChange="bankval(this.value,'bankname','instructbank')"  tabindex="30" />
+                 <label for="bankname">Name of the Bank</label><input id="bankname" maxlength="33"  name="bankname" type="text" class="field text addr" value="" tabindex="30" />
                
                 </span> <label>Account Type</label> 
 				<div>
@@ -1087,27 +1076,27 @@ Gender
 				<span class="full addr2">
                 
 				</span> <label for="bankaccno">Account Number</label><span class="left city">
-                <input id="bankaccno" name="bankaccno" type="text" class="field text addr" value="" tabindex="33" onChange="accval(this.value,'bankaccno','instructbank')" maxlength="20" />
+                <input id="bankaccno" name="bankaccno" type="text" class="field text addr" value="" tabindex="33" maxlength="20" />
                 
                 </span><label>Branch Address</label> <span class="right state">
                 
                 </span> <label for="bankaddr1">Line 1</label><span class="left zip">
-                <input id="bankaddr1" name="bankaddr1" type="text" class="field text addr" value="" maxlength="39" tabindex="34" onChange="bankaddrval(this.value,'bankaddr1','instructbank')" required />
+                <input id="bankaddr1" name="bankaddr1" type="text" class="field text addr" value="" maxlength="39" tabindex="34" />
                 
                 </span> <label for="bankaddr2">Line 2	</label><span class="left zip">
-                <input id="bankaddr2" name="bankaddr2" type="text" class="field text addr" value="" maxlength="39" tabindex="35" required />
+                <input id="bankaddr2" name="bankaddr2" type="text" class="field text addr" value="" maxlength="39" tabindex="35" />
                 
                 
                 </span> <label for="bankcity">Branch City</label><span class="left zip">
-                <input id="bankcity" name="bankcity" type="text" class="field text addr" value="" maxlength="27" onChange="cityval(this.value,'bankcity','instructbank')" tabindex="36"  />
+                <input id="bankcity" name="bankcity" type="text" class="field text addr" value="" maxlength="27" tabindex="36"  />
                 
                 
                 </span> <label for="bankmicr">MICR Code</label><span class="left zip">
-                <input id="bankmicr" name="bankmicr" type="text" class="field text addr" value="" onChange="micrval(this.value,'bankmicr','instructbank')" maxlength="9" tabindex="37"  />
+                <input id="bankmicr" name="bankmicr" type="text" class="field text addr" value="" maxlength="9" tabindex="37"  />
                 
                
                 </span> <label for="bankifsc">IFSC Code</label><span class="left zip">
-                <input id="bankifsc" name="bankifsc" type="text" class="field text addr" value="" onChange="ifscval(this.value,'bankifsc','instructbank')" maxlength="11"  tabindex="38"  />
+                <input id="bankifsc" name="bankifsc" type="text" class="field text addr" value=""  maxlength="11"  tabindex="38"  />
                </span>
             </div>
 			  <p class="complex instruct" id="instructbank"><small>Bank details here!</small></p>
@@ -1126,7 +1115,7 @@ Gender
 					
             <li class="complex notranslate">
               <div id="bank2details"> <span class="full addr1">
-                 <label for="bank2name">Name of the Second Bank</label><input id="bank2name" maxlength="33"  name="bank2name" onChange="bankval(this.value,'bank2name','instructbank2')"  type="text" class="field text addr" value="" tabindex="39" />
+                 <label for="bank2name">Name of the Second Bank</label><input id="bank2name" maxlength="33"  name="bank2name" type="text" class="field text addr" value="" tabindex="39" />
                
                 </span> <label>Account Type</label> 
 				<div>
@@ -1136,27 +1125,27 @@ Gender
 				<span class="full addr2">
                 
 				</span> <label for="bank2accno">Account Number</label><span class="left city">
-                <input id="bank2accno" name="bank2accno" type="text" class="field text addr" value="" maxlength="20"  onChange="accval(this.value,'bank2accno','instructbank2')" tabindex="42" />
+                <input id="bank2accno" name="bank2accno" type="text" class="field text addr" value="" maxlength="20"  tabindex="42" />
                 
                 </span><label>Branch Address</label> <span class="right state">
                 
                 </span> <label for="bank2addr1">Line 1</label><span class="left zip">
-                <input id="bank2addr1" name="bank2addr1" type="text" class="field text addr" value="" maxlength="39" onChange="bankaddrval(this.value,'bank2addr1','instructbank2')" tabindex="43" required />
+                <input id="bank2addr1" name="bank2addr1" type="text" class="field text addr" value="" maxlength="39" tabindex="43" required />
                 
                 </span> <label for="bank2addr2">Line 2	</label><span class="left zip">
                 <input id="bank2addr2" name="bank2addr2" type="text" class="field text addr" value="" maxlength="39" tabindex="44" required />
                 
                 
                 </span> <label for="bank2city">Branch City</label><span class="left zip">
-                <input id="bank2city" name="bank2city" type="text" class="field text addr" value="" maxlength="27" onChange="cityval(this.value,'bank2city','instructbank2')" tabindex="45"  />
+                <input id="bank2city" name="bank2city" type="text" class="field text addr" value="" maxlength="27" tabindex="45"  />
                 
                 
                 </span> <label for="bank2micr">MICR Code</label><span class="left zip">
-                <input id="bank2micr" name="bank2micr" type="text" class="field text addr" value="" maxlength="9" onChange="micrval(this.value,'bank2micr','instructbank2')" tabindex="46"  />
+                <input id="bank2micr" name="bank2micr" type="text" class="field text addr" value="" maxlength="9"  tabindex="46"  />
                 
                
                 </span> <label for="bank2ifsc">IFSC Code</label><span class="left zip">
-                <input id="bank2ifsc" name="bank2ifsc" type="text" class="field text addr" value="" maxlength="11" onChange="ifscval(this.value,'bank2ifsc','instructbank2')" tabindex="47"  />
+                <input id="bank2ifsc" name="bank2ifsc" type="text" class="field text addr" value="" maxlength="11" tabindex="47"  />
                </span>
             </div>
 			  <p class="complex instruct" id="instructbank2"><small>Second Bank details here!</small></p>
@@ -1171,7 +1160,7 @@ Gender
 				<ul>
             <li class="complex notranslate">
               <div id="bank3details"> <span class="full addr1">
-                 <label for="bank3name">Name of the Third Bank</label><input id="bank3name" name="bank3name" maxlength="33"  onChange="bankval(this.value,'bank3name','instructbank3')"  type="text" class="field text addr" value="" tabindex="48" />
+                 <label for="bank3name">Name of the Third Bank</label><input id="bank3name" name="bank3name" maxlength="33" type="text" class="field text addr" value="" tabindex="48" />
                
                 </span> <label>Account Type</label> 
 				<div>
@@ -1181,27 +1170,27 @@ Gender
 				<span class="full addr2">
                 
 				</span> <label for="bank3accno">Account Number</label><span class="left city">
-                <input id="bank3accno" name="bank3accno" type="text" class="field text addr" maxlength="20"  onChange="accval(this.value,'bank3accno','instructbank3')" value="" tabindex="51" />
+                <input id="bank3accno" name="bank3accno" type="text" class="field text addr" maxlength="20" value="" tabindex="51" />
                 
                 </span><label>Branch Address</label> <span class="right state">
                 
                 </span> <label for="bank3addr1">Line 1</label><span class="left zip">
-                <input id="bank3addr1" name="bank3addr1" type="text" class="field text addr" value="" onChange="bankaddrval(this.value,'bank3addr1','instructbank3')" maxlength="39" tabindex="52" required />
+                <input id="bank3addr1" name="bank3addr1" type="text" class="field text addr" value="" maxlength="39" tabindex="52" required />
                 
                 </span> <label for="bank3addr2">Line 2	</label><span class="left zip">
                 <input id="bank3addr2" name="bank3addr2" type="text" class="field text addr" value="" maxlength="39" tabindex="53" required />
                 
                 
                 </span> <label for="bank3city">Branch City</label><span class="left zip">
-                <input id="bank3city" name="bank3city" type="text" class="field text addr" value="" onChange="cityval(this.value,'bank3city','instructbank3')" maxlength="27" tabindex="54"  />
+                <input id="bank3city" name="bank3city" type="text" class="field text addr" value="" maxlength="27" tabindex="54"  />
                 
                 
                 </span> <label for="bank3micr">MICR Code</label><span class="left zip">
-                <input id="bank3micr" name="bank3micr" type="text" class="field text addr" value="" maxlength="9" onChange="micrval(this.value,'bank3micr','instructbank3')" tabindex="55"  />
+                <input id="bank3micr" name="bank3micr" type="text" class="field text addr" value="" maxlength="9" tabindex="55"  />
                 
                
                 </span> <label for="bank3ifsc">IFSC Code</label><span class="left zip">
-                <input id="bank3ifsc" name="bank3ifsc" type="text" class="field text addr" value="" maxlength="11" onChange="ifscval(this.value,'bank3ifsc','instructbank3')" tabindex="56"  />
+                <input id="bank3ifsc" name="bank3ifsc" type="text" class="field text addr" value="" maxlength="11" tabindex="56"  />
                </span>
             </div>
 			  <p class="complex instruct" id="instructbank3"><small>Third Bank details here!</small></p>
@@ -1213,7 +1202,7 @@ Gender
 				
 			</div>
 			 
-			    <script type="text/javascript">
+		 <script type="text/javascript">
 		   
 		   function addbanksdetails(val){
 		   
@@ -1262,20 +1251,20 @@ Gender
                     <option value="13">13</option>
                   	<option value="14">14</option>
                   	<option value="15">15</option>
-					<option value="16">16</option>
-					<option value="17">17</option>
-					<option value="18">18</option>
-					<option value="19">19</option>
-					<option value="20">20</option>
+										<option value="16">16</option>
+										<option value="17">17</option>
+										<option value="18">18</option>
+										<option value="19">19</option>
+										<option value="20">20</option>
                   </select>
                   </div>
 				  <span class="left zip">
                 <label for="applicantvalidmafield" id="applicantvalidma">Maximum Per month mandate amount</label>
 				 </span>
 				  <div class="styled-select">
-                  <select id="applicantvalidmafield" name="applicantvalidma" onChange="maval(this.value,'applicantvalidma','instructapplicantsip')" class="field select medium" tabindex="59">
+                  <select id="applicantvalidmafield" name="applicantvalidma" class="field select medium" tabindex="59">
                   <option value="" selected="selected"> --Select-- </option>                  
-				  <option value="10">5000</option>
+				  					<option value="10">5000</option>
                   	<option value="11">10000</option>
                   	<option value="12">25000</option>
                     <option value="13">50000</option>
@@ -1306,27 +1295,27 @@ Gender
 			<ul>
 			<li>
 			  <span class="left city">
-				<label for="appnomname">Nominee Name</label> <input id="appnomname" name="appnomname" type="text" class="field text addr medium" onChange="appnominval(this.value,'appnomname','instructappnomname')" value="" tabindex="61" maxlength="33" />
+				<label for="appnomname">Nominee Name</label> <input id="appnomname" name="appnomname" type="text" class="field text addr medium" value="" tabindex="61" maxlength="33" />
                 
                 </span> 
                 <p class="instruct" id="instructappnomname"><small>About Nominee</small></p>
                 <li class="date eurodate notranslate      ">
               <label class="desc"> Date Of Birth <span class="req">*</span> </label>
               <span>
-              <input id="appnomdobd" name="appnomdobd" type="text" class="field text" onChange="ddval(this.value,'appnomdobd','instructappnomdobd')" value="" size="2" maxlength="2" tabindex="62"/>
+              <input id="appnomdobd" name="appnomdobd" type="text" class="field text" value="" size="2" maxlength="2" tabindex="62"/>
               <label for="appnomdobd">DD</label>
               </span> <span class="symbol">/</span> <span>
-              <input id="appnomdobm" name="appnomdobm" type="text" class="field text" onChange="mmval(this.value,'appnomdobm','instructappnomdobd')" value="" size="2" maxlength="2" tabindex="63"/>
+              <input id="appnomdobm" name="appnomdobm" type="text" class="field text" value="" size="2" maxlength="2" tabindex="63"/>
               <label for="appnomdobm">MM</label>
               </span> <span class="symbol">/</span> <span>
-              <input id="appnomdoby" name="appnomdoby" type="text" class="field text" onChange="yyval(this.value,'appnomdoby','instructappnomdobd')" value="" size="4" maxlength="4" tabindex="64" />
+              <input id="appnomdoby" name="appnomdoby" type="text" class="field text" value="" size="4" maxlength="4" tabindex="64" />
               <label for="appnomdoby">YYYY</label>
               </span>
               <p class="instruct" id="instructappnomdobd"><small>Your date of birth</small></p>
             </li>
             <li>
                 <span class="left zip"><label for="appnompname">Name Of Parent (In Case of Minor)	</label>
-                <input id="appnompname" name="appnompname" type="text" class="field text addr medium" onChange="nomempval(this.value,'appnompname','instructappnompname')" value="" maxlength="30" tabindex="65" />
+                <input id="appnompname" name="appnompname" type="text" class="field text addr medium" value="" maxlength="30" tabindex="65" />
                 
                 </span> 
                 <p class="instruct" id="instructappnompname"><small>Name Of Parent (In Case of Minor)</small></p>
@@ -1335,7 +1324,7 @@ Gender
                 
             <li>
                 <span class="left zip"><label for="appnomrel">Relationship	</label>
-                <input id="appnomrel" name="appnomrel" type="text" class="field text addr medium" onChange="nomemrval(this.value,'appnomrel','instructappnomrel')" value="" maxlength="16" tabindex="66" />
+                <input id="appnomrel" name="appnomrel" type="text" class="field text addr medium" value="" maxlength="16" tabindex="66" />
                 
                 </span> 
                 <p class="instruct" id="instructappnomrel"><small>Relationship</small></p>
@@ -1346,38 +1335,19 @@ Gender
 		   </div>
 		   <ul>
 			<li>
-                <span class="left zip">
-            <label for="agreementaccept" id="agreementacceptl"><input tabindex="100" id="agreementaccept" name="agreementaccept" value="agree" type="checkbox">&nbsp;&nbsp;I Have read the terms and Conditions Before investing </label>
-            </span><p class="instruct" id="instructagreementaccept"><small>Accept before submitting</small></p></li>
-            <li class="buttons ">
-              <div>
-			     <script type="text/javascript">
-		   
-		   function acceptagreement(){
-				
-				if($("#agreementaccept").attr("checked"))
-				{	
-					$("#agreementacceptl").removeClass("error");
-					return true;
-				}else
-				{
-					$("#agreementacceptl").addClass("error");
-					return false;
-				}
-			}
-		   </script>
-                <input id="saveForm"  name="saveForm" class="btTxt submit fundsInn-btn" type="submit" tabindex="101" value="Submit"/>
-                <input id="clearForm" onclick="formReset()" name="clearForm" class="btTxt submit fundsInn-btn" type="button" tabindex="102" value="Clear"/>
-              </div>
+      <span class="left zip">
+  <label for="agreementaccept" id="agreementacceptl"><input tabindex="100" id="agreementaccept" name="agreementaccept" value="agree" type="checkbox">&nbsp;&nbsp;I Have read the terms and Conditions Before investing </label>
+  </span><p class="instruct" id="instructagreementaccept"><small>Accept before submitting</small></p></li>
+  <li class="buttons ">
+    <div>
+      <input id="saveForm"  name="saveForm" class="btTxt submit fundsInn-btn" type="submit" tabindex="101" value="Submit"/>
+      <input id="clearForm" onclick="formReset()" name="clearForm" class="btTxt submit fundsInn-btn" type="button" tabindex="102" value="Clear"/>
+    </div>
             </li>
            
           </ul>
         </form>
-        
-        
-        <!-- WUFOO FORMS --> 
-
-        
+        <!-- WUFOO FORMS -->        
       </div>
     </div>
   </div>
@@ -1451,9 +1421,9 @@ Gender
 <script type="text/javascript">
 $(document).ready(function(){
 
- 	var post_code_regx = /^\d{5}$|^\d{9}$|^\d{5}-\d{4}$/;
-	var panPat = /^([a-zA-Z]{5})(\d{4})([cphfatbljgCPHFATBLGJ]{1})$/;
-	var ifscPat = /^([a-zA-Z]{4})(\d{3-10})$/;
+ 	var post_code_regx = /^\d{6}$/;
+	var panPat = /^([a-zA-Z]{5})(\d{4})([a-zA-Z]{1})$/;
+	var ifscPat = /^([a-zA-Z]{4})(\d{3,10})$/;
 	var currentTime = new Date();
 	var month = currentTime.getMonth() + 1;
 	var day = currentTime.getDate();
@@ -1486,7 +1456,7 @@ $(document).ready(function(){
 
   $("#nriform").validate({
         rules:{
-         	"account_type":{required:true},
+      "account_type":{required:true},
 			"applicantname":{required:true, maxlength: 62 },
 			"applicantfname":{required:true, maxlength: 54 },
 			"applicantdobdd":{required:true, min: 1, max: 31  },
@@ -1511,7 +1481,7 @@ $(document).ready(function(){
 			"applicantiaddr3" : {maxlength:39},
 			"applicanticity" : {required:true, maxlength:24}, 
 			"applicantistate" : {required:true, maxlength:24}, 
-			"applicantizip"  : {required:true, postalCode:true}, 
+			"applicantizip"  : {required:true,postalCode:true}, 
 			"applicant2name" : {maxlength: 62 },
 			"applicant2pan" : { isPan:true },
 			"applicant3name" : {maxlength: 62 },
@@ -1523,7 +1493,7 @@ $(document).ready(function(){
 			"bankaddr2" : { maxlength:39},
 			"bankcity" : {required:true, maxlength:24},
 			"bankmicr" : {required:true,digits:true,max:999999999},
-			"bankifsc" : {required:true, isIFSC:true},
+			"bankifsc" : {required:true,isIFSC:true},
 			"bank2name" : {minlength:2},
 			"bank2accno" :{digits:true, maxlength:20},
 			"bank2addr1" : { maxlength:39},
@@ -1547,12 +1517,12 @@ $(document).ready(function(){
 			"agreementaccept" :{required:true}
         },
         messages:{
-          'applicantname':"Enter Your Full Name!",
-          "applicantdobdd":{required:"0-31", min:"0-31", max: "0-31"  },
+      'applicantname':"Enter Your Full Name!",
+      "applicantdobdd":{required:"0-31", min:"0-31", max: "0-31"  },
 		  "applicantdobmm":{required:"0-12", min:"0-12", max:"0-12"  },
 		  "applicantdobyyyy" : {required:"ex : 1980"}, 
 		  "applicanttelm" : {required:"Enter Your Mobile Number", digits:"Enter Your Mobile Number", minlength:"Enter Your Mobile Number", maxlength: "Enter Your Mobile Number"},
-          "appnomdobd" :{required:"0-31", min:"0-31", max: "0-31"  },
+      "appnomdobd" :{required:"0-31", min:"0-31", max: "0-31"  },
 		  'appnomdobm' :{required:"0-12", min:"0-12", max:"0-12"  },
 		  "appnomdoby" :{required:"ex : 1980"},
 		  "agreementaccept" :{required:"Please Accept Terms & Conditions !"}

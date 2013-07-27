@@ -186,6 +186,13 @@ $details_sql = "INSERT INTO `corporate_account_details` (`application_id`,`accou
 //echo ($details_sql);
  $result=mysqli_query($con,$details_sql);
  if($result){
+  $fetch_detail_sql="select id from `corporate_account_details` where `application_id`='".$application_no."';";
+  $result1=mysqli_query($con,$fetch_detail_sql);
+  $row=mysqli_fetch_array($result1,MYSQLI_ASSOC);
+  $detail_id=$row['id'];
+  $update_sql = "UPDATE `accounts` SET `account_detail_id` = '".$detail_id."',`account_type` = '".$account_type."' WHERE `application_no`='".$application_no."';";
+  mysqli_query($con,$update_sql);
+  //echo $update_sql."--".$fetch_detail_sql;
  	echo 1;
  }else{
  	echo 0;

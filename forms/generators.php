@@ -25,22 +25,29 @@ function application_id_gen($code1,$code2){
 	include("../inc/dbConnect.inc.php");
 	$ids=date("Ymd");
 	
-  $sql = "SELECT count(*) from `accounts` WHERE `account_id` LIKE '%".$ids."%';"; 
+  $sql = "SELECT count(*) from `accounts` WHERE `application_no` LIKE '%".$ids."%';"; 
   //echo $sql;
   $res=mysqli_query($con,$sql);
   $row=mysqli_fetch_array($res,MYSQLI_ASSOC);
   $today_count=$row['count(*)'];
-  if ($today_count ==0)(
-     $today_count+=1;
-    )
+  // if ($today_count ==0){
+  //    $today_count+=1;
+  //   }
+   $today_count++;
 	$id=$code1.$code2.$ids.$today_count;
 	return $id;
 }
 
 function account_id_gen(){
-	$count=rand(10,100);
-	$id=date("Ym");.$count;
-	return $id;
+ include("../inc/dbConnect.inc.php");
+  $sql = "SELECT count(*) from `accounts`";
+  //echo $sql;
+  $res=mysqli_query($con,$sql);
+  $row=mysqli_fetch_array($res,MYSQLI_ASSOC);
+  $count=$row['count(*)'];
+	//$count=rand(10,100);
+	$id=date("Ym");
+	return $id.$count;
 }
 
 function reference_id_gen($application_id){
@@ -50,9 +57,9 @@ function reference_id_gen($application_id){
 }
 
 // echo customer_id_gen();
-// echo account_id_gen();
+//echo account_id_gen();
 // echo reference_id_gen();
- //temp=application_id_gen("I","M");
+ //$temp=application_id_gen("I","M");
 
- //echo "reference id : ".reference_id_gen($temp)."---".$temp;
+ //echo "application id : ".$temp;
 ?>

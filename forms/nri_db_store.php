@@ -182,7 +182,14 @@ $details_sql = "INSERT INTO `nri_account_details` (`application_id`,`account_typ
 //echo ($details_sql);
  $result=mysqli_query($con,$details_sql);
  if($result){
- 	echo 1;
+  $fetch_detail_sql="select id from `nri_account_details` where `application_id`='".$application_no."';";
+  $result1=mysqli_query($con,$fetch_detail_sql);
+  $row=mysqli_fetch_array($result1,MYSQLI_ASSOC);
+  $detail_id=$row['id'];
+  $update_sql = "UPDATE `fundsinn_development`.`accounts` SET `account_detail_id` = '".$detail_id."' WHERE `application_no`='".$application_no."';";
+ 	mysqli_query($con,$update_sql);
+  //echo $update_sql;
+  echo 1;
  }else{
  	echo 0;
  }

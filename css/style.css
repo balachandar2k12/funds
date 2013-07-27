@@ -477,3 +477,15 @@ background-color: #F4C235;
 #twitter-link{
 	background:url(../img/icon_set.png);
 }
+
+#mce-EMAIL{
+	margin-top: 0.5px;
+  height: 35px;
+}
+
+#mc-embedded-subscribe{
+	margin-left: -12px;
+}
+#youtube-logo{
+	margin-left: 4px;
+}

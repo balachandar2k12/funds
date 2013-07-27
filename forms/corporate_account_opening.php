@@ -127,131 +127,39 @@ Redirect("./signup-landing.html");
 				}
 			}
 		}
-		if(acceptagreement())
+		if($('#corporateform').valid())
 		{
 							
-		  // make the AJAX request
-    var dataString = $('#corporateform').serialize();
+			  // make the AJAX request
+	    var dataString = $('#corporateform').serialize();
 
-    $.ajax({
-        type: "POST",
-        url: 'corporate_db_store.php',
-        data: dataString,
-        dataType: 'json',
-       success: function (data) {
+			    $.ajax({
+			        type: "POST",
+			        url: 'corporate_db_store.php',
+			        data: dataString,
+			        dataType: 'json',
+			       success: function (data) {
 
-			// if(data.success==0)
-			// 		if(data.error)
-			// 		{	
-			// 			var	err=data.error;
-						
-			// 			if(err.search("Duplicate"))
-			// 			{	
-							
-			// 				$('#errordis').html("<h3>You Pan No is already registered with us</h3>");
-			// 				$('#errordis').addClass("er");
-			// 				window.location.hash = '#topfundsinn';
+						//window.location.hash = '#topfundsinn';
 					
-			// 			}	 
-			// 			else
-			// 			{
-			// 				$('#errordis').html("<h3>connection problem please try agian</h3>");
-			// 				$('#errordis').addClass("er");
-			// 				window.location.hash = '#topfundsinn';
-			// 			}
-			// 		}
-			// 		else
-			// 			{
-							
-			// 				eattr=data.attr;
-			// 				var tempaddrp="Permanent Address Details<br/>";
-			// 				var tempaddrc="Current address Details<br/>";
-			// 				var tempaddrb="Bank Details<br/>";
-			// 				var tempaddrb2=" Second Bank Details<br/>";
-			// 				var tempaddrb3="Third Bank Details<br/>";
-			// 				var tempsip="SIP Details <br/>";
-			// 				var tempci="Contact Person Details<br/>";
-			// 				for ( var attrname in eattr)
-			// 				{
-			// 					if(eattr[attrname]!="TRUE")
-			// 					{
-			// 						if(document.getElementById(attrname))
-			// 						{	
-			// 							$('#'+attrname).addClass("error");
-			// 							if(document.getElementById('instruct'+attrname))
-			// 							   $('#instruct'+attrname).html("<small>"+eattr[attrname]+"</small>");
-			// 							 else
-			// 								{
-			// 									if(!(attrname.search("applicantp")))
-			// 										tempaddrp=tempaddrp+eattr[attrname]+"<br/>";
-			// 									$('#instructapplicantpaddr').html("<small>"+tempaddrp+"</small><br/>");
-												
-			// 									if(!(attrname.search("applicantc")))
-			// 										tempaddrc=tempaddrc+eattr[attrname]+"<br/>";
-			// 									$('#instructapplicantcaddr').html("<small>"+tempaddrc+"</small><br/>");
-												
-			// 									if(!(attrname.search("bank")))
-			// 										tempaddrb=tempaddrb+eattr[attrname]+"<br/>";
-			// 									$('#instructbank').html("<small>"+tempaddrb+"</small><br/>");
-												
-			// 									if(!(attrname.search("bank2")))
-			// 										tempaddrb2=tempaddrb2+eattr[attrname]+"<br/>";
-			// 									$('#instructbank2').html("<small>"+tempaddrb2+"</small><br/>");
-												
-			// 									if(!(attrname.search("bank3")))
-			// 										tempaddrb3=tempaddrb3+eattr[attrname]+"<br/>";
-			// 									$('#instructbank3').html("<small>"+tempaddrb3+"</small><br/>");
-												
-			// 									if(!(attrname.search("applicant2c")))
-			// 										tempci=tempci+eattr[attrname]+"<br/>";
-			// 									$('#instructapplicant2contact').html("<small>"+tempci+"</small><br/>");
-												
-			// 										if(!(attrname.search("applicantvalid")))
-			// 										tempsip=tempsip+eattr[attrname]+"<br/>";
-			// 									$('#instructapplicantsip').html("<small>"+tempsip+"</small><br/>");
-											
-											
-			// 								}
-			// 						}
-			// 					}
-			// 				}
-			// 			}
-			// else
-			// 	{
-			// 				$('#errordis').html("<h3>Form submitted you will be redirected shortly</h3>");
-			// 				$('#errordis').addClass("su");
-			// 				window.location.hash = '#topfundsinn';
-			// 			//	$("#headerMenu").scrollTop();
-							
-			// 	}
-			// //	dump(data.attr);
-			// 	dump(data);
-				alert(data);
-		},
-        error: function (error) {
-			{
-					
-					$('#errordis').html("<h3>Unable to Process your request please try agian</h3>");
-							$('#errordis').addClass("er");
-							window.location.hash = '#topfundsinn';
-					
-					//dump(error);
-					
-			}
-	}
-    });
+					},
+			        error: function (error) {
+						{
+								
+								$('#errordis').html("<h3>Unable to Process your request please try agian</h3>");
+										$('#errordis').addClass("er");
+										window.location.hash = '#topfundsinn';
+								
+								//dump(error);
+								
+						}
+				}
+			    });
+		
+		}
 	
 	}
 	
-	}
-	
-	function dump(obj) {
-    var out = '';
-    for (var i in obj) {
-        out += i + ": " + obj[i] + "\n";
-    }
-  alert(out);
-  }
 	</script>
 </head>
 <body>
@@ -885,22 +793,6 @@ Redirect("./signup-landing.html");
             </span><p class="instruct" id="instructagreementaccept"><small>Accept before submitting</small></p></li>
             <li class="buttons ">
               <div>
-			     <script type="text/javascript">
-		   
-		   function acceptagreement(){
-				
-				if($("#agreementaccept").attr("checked"))
-				{	
-					$("#agreementacceptl").removeClass("error");
-					return true;
-				}else
-				{
-					$("#agreementacceptl").addClass("error");
-					return false;
-				}
-			}
-		   </script>
-
                 <input id="saveForm"  name="saveForm" class="btTxt submit fundsInn-btn" type="submit" tabindex="70" value="Submit"/>
                 <input id="clearForm" onclick="formReset()" name="clearForm" class="btTxt submit fundsInn-btn" type="button" tabindex="71" value="Clear"/>
               </div>
@@ -965,6 +857,7 @@ Redirect("./signup-landing.html");
           <li><a href="#"><img src="../img/twitter.png" alt=""></a></li>
           <li><a href="#"><img src="../img/fbk.png" alt=""></a></li>
           <li><a href="#"><img src="../img/linkedin.png" alt=""></a></li>
+           <li><a href="http://www.youtube.com/fundsinn"><img src="../img/you.png" alt=""></a></li>
         </ul>
       </div>
     </div>
@@ -983,10 +876,10 @@ Redirect("./signup-landing.html");
   <!-- validations -->
 <script type="text/javascript">
 $(document).ready(function(){
-
- 	var post_code_regx = /^\d{5}$|^\d{9}$|^\d{5}-\d{4}$/;
-	var panPat = /^([a-zA-Z]{5})(\d{4})([cphfatbljgCPHFATBLGJ]{1})$/;
-	var ifscPat = /^([a-zA-Z]{4})(\d{3-10})$/;
+  //cphfatbljgCPHFATBLGJ
+ 	var post_code_regx = /^\d{6}$/;
+	var panPat = /^([a-zA-Z]{5})(\d{4})([a-zA-Z]{1})$/;
+	var ifscPat = /^([a-zA-Z]{4})(\d{3,10})$/;
 	var currentTime = new Date();
 	var month = currentTime.getMonth() + 1;
 	var day = currentTime.getDate();
@@ -1028,7 +921,7 @@ $(document).ready(function(){
 
   $("#corporateform").validate({
         rules:{
-         	"account_type":{required:true},
+         	// "account_type":{required:true},
 			"applicantname":{required:true, maxlength: 62 },
 			"applicantdoidd":{required:true, min: 1, max: 31  },
 			"applicantdoimm":{required:true, min: 1, max: 12  },
@@ -1048,13 +941,13 @@ $(document).ready(function(){
 			"applicantpaddr3" : {maxlength:39},
 			"applicantpcity"  : {required:true, maxlength:24}, 
 			"applicantpstate" : {required:true, maxlength:24}, 
-			"applicantpzip"   : {required:true, postalCode:true}, 
+			"applicantpzip"   : {required:true}, 
 			"applicantcaddr1" : {required:true, maxlength:39},
 			"applicantcaddr2" : {maxlength:39},
 			"applicantcaddr3" : {maxlength:39},
 			"applicantccity"  : {required:true, maxlength:24}, 
 			"applicantcstate" : {required:true, maxlength:24}, 
-			"applicantczip"  : {required:true, postalCode:true}, 
+			"applicantczip"  : {required:true}, 
 			"applicant2_name" : {maxlength: 62 },
 			"applicant2pan" : { isPan:true },
 			"applicant3name" : {maxlength: 62 },
@@ -1066,7 +959,7 @@ $(document).ready(function(){
 			"bankaddr2" : { maxlength:39},
 			"bankcity" : {required:true, maxlength:24},
 			"bankmicr" : {required:true,digits:true,max:999999999},
-			"bankifsc" : {required:true, isIFSC:true},
+			"bankifsc" : {required:true,isIFSC:true},
 			"bank2name" : {minlength:2},
 			"bank2accno" : {digits:true, maxlength:20},
 			"bank2addr1" : { maxlength:39},

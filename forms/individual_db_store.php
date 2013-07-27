@@ -154,7 +154,7 @@ if($applicant2_pan!=""){
  }
 
 
-$details_sql = "INSERT INTO `account_details` (`application_id`,`account_type`, `applicant_name`, `father_name`,
+$details_sql = "INSERT INTO `individual_account_details` (`application_id`,`account_type`, `applicant_name`, `father_name`,
 									  `dob`, `gender`, `pan`, `phone_office`, `phone_resi`, 
 									  `mobile`, `email`, `occupation`, `tax_status`,
 									   `nationality`, `temp_address`, `temp_city`, 
@@ -179,6 +179,12 @@ $details_sql = "INSERT INTO `account_details` (`application_id`,`account_type`, 
 //echo ($details_sql);
  $result=mysqli_query($con,$details_sql);
  if($result){
+  $fetch_detail_sql="select id from `individual_account_details` where `application_id`='".$application_no."';";
+  $result1=mysqli_query($con,$fetch_detail_sql);
+  $row=mysqli_fetch_array($result1,MYSQLI_ASSOC);
+  $detail_id=$row['id'];
+  $update_sql = "UPDATE `fundsinn_development`.`accounts` SET `account_detail_id` = '".$detail_id."' WHERE `application_no`='".$application_no."';";
+  mysqli_query($con,$update_sql);
  	echo 1;
  }else{
  	echo 0;

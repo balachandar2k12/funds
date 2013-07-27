@@ -1,5 +1,5 @@
-<?php require_once('/header.php');  ?>
-<?php require_once('/header2.php');  ?>
+<?php require_once('header.php');  ?>
+<?php require_once('header2.php');  ?>
 
   <div id="contentBody_inner2" class="container_16">
   	<div class="inner_content2">
@@ -63,4 +63,4 @@
   <div class="push"></div>
 </div>
 <!--MAIN WRAPPER-->
-<?php require_once('/footer.php');  ?>
+<?php require_once('footer.php');  ?>

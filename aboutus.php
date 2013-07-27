@@ -1,5 +1,5 @@
-<?php require_once('/header.php'); 
-require_once('/header2.php'); ?>
+<?php require_once('header.php'); 
+require_once('header2.php'); ?>
 
   <div id="contentBody_inner2" class="container_16">
   	<div class="inner_content">
@@ -36,4 +36,4 @@ Registered as a private limited company under the (Indian) Companies Act, 1956 h
   </div>
   <div class="push"></div>
 </div>
-<?php require_once('/footer.php');  ?>
+<?php require_once('footer.php');  ?>
