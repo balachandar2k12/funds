@@ -61,7 +61,7 @@
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/jquery.validate.js"></script>
     <script type="text/javascript" src="../js/fundsinn.js"></script>
-    <script type="text/javascript" src="../js/individualformval.js"></script>
+    <script type="text/javascript" src="../js/individualformval.js"></script> 
     <style type="text/css">
       .er {color:red;}
       .su {color:green;}
@@ -196,7 +196,7 @@
             </div>
             <div id="signUp-Container" class="grid_14 gridFirst">
               <!-- woofoo forms -->
-              <form id="corporateform" name="corporateform" class="wufoo leftLabel page"  novalidate method="post" action="javascript:send();">
+              <form id="corporateform" name="corporateform" class="wufoo leftLabel page"  novalidate method="post">
                 <div id="errordis">
                 </div>
                 <div class="formHeaderTitle">
@@ -664,8 +664,8 @@
                   </li>
                   <li class="buttons ">
                     <div>
-                      <input id="saveForm"  name="saveForm" class="btTxt submit fundsInn-btn" type="submit" tabindex="70" value="Submit"/>
-                      <input id="clearForm" onclick="formReset()" name="clearForm" class="btTxt submit fundsInn-btn" type="button" tabindex="71" value="Clear"/>
+                      <button id="saveForm" name="saveForm" class="btTxt submit fundsInn-btn" tabindex="70">Preview</button>
+                     <button id="clearForm" name="clearForm" class="btTxt submit fundsInn-btn" tabindex="71">Clear</button>
                     </div>
                   </li>
                 </ul>
@@ -795,6 +795,59 @@
                  		error.insertAfter(element);
              }
          });
+     // agreements
+       function prevent_default(){
+         $("#corporateform input").each(function(key,value){ 
+            if($(value).removeAttr("id")!="saveForm" && $(value).attr("id")!="clearForm"){  
+            $(value).removeAttr("disabled");} });
+          $("#corporateform select").each(function(key,value){ $(value).removeAttr("disabled","disabled");});
+          $("#saveForm").text("Preview");
+          $("#clearForm").text("Clear");
+          alert("chaged Default")
+        }
+        
+        function scroll_top(){
+           $("html, body").animate({ scrollTop: 180 }, 600);
+        }
+
+       $(document).on("click","#saveForm","click",function(){
+        
+        if($("#saveForm").text()=="Submit"){
+          if($("#corporateform").valid()){
+          alert("Please verify all the fields Before Submit !");
+          prevent_default();
+          send();}else{
+            scroll_top();
+          }
+        }else if($("#saveForm").text()=="Preview"){
+          if($("#corporateform").valid()){
+          $("#corporateform input").each(function(key,value){ 
+            if(($(value).attr("id")!="saveForm") && ($(value).attr("id")!="clearForm")){  
+            $(value).attr("disabled","disabled");} });
+          $("#corporateform select").each(function(key,value){$(value).attr("disabled","disabled");});
+           $("#saveForm").removeAttr("disabled");
+          $("#clearForm").removeAttr("disabled");
+          $("#saveForm").text("Submit");
+          $("#clearForm").text("Edit");
+          scroll_top();
+          }
+        }
+        return false;
+       });
+       
+       // 
+       $(document).on("click","#clearForm",function(){
+        if($("#clearForm").text()=="Clear"){
+         formReset();
+         scroll_top();
+        }else if($("#clearForm").text()=="Edit"){
+          prevent_default();
+          scroll_top();
+        }
+        return false;
+       });
+
+
       });
     </script>
   </body>

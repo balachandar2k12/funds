@@ -61,7 +61,7 @@
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/jquery.validate.js"></script>
     <script type="text/javascript" src="../js/fundsinn.js"></script>
-    <script type="text/javascript" src="../js/individualformval.js"></script>
+    <script type="text/javascript" src="../js/individualformval.js"></script> 
     <style type="text/css">
       .er {color:red;}
       .su {color:green;}
@@ -274,7 +274,7 @@
             </div>
             <div id="signUp-Container" class="grid_14 gridFirst">
               <!-- woofoo forms -->
-              <form id="nriform" name="nriform" class="wufoo leftLabel page"  novalidate method="post" action="javascript:send();">
+              <form id="nriform" name="nriform" class="wufoo leftLabel page" method="post" > <!-- action="javascript:send();"> -->
                 <div id="errordis">
                 </div>
                 <div class="formHeaderTitle">
@@ -973,14 +973,14 @@
                       <li class="notranslate">
                         <label class="desc" for="applicant2name"> Name of the second applicant <span class="req">*</span> </label>
                         <div>
-                          <input id="applicant2name" name="applicant2name" type="text" class="field text medium" value="" maxlength="62" tabindex="26" onKeyUp="" required autofocus />
+                          <input id="applicant2name" name="applicant2name" type="text" class="field text medium" value="" maxlength="62" tabindex="26" onKeyUp=""/>
                         </div>
                         <p class="instruct" id="instructapplicant2name"><small>Only letters, maximum only 62 characters all in CAPS</small></p>
                       </li>
                       <li class="notranslate">
                         <label class="desc" for="applicant2pan"> second applicant PAN Number <span class="req">*</span> </label>
                         <div>
-                          <input id="applicant2pan" class="field text medium" name="applicant2pan" tabindex="27" required  type="text" value="" />
+                          <input id="applicant2pan" class="field text medium" name="applicant2pan" tabindex="27" type="text" value="" />
                         </div>
                         <p class="instruct" id="instructapplicant2pan"><small>Your pan number</small></p>
                       </li>
@@ -990,7 +990,7 @@
                     <li class="notranslate">
                       <label class="desc" for="applicant3name"> Name of the Third applicant <span class="req">*</span> </label>
                       <div>
-                        <input id="applicant3name" name="applicant3name" type="text" class="field text medium" value="" maxlength="62" tabindex="28" onKeyUp="" required autofocus />
+                        <input id="applicant3name" name="applicant3name" type="text" class="field text medium" value="" maxlength="62" tabindex="28" onKeyUp="" />
                       </div>
                       <p class="instruct" id="instructapplicant3name"><small>Only letters, maximum only 62 characters all in CAPS</small></p>
                     </li>
@@ -1245,8 +1245,8 @@
                   </li>
                   <li class="buttons ">
                     <div>
-                      <input id="saveForm"  name="saveForm" class="btTxt submit fundsInn-btn" type="submit" tabindex="101" value="Submit"/>
-                      <input id="clearForm" onclick="formReset()" name="clearForm" class="btTxt submit fundsInn-btn" type="button" tabindex="102" value="Clear"/>
+                      <button id="saveForm"  name="saveForm" class="btTxt submit fundsInn-btn"  tabindex="101" value="">Preview</button>
+                      <button id="clearForm" name="clearForm" class="btTxt submit fundsInn-btn"  tabindex="102" value="">Clear</button>
                     </div>
                   </li>
                 </ul>
@@ -1376,6 +1376,60 @@
                  error.insertAfter(element);
              }
          });
+
+         
+        // agreements onclick="formReset()" 
+         function prevent_default(){
+         $("#nriform input").each(function(key,value){ 
+            if($(value).removeAttr("id")!="saveForm" && $(value).attr("id")!="clearForm"){  
+            $(value).removeAttr("disabled");} });
+          $("#nriform select").each(function(key,value){ $(value).removeAttr("disabled","disabled");});
+          $("#saveForm").text("Preview");
+          $("#clearForm").text("Clear");
+          alert("chaged Default")
+        }
+        
+        function scroll_top(){
+           $("html, body").animate({ scrollTop: 180 }, 600);
+        }
+
+       $(document).on("click","#saveForm","click",function(){
+        
+        if($("#saveForm").text()=="Submit"){
+          if($("#nriform").valid()){
+          alert("Please verify all the fields Before Submit !");
+          prevent_default();
+          send();}else{
+            scroll_top();
+          }
+        }else if($("#saveForm").text()=="Preview"){
+          if($("#nriform").valid()){
+          $("#nriform input").each(function(key,value){ 
+            if(($(value).attr("id")!="saveForm") && ($(value).attr("id")!="clearForm")){  
+            $(value).attr("disabled","disabled");} });
+          $("#nriform select").each(function(key,value){$(value).attr("disabled","disabled");});
+           $("#saveForm").removeAttr("disabled");
+          $("#clearForm").removeAttr("disabled");
+          $("#saveForm").text("Submit");
+          $("#clearForm").text("Edit");
+          scroll_top();
+          }
+        }
+        return false;
+       });
+       
+       // 
+       $(document).on("click","#clearForm",function(){
+        if($("#clearForm").text()=="Clear"){
+         formReset();
+         scroll_top();
+        }else if($("#clearForm").text()=="Edit"){
+          prevent_default();
+          scroll_top();
+        }
+        return false;
+       });
+
       });
     </script>
   </body>
