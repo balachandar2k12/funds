@@ -1,0 +1,33 @@
+a:hover, a:focus {
+color: #ffffff !important;
+text-decoration: none !important;
+}
+
+#headerMenu li a:hover {
+border-top: 4px solid #f4c235;
+border-bottom: 4px solid #f4c235;
+padding-bottom: 38px !important;
+}
+#mc_embed_signup .mc-field-group input {
+display: block;
+margin-top: 0.5px;
+width: 100%;
+height: 34px !important;
+padding: 8px 0px;
+text-indent: 2%;
+float: left;
+font-family: 'Raleway', sans-serif;
+color: #CC6666;
+}
+
+.homeContentTitle {
+height: 33px;
+background: #222222;
+-webkit-box-shadow: inset 0px 0px 0px 4px #ffffff;
+box-shadow: inset 0px 0px 0px 4px #ffffff;
+text-align: center;
+color: #f4c235;
+padding-top: 6px !important;
+line-height: 20px;
+margin-top: -15px;
+}

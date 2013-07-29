@@ -772,7 +772,7 @@
       			"appnomname" : { minlength:2},
       			"appnomdobd" : { min: 1, max: 31  },
       			'appnomdobm' : { min: 1, max: 12  },
-      			"appnomdoby" : {isValidAge:true },
+      			// "appnomdoby" : {isValidAge:true },
       			"appnompname": { minlength:2},
       			"nominee_relationship" :{ maxlength:39},
       			"agreementaccept" :{required:true}
