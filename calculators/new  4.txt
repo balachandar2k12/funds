@@ -1,0 +1,48 @@
+
+
+="" maxlength="2" tabindex="6" />
+="" size="2" maxlength="2" tabindex="7" />
+="" size="4" maxlength="4" tabindex="8" />
+="" tabindex="11" required maxlength="10" type="text" value="" />
+="" tabindex="12" required  type="tel" maxlength="12" value="" />
+="" required  type="tel" maxlength="15" value="" />
+="" type="tel" maxlength="11" value="" />
+="" maxlength="37" type="email" value="<?php if($email!="")
+   <select  name="applicantocc" class="field select medium" tabindex="16" onkeyup="" >
+="addrval(this.value,'applicantpaddr1','instructapplicantpaddr')" value="" tabindex="17" maxlength="39" required />
+="cityval(this.value,'applicantpcity','instructapplicantpaddr')" required />
+="stateval(this.value,'applicantpstate','instructapplicantpaddr')" required />
+="pinval(this.value,'applicantpzip','instructapplicantpaddr')" required />
+$('#applicantcommunicationaddress').toggle();"> &nbsp; Same Address for communication</label>
+="addrval(this.value,'applicantcaddr1','instructapplicantcaddr')" maxlength="39" required />
+="cityval(this.value,'applicantccity','instructapplicantcaddr')" maxlength="27" required />
+="stateval(this.value,'applicantcstate','instructapplicantcaddr')"  maxlength="20" required />
+="pinval(this.value,'applicantczip','instructapplicantcaddr')"  tabindex="26" required />
+  <label for="bankname">Name of the Bank</label><input id="bankname" maxlength="33"  name="bankname" type="text" class="field text addr" value="" onkeyup="bankval(this.value,'bankname','instructbank')"  tabindex="31" />
+="accval(this.value,'bankaccno','instructbank')" maxlength="20" />
+="ifscval(this.value,'bankifsc','instructbank')" maxlength="11"  tabindex="39"  />
+="bankaddrval(this.value,'bankaddr1','instructbank')" required />
+="cityval(this.value,'bankcity','instructbank')" tabindex="37"  />
+="micrval(this.value,'bankmicr','instructbank')" maxlength="9" tabindex="38"  />
+  <label for="bank2name">Name of the Second Bank</label><input id="bank2name" maxlength="33"  name="bank2name" onkeyup="bankval(this.value,'bank2name','instructbank2')"  type="text" class="field text addr" value="" tabindex="40" />
+="accval(this.value,'bank2accno','instructbank2')" tabindex="43" />
+="bankaddrval(this.value,'bank2addr1','instructbank2')" tabindex="44" required />
+="cityval(this.value,'bank2city','instructbank2')" tabindex="46"  />
+="micrval(this.value,'bank2micr','instructbank2')" tabindex="47"  />
+="ifscval(this.value,'bank2ifsc','instructbank2')" tabindex="48"  />
+  <label for="bank3name">Name of the Third Bank</label><input id="bank3name" name="bank3name" maxlength="33"  onkeyup="bankval(this.value,'bank3name','instructbank3')"  type="text" class="field text addr" value="" tabindex="49" />
+="accval(this.value,'bank3accno','instructbank3')" value="" tabindex="52" />
+="bankaddrval(this.value,'bank3addr1','instructbank3')" maxlength="39" tabindex="53" required />
+="cityval(this.value,'bank3city','instructbank3')" maxlength="27" tabindex="55"  />
+="micrval(this.value,'bank3micr','instructbank3')" tabindex="56"  />
+="ifscval(this.value,'bank3ifsc','instructbank3')" tabindex="57"  />
+$('#sipmdetails').toggle();$('#instructapplicantsip').html('<small>SIP Details</small><br/>');" value="sipmandatefalse" type="checkbox" tabindex="58">
+   <select class="field select medium" id="applicantvalidyfield" onkeyup="vyval(this.value,'applicantvalidy','instructapplicantsip')"   name="applicantvalidy" tabindex="59">
+   <select id="applicantvalidmafield"  onkeyup="maval(this.value,'applicantvalidma','instructapplicantsip')" class="field select medium" name="applicantvalidma" tabindex="60">
+$('#appnomineedetails').toggle();" value="appnomineefalse" tabindex="61"> &nbsp;&nbsp;I Do not wish to make nomination<br/><br/></label> 
+ 				<label for="appnomname">Nominee Name</label>="appnominval(this.value,'appnomname','instructappnomname')" value="" tabindex="62" maxlength="33" />
+ ="ddval(this.value,'appnomdobd','instructappnomdobd')" value="" size="2" maxlength="2" tabindex="63" required />
+ ="mmval(this.value,'appnomdobm','instructappnomdobd')" value="" size="2" maxlength="2" tabindex="64" required />
+ ="yyval(this.value,'appnomdoby','instructappnomdobd')" value="" size="4" maxlength="4" tabindex="65" required />
+="nomempval(this.value,'appnompname','instructappnompname')" value="" maxlength="30" tabindex="66" />
+="nomemrval(this.value,'appnomrel','instructappnomrel')" value="" maxlength="16" tabindex="67" />

@@ -31,3 +31,23 @@ padding-top: 6px !important;
 line-height: 20px;
 margin-top: -15px;
 }
+
+#signUp-Container {
+background: none;
+-webkit-border-radius: 0px;
+border-radius: 0px;
+border: none !important;
+margin-bottom: 0px !important;;
+margin-top: 20px;
+min-height: 100px;
+}
+
+td a{
+	color: #0000ff;
+	font-family: 'Raleway', sans-serif;
+	font-weight: none !important;
+}
+td a:hover{
+	color: #0000ff !important;
+	font-weight: none;
+}
