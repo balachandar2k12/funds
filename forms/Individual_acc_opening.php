@@ -105,6 +105,21 @@
           $('#appnomineedetails').show(); 
           
         }
+        //tab Correction
+        function tab_index_correction()
+         {
+          var count=1;
+          $("#individualform :input").each(function(k,v){
+            if($(v).attr("type")!="hidden" && $(v).attr("rel")!="extra")
+            { 
+             $(v).attr("tabindex",count);
+             count++;
+            //console.log($(v).attr("type")+""+count);
+            }
+          });
+            console.log("tab index corrected");
+
+        }
       
         var eattr;
         function send()
@@ -217,7 +232,7 @@
                           echo 'checked="checked"';
                         
                         
-                        ?>data-required="true" tabindex="1" name="account_type" type="radio" value="Individual">&nbsp;Individual&nbsp;&nbsp;&nbsp;&nbsp;
+                        ?>data-required="true" tabindex="1" name="account_type" type="radio" value="Individual" checked>&nbsp;Individual&nbsp;&nbsp;&nbsp;&nbsp;
                       <input id="redirectNRI" name="account_type" type="radio" tabindex="2" value="NRI">&nbsp;NRI&nbsp;&nbsp;&nbsp;&nbsp;
                       <input id="redirectCorp"  name="account_type" type="radio" tabindex="3" value="Corporate">&nbsp;Corporate/HUF&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
@@ -225,7 +240,7 @@
                   </li>
                   <!-- investor_details -->
                   <li class="notranslate">
-                    <label class="desc" for="applicant_name"> Name of the applicant <span class="req">*</span> </label>
+                    <label class="desc" for="applicant_name"> Name of the Applicant <span class="req">*</span> </label>
                     <div>
                       <input id="applicantname" name="applicant_name" type="text" class="field text medium" value="" maxlength="62" tabindex="4" />
                     </div>
@@ -274,37 +289,52 @@
                     <p class="instruct" id="instructapplicantgenderradio"><small>Gender</small></p>
                   </li>
                   <li class="notranslate">
+                    <fieldset>
+                      <legend class="desc">  Maritial Status <span class="req">*</span> </legend>
+                      <div>
+                        <span>
+                        <input id="applicantmaleradio" name="maritial_status" type="radio" class="field radio" value="Single" tabindex="11" checked="checked" />
+                        <label class="choice" for="applicantmaleradio" > Single</label>
+                        </span> <span>
+                        <input id="applicantfemaleradio" name="maritial_status" type="radio" class="field radio" value="Married" tabindex="12" />
+                        <label class="choice" for="applicantfemaleradio" > Married</label>
+                        </span> 
+                      </div>
+                    </fieldset>
+                    <p class="instruct" id="maritial-status-radio"><small>Maritial Status</small></p>
+                  </li>
+                  <li class="notranslate">
                     <label class="desc" for="applicantpan"> PAN Number <span class="req">*</span> </label>
                     <div>
-                      <input id="applicantpan" class="field text medium" name="applicant_pan" tabindex="11" required maxlength="10" type="text" value="" />
+                      <input id="applicantpan" class="field text medium" name="applicant_pan" tabindex="13" maxlength="13" type="text" value="" />
                     </div>
                     <p class="instruct" id="instructapplicantpan"><small>Please Enter your PAN card number</small></p>
                   </li>
                   <li class="notranslate">
                     <label class="desc"  for="phone_resi"> Tele Number (Residential) </label>
                     <div>
-                      <input id="applicanttelr" class="field text medium" name="phone_resi" tabindex="12" required  type="tel" maxlength="12" value="" />
+                      <input id="applicanttelr" class="field text medium" name="phone_resi" tabindex="14" type="tel" maxlength="12" value="" />
                     </div>
                     <p class="instruct" id="instructapplicanttelr"><small>Please Enter your Residential number</small></p>
                   </li>
                   <li class="notranslate">
                     <label class="desc" for="phone_office"> Tele Number (Office):  </label>
                     <div>
-                      <input id="applicanttelo" class="field text medium" name="phone_office" tabindex="13" type="tel" maxlength="15" value="" />
+                      <input id="applicanttelo" class="field text medium" name="phone_office" tabindex="15" type="tel" maxlength="15" value="" />
                     </div>
                     <p class="instruct" id="instructapplicanttelo"><small>Please Enter your office Number</small></p>
                   </li>
                   <li class="notranslate">
                     <label class="desc" for="mobile"> Moblie Number:  <span class="req">*</span> </label>
                     <div>
-                      <input id="applicanttelm" class="field text medium" name="mobile" tabindex="14" type="tel" maxlength="11" value="" />
+                      <input id="applicanttelm" class="field text medium" name="mobile" tabindex="16" type="tel" maxlength="11" value="" />
                     </div>
                     <p class="instruct" id="instructapplicanttelm"><small>Please Enter your mobile no </br> 9XXXXXXXX9</small></p>
                   </li>
                   <li class="notranslate">
                     <label class="desc" for="email"> Email address :  <span class="req">*</span> </label>
                     <div>
-                      <input id="applicantemail" class="field text medium" name="email" tabindex="15" maxlength="37" type="email" value=<?php echo $email?> readonly />
+                      <input id="applicantemail" class="field text medium" name="email" tabindex="17" maxlength="37" type="email" value=<?php echo $email?> readonly />
                     </div>
                     <p class="instruct" id="instructapplicantemail"><small>Re sign-up to change your email address</small></p>
                   </li>
@@ -312,7 +342,7 @@
                     <label class="desc" id="occupation"> Occupation <span class="req">*</span> </label>
                     <div>
                       <div class="styled-select">
-                        <select  name="occupation" class="field select medium" tabindex="16">
+                        <select  name="occupation" class="field select medium" tabindex="18">
                           <option value="0" selected="selected"> --Select-- </option>
                           <option value="Business">Business</option>
                           <option value="Service">Service</option>
@@ -336,17 +366,17 @@
                   <li class="complex notranslate">
                     <label class="desc"> Permanent Address <span class="req">*</span> </label>
                     <div> <label for="applicantpaddr1">Address Line 1</label><span class="full addr1">
-                      <input id="applicantpaddr1" name="perm_addr1" type="text" class="field text addr" value="" tabindex="17" maxlength="39" />
+                      <input id="applicantpaddr1" name="perm_addr1" type="text" class="field text addr" value="" tabindex="19" maxlength="39" />
                       </span>  <label for="applicantpaddr2">Address Line 2</label><span class="full addr2">
-                      <input id="applicantpaddr2" name="perm_addr2" type="text" class="field text addr" value="" tabindex="18" maxlength="39" />
+                      <input id="applicantpaddr2" name="perm_addr2" type="text" class="field text addr" value="" tabindex="20" maxlength="39" />
                       </span>  <label for="applicantpaddr3">Address Line 3</label><span class="full addr2">
-                      <input id="applicantpaddr3" name="perm_paddr3" type="text" class="field text addr" value="" tabindex="18" maxlength="39" />
+                      <input id="applicantpaddr3" name="perm_paddr3" type="text" class="field text addr" value="" tabindex="21" maxlength="39" />
                       </span> <label for="applicantpcity">City</label> <span class="left city">
-                      <input id="applicantpcity" name="perm_city" type="text" class="field text addr" value="" tabindex="19" maxlength="27"/>
+                      <input id="applicantpcity" name="perm_city" type="text" class="field text addr" value="" tabindex="22" maxlength="27"/>
                       </span>  <label for="applicantpstate">State</label><span class="right state">
-                      <input id="applicantpstate" name="perm_state" type="text" class="field text addr" value="" tabindex="20" maxlength="20"/>
+                      <input id="applicantpstate" name="perm_state" type="text" class="field text addr" value="" tabindex="23" maxlength="20"/>
                       </span><label for="perm_zip">Postal / Zip Code</label> <span class="left zip">
-                      <input id="applicantpzip" name="perm_zip" type="text" class="field text addr" value="" maxlength="6" tabindex="21"/>
+                      <input id="applicantpzip" name="perm_zip" type="text" class="field text addr" value="" maxlength="6" tabindex="24"/>
                       </span> 
                     </div>
                     <p class="complex instruct" id="instructapplicantpaddr"><small>Please enter your address As per your permanent address proof</small></p>
@@ -354,7 +384,7 @@
                 </ul>
                 <ul>
                   <li class="complex notranslate">
-                    <label class="desc" for="applicantpaddrcheck">  <input type="checkbox" id="applicantpaddrcheck" name="applicantpaddrcheck" value="same" onChange="javascript:$('#applicantcommunicationaddress').toggle();"> &nbsp; Same Address for communication</label>
+                    <label class="desc" for="applicantpaddrcheck">  <input type="checkbox" tabindex="25" id="applicantpaddrcheck" name="applicantpaddrcheck" value="same" onChange="javascript:$('#applicantcommunicationaddress').toggle();"> &nbsp; Same Address for communication</label>
                     <p class="complex instruct" id="instructapplicantpaddrcheck"><small>Addres for communication</small></p>
                   </li>
                 </ul>
@@ -362,17 +392,17 @@
                   <li class="complex notranslate">
                     <label class="desc" > Communication Address <span class="req">*</span> </label>
                     <div> <label for="applicantcaddr1">Address Line 1</label><span class="full addr1">
-                      <input id="applicantcaddr1" name="temp_addr1" type="text" class="field text addr" value="" tabindex="22" maxlength="39"/>
+                      <input id="applicantcaddr1" name="temp_addr1" type="text" class="field text addr" value="" tabindex="" maxlength="39"/>
                       </span>  <label for="applicantcaddr2">Address Line 2</label><span class="full addr2">
-                      <input id="applicantcaddr2" name="temp_addr2" type="text" class="field text addr" value="" tabindex="23"  maxlength="39" />
+                      <input id="applicantcaddr2" name="temp_addr2" type="text" class="field text addr" value="" tabindex=""  maxlength="39" />
                       </span> <label for="applicantcaddr3">Address Line 3</label><span class="full addr2">
-                      <input id="applicantcaddr3" name="temp_addr3" type="text" class="field text addr" value="" tabindex="23"  maxlength="39" />
+                      <input id="applicantcaddr3" name="temp_addr3" type="text" class="field text addr" value="" tabindex=""  maxlength="39" />
                       </span><label for="applicantccity">City</label> <span class="left city">
-                      <input id="applicantccity" name="temp_city" type="text" class="field text addr" value="" tabindex="24" maxlength="27"/>
+                      <input id="applicantccity" name="temp_city" type="text" class="field text addr" value="" tabindex="" maxlength="27"/>
                       </span>  <label for="applicantcstate">State</label><span class="right state">
-                      <input id="applicantcstate" name="temp_state" type="text" class="field text addr" value="" tabindex="25" maxlength="20"/>
+                      <input id="applicantcstate" name="temp_state" type="text" class="field text addr" value="" tabindex="" maxlength="20"/>
                       </span><label for="applicantczip">Postal / Zip Code</label> <span class="left zip">
-                      <input id="applicantczip" name="temp_zip" type="text" class="field text addr" value="" maxlength="6" tabindex="26"/>
+                      <input id="applicantczip" name="temp_zip" type="text" class="field text addr" value="" maxlength="6" tabindex=""/>
                       </span> 
                     </div>
                     <p class="complex instruct" id="instructapplicantcaddr"><small>Please enter your address As per your communication address proof</small></p>
@@ -387,14 +417,14 @@
                       <li class="notranslate">
                         <label class="desc" for="applicant2name"> Name of the second applicant <span class="req">*</span> </label>
                         <div>
-                          <input id="applicant2name" name="applicant2_name" type="text" class="field text medium" value="" maxlength="62" tabindex="27" onKeyUp="" autofocus />
+                          <input id="applicant2name" name="applicant2_name" type="text" class="field text medium" value="" rel="extra" maxlength="62" tabindex="" onKeyUp="" autofocus />
                         </div>
                         <p class="instruct" id="instructapplicant2name"><small>Please Enter your second applicant's name</small></p>
                       </li>
                       <li class="notranslate">
                         <label class="desc" for="applicant2pan"> second applicant PAN Number <span class="req">*</span> </label>
                         <div>
-                          <input id="applicant2pan" class="field text medium" name="applicant2_pan" tabindex="28" type="text" value="" />
+                          <input id="applicant2pan" class="field text medium" name="applicant2_pan" rel="extra" tabindex="28" type="text" value="" />
                         </div>
                         <p class="instruct" id="instructapplicant2pan"><small>Please Enter second Applicant's PAN card NO</small></p>
                       </li>
@@ -404,14 +434,14 @@
                     <li class="notranslate">
                       <label class="desc" for="applicant3name"> Name of the Third applicant <span class="req">*</span> </label>
                       <div>
-                        <input id="applicant3name" name="applicant3_name" type="text" class="field text medium" value="" maxlength="62" tabindex="29" onKeyUp=""  autofocus />
+                        <input id="applicant3name" name="applicant3_name" type="text" class="field text medium" rel="extra" value="" maxlength="62" tabindex="29" onKeyUp=""  autofocus />
                       </div>
                       <p class="instruct" id="instructapplicant3name"><small>Please Enter your Third applicant's name</small></p>
                     </li>
                     <li class="notranslate">
                       <label class="desc" for="applicant3pan"> Third applicant PAN Number <span class="req">*</span> </label>
                       <div>
-                        <input id="applicant3pan" class="field text medium" name="applicant3_pan" tabindex="30" type="text" value="" />
+                        <input id="applicant3pan" class="field text medium" name="applicant3_pan" tabindex="30" rel="extra" type="text" value="" />
                       </div>
                       <p class="instruct" id="instructapplicant3pan"><small>Please Enter your second applicant's PAN card number</small></p>
                     </li>
@@ -423,12 +453,14 @@
                   if(val==2)
                   {
                   $('#investor2').show();
+                  tab_index_correction();
                   $('#addmoreinvestorlink').attr('href','javascript:addinvestor(3);');
                   }
                   
                   if(val==3)
                   {
                   $('#investor3').show();
+                  tab_index_correction();
                   $('#addinvestorsbutton').empty();
                   }
                   }
@@ -445,29 +477,31 @@
                   <li class="complex notranslate">
                     <div id="bank_details">
                       <span class="full addr1">
-                      <label for="bankname">Name of the Bank</label><input id="bankname" maxlength="33"  name="bankname" type="text" class="field text addr" value="" onChange="bankval(this.value,'bankname','instructbank')"  tabindex="31" />
+                      <label for="bankname">Name of the Bank</label><input id="bankname" maxlength="33"  name="bankname" type="text" class="field text addr" value="" onChange="bankval(this.value,'bankname','instructbank')"  tabindex="27" />
                       </span> <label>Account Type</label> 
                       <div>
                         <input type="radio" checked id="bankacctypes" name="bank_acc_type" value="saving" tabindex="32"/>&nbsp;Savings&nbsp;&nbsp;&nbsp;&nbsp;
                         <input type="radio" id="bankacctypec" name="bank_acc_type" value="current" tabindex="33"/>&nbsp;Current
                       </div>
                       <span class="full addr2">
-                      </span> <label for="bank_micr">MICR Code</label><span class="left zip">
-                      <input id="bankmicr" name="bankmicr" type="text" class="field text addr" value="" maxlength="9" tabindex="38"  />
-                      </span> <label for="bankifsc">IFSC Code</label><span class="left zip">
-                      <input id="bankifsc" name="bankifsc" type="text" class="field text addr" value="" maxlength="11"  tabindex="39"  />       
+                            
                       </span> <label for="bankaccno">Account Number</label><span class="left city">
-                      <input id="bankaccno" name="bank_acc_no" type="text" class="field text addr" value="" tabindex="34" maxlength="20" />
+                      <input id="bankaccno" name="bank_acc_no" type="text" class="field text addr" value="" tabindex="28" maxlength="20" />
                       </span><label>Branch Address</label> <span class="right state">
                       </span> <label for="bankaddr1">Line 1</label><span class="left zip">
-                      <input id="bankaddr1" name="bank_addr1" type="text" class="field text addr" value="" maxlength="39" tabindex="35" />
+                      <input id="bankaddr1" name="bank_addr1" type="text" class="field text addr" value="" maxlength="39" tabindex="29" />
                       </span> <label for="bankaddr2">Line 2 </label><span class="left zip">
-                      <input id="bankaddr2" name="bank_addr2" type="text" class="field text addr" value="" maxlength="39" tabindex="36" />
+                      <input id="bankaddr2" name="bank_addr2" type="text" class="field text addr" value="" maxlength="39" tabindex="30" />
                       </span> <label for="bankcity">Branch City</label><span class="left zip">
-                      <input id="bankcity" name="bank_city" type="text" class="field text addr" value="" maxlength="27"/>
-                      </span>
+                      <input id="bankcity" name="bank_city" type="text" class="field text addr" value="" maxlength="27" tabindex="31"/>
+                    
+                       </span> <label for="bank_micr">MICR Code</label><span class="left zip">
+                      <input id="bankmicr" name="bankmicr" type="text" class="field text addr" value="" maxlength="9" tabindex="32"  />
+                      </span> <label for="bankifsc">IFSC Code</label><span class="left zip">
+                      <input id="bankifsc" name="bankifsc" type="text" class="field text addr" value="" maxlength="11"  tabindex="33"  />
                     </div>
                     <p class="complex instruct" id="instructbank"><small>Please Enter your Bank details </small></p>
+                  </span> 
                   </li>
                 </ul>
                 <diV id="Addbankdetailsblock">
@@ -481,7 +515,7 @@
                       <li class="complex notranslate">
                         <div id="bank2details">
                           <span class="full addr1">
-                          <label for="bank2name">Name of the Second Bank</label><input id="bank2name" maxlength="33"  name="bank2name" type="text" class="field text addr" value="" tabindex="40" />
+                            <label for="bank2name">Name of the Second Bank</label><input id="bank2name" maxlength="33"  name="bank2name" type="text" class="field text addr" value="" tabindex="40" />
                           </span> <label>Account Type</label> 
                           <div>
                             <input type="radio" checked id="bank2acctypes" name="bank2acctype" value="saving" tabindex="41"/>&nbsp;Savings&nbsp;&nbsp;&nbsp;&nbsp;
@@ -541,27 +575,27 @@
                   </div>
                 </div>
                 <script type="text/javascript">
-                  function addbanksdetails(val){
-                    if(val==2)
-                    {
-                    $('#bankdetails2').show();
-                    $('#addmorebankdetailslink').attr('href','javascript:addbanksdetails(3);');
-                    $('#bank2stat').attr('value','bank2true');
-                    }
+                  // function addbanksdetails(val){
+                  //   if(val==2)
+                  //   {
+                  //   $('#bankdetails2').show();
+                  //   $('#addmorebankdetailslink').attr('href','javascript:addbanksdetails(3);');
+                  //   $('#bank2stat').attr('value','bank2true');
+                  //   }
                     
-                    if(val==3)
-                    {
-                    $('#bankdetails3').show();
-                    $('#addbankdetailsbutton').empty();
-                    $('#bank3stat').attr('value','bank3true');
-                    }
-                  }
+                  //   if(val==3)
+                  //   {
+                  //   $('#bankdetails3').show();
+                  //   $('#addbankdetailsbutton').empty();
+                  //   $('#bank3stat').attr('value','bank3true');
+                  //   }
+                  // }
                 </script>
-                <ul id="addbankdetailsbutton">
+                 <!--<ul id="addbankdetailsbutton">
                   <li id="bankdetailsbutton" class="buttons">
                     <a id="addmorebankdetailslink" class="btTxt submit fundsInn-btn" href="javascript:addbanksdetails(2);" >Add More Banks</a>
-                  </li>
-                </ul>
+                  </li> 
+                </ul>-->
                 <ul>
                   <li class="notranslate">
                     <span class="left zip">
@@ -627,13 +661,13 @@
                     <li class="date eurodate notranslate      ">
                       <label class="desc"> Date Of Birth <span class="req">*</span> </label>
                       <span>
-                      <input id="appnomdobd" name="nomineedobd" type="text" class="field text"  value="" size="2" maxlength="2" tabindex="63" required />
+                      <input id="appnomdobd" name="nomineedobd" type="text" class="field text"  value="" size="2" maxlength="2" tabindex="63"  />
                       <label for="appnomdobd">DD</label>
                       </span> <span class="symbol">/</span> <span>
-                      <input id="appnomdobm" name="nomineedobm" type="text" class="field text " value="" size="2" maxlength="2" tabindex="64" required />
+                      <input id="appnomdobm" name="nomineedobm" type="text" class="field text " value="" size="2" maxlength="2" tabindex="64"  />
                       <label for="appnomdobm">MM</label>
                       </span> <span class="symbol">/</span> <span>
-                      <input id="appnomdoby" name="nomineedoby" type="text" class="field text " value="" size="4" maxlength="4" tabindex="65" required />
+                      <input id="appnomdoby" name="nomineedoby" type="text" class="field text " value="" size="4" maxlength="4" tabindex="65" />
                       <label for="appnomdoby">YYYY</label>
                       </span>
                       <p class="instruct" id="instructappnomdobd"><small>Your date of birth</small></p>
@@ -678,6 +712,8 @@
     <!-- validations -->
     <script type="text/javascript">
       $(document).ready(function(){
+                tab_index_correction();
+
         var post_code_regx = /^\d{6}$/;
         var panPat = /^([a-zA-Z]{5})(\d{4})([a-zA-Z]{1})$/;
         var ifscPat = /^([a-zA-Z]{4})(\d{3,10})$/;
@@ -711,6 +747,7 @@
            }, "Please Select the options!");
       
         $("#individualform").validate({
+          focusInvalid: false,
               rules:{
             // "account_type":{required:true},
             "applicant_name":{required:true, maxlength: 62 },
@@ -748,24 +785,24 @@
             "bank_city" : {required:true, maxlength:24},
             "bankmicr" : {required:true,digits:true,max:999999999},
             "bankifsc" : {required:true, isIFSC:true},
-            "bank2name" : {minlength:2},
-            "bank2accno" :{digits:true, maxlength:20},
-            "bank2addr1" : { maxlength:39},
-            "bank2addr2" : { maxlength:39},
-            "bank2city" :{maxlength:24},
-            "bank2micr" :{digits:true,max:999999999},
-            "bank2ifsc" :{isIFSC:true},
-            "bank3name" : {minlength:2}, 
-            "bank3accno" :{digits:true, maxlength:20},
-            "bank3addr1" : { maxlength:39},
-            "bank3addr2" :{ maxlength:39},
-            "bank3city" :{maxlength:24},
-            "bank3micr" : {digits:true,max:999999999},
-            "bank3ifsc" :{isIFSC:true},
+            // "bank2name" : {minlength:2},
+            // "bank2accno" :{digits:true, maxlength:20},
+            // "bank2addr1" : { maxlength:39},
+            // "bank2addr2" : { maxlength:39},
+            // "bank2city" :{maxlength:24},
+            // "bank2micr" :{digits:true,max:999999999},
+            // "bank2ifsc" :{isIFSC:true},
+            // "bank3name" : {minlength:2}, 
+            // "bank3accno" :{digits:true, maxlength:20},
+            // "bank3addr1" : { maxlength:39},
+            // "bank3addr2" :{ maxlength:39},
+            // "bank3city" :{maxlength:24},
+            // "bank3micr" : {digits:true,max:999999999},
+            // "bank3ifsc" :{isIFSC:true},
             "nomineename" :{ minlength:2},
             "nomineedobd" :{ min: 1, max: 31  },
             'nomineedobm' :{ min: 1, max: 12  },
-            "nomineedoby" :{isValidAge:true },
+            //"nomineedoby" :{isValidAge:true },
             "nominee_parent_name": { minlength:2},
             "appnomrel" :{ maxlength:39},
             "agreementaccept" :{required:true}
@@ -823,6 +860,8 @@
           $("#saveForm").text("Submit");
           $("#clearForm").text("Edit");
           scroll_top();
+          }else{
+             scroll_top();
           }
         }
         return false;

@@ -107,7 +107,22 @@
       	$('#appnomineedetails').show();	
       	
       }
-      
+      function tab_index_correction()
+         {
+          var count=1;
+          $("#corporateform :input").each(function(k,v){
+            if($(v).attr("type")!="hidden" && $(v).attr("rel")!="extra")
+            { 
+             $(v).attr("tabindex",count);
+             count++;
+            //console.log($(v).attr("type")+""+count);
+            }
+          });
+            console.log("tab index corrected");
+
+        }
+
+
       var eattr;
       function send()
       { 	
@@ -214,7 +229,7 @@
                   </li>
                   <!-- investor_details -->
                   <li class="notranslate">
-                    <label class="desc" for="applicantname"> Name of the applicant <span class="req">*</span> </label>
+                    <label class="desc" for="applicantname"> Name of the Applicant <span class="req">*</span> </label>
                     <div>
                       <input id="applicantname" name="applicantname" type="text" class="field text medium" value="" maxlength="62" tabindex="4" />
                     </div>
@@ -392,14 +407,14 @@
                       <li class="notranslate">
                         <label class="desc" for="applicant2name"> Name of the second applicant <span class="req">*</span> </label>
                         <div>
-                          <input id="applicant2name" name="applicant2name" type="text" class="field text medium" value="" maxlength="62" tabindex="28" onKeyUp="" required autofocus />
+                          <input id="applicant2name" name="applicant2name" type="text" rel="extra" class="field text medium" value="" maxlength="62" tabindex="28" onKeyUp="" required autofocus />
                         </div>
                         <p class="instruct" id="instructapplicant2name"><small>Only letters, maximum only 62 characters all in CAPS</small></p>
                       </li>
                       <li class="notranslate">
                         <label class="desc" for="applicant2pan"> second applicant PAN Number <span class="req">*</span> </label>
                         <div>
-                          <input id="applicant2pan" class="field text medium" name="applicant2pan" tabindex="29" required  type="text" value="" />
+                          <input id="applicant2pan" class="field text medium" rel="extra" name="applicant2pan" tabindex="29" required  type="text" value="" />
                         </div>
                         <p class="instruct" id="instructapplicant2pan"><small>Your pan number</small></p>
                       </li>
@@ -409,14 +424,14 @@
                     <li class="notranslate">
                       <label class="desc" for="applicant3name"> Name of the Third applicant <span class="req">*</span> </label>
                       <div>
-                        <input id="applicant3name" name="applicant3name" type="text" class="field text medium" value="" maxlength="62" tabindex="30" onKeyUp="" required autofocus />
+                        <input id="applicant3name" name="applicant3name" type="text" rel="extra" class="field text medium" value="" maxlength="62" tabindex="30" onKeyUp="" required autofocus />
                       </div>
                       <p class="instruct" id="instructapplicant3name"><small>Only letters, maximum only 62 characters all in CAPS</small></p>
                     </li>
                     <li class="notranslate">
                       <label class="desc" for="applicant3pan"> Third applicant PAN Number <span class="req">*</span> </label>
                       <div>
-                        <input id="applicant3pan" class="field text medium" name="applicant3pan" tabindex="31" required  type="text" value="" />
+                        <input id="applicant3pan" class="field text medium" rel="extra" name="applicant3pan" tabindex="31" required  type="text" value="" />
                       </div>
                       <p class="instruct" id="instructapplicant3pan"><small>Your pan number</small></p>
                     </li>
@@ -428,12 +443,14 @@
                   if(val==2)
                   {
                   $('#investor2').show();
+                  tab_index_correction();
                   $('#addmoreinvestorlink').attr('href','javascript:addinvestor(3);');
                   }
                   
                   if(val==3)
                   {
                   $('#investor3').show();
+                  tab_index_correction();
                   $('#addinvestorsbutton').empty();
                   }
                   }
@@ -545,22 +562,22 @@
                   </div>
                 </div>
                 <script type="text/javascript">
-                  function addbanksdetails(val){
+                  // function addbanksdetails(val){
                   
-                  if(val==2)
-                  {
-                  $('#bankdetails2').show();
-                  $('#addmorebankdetailslink').attr('href','javascript:addbanksdetails(3);');
-                  $('#bank2stat').attr('value','bank2true');
-                  }
+                  // if(val==2)
+                  // {
+                  // $('#bankdetails2').show();
+                  // $('#addmorebankdetailslink').attr('href','javascript:addbanksdetails(3);');
+                  // $('#bank2stat').attr('value','bank2true');
+                  // }
                   
-                  if(val==3)
-                  {
-                  $('#bankdetails3').show();
-                  $('#addbankdetailsbutton').empty();
-                  $('#bank3stat').attr('value','bank3true');
-                  }
-                  }
+                  // if(val==3)
+                  // {
+                  // $('#bankdetails3').show();
+                  // $('#addbankdetailsbutton').empty();
+                  // $('#bank3stat').attr('value','bank3true');
+                  // }
+                  // }
                 </script>
                 <ul id="addbankdetailsbutton">
                   <li id="bankdetailsbutton" class="buttons">
@@ -630,13 +647,13 @@
                     <li class="date eurodate notranslate      ">
                       <label class="desc"> Date Of Birth <span class="req">*</span> </label>
                       <span>
-                      <input id="appnomdobd" name="appnomdobd" type="text" class="field text"  value="" size="2" maxlength="2" tabindex="64" required />
+                      <input id="appnomdobd" name="appnomdobd" type="text" class="field text"  value="" size="2" maxlength="2" tabindex="64" />
                       <label for="appnomdobd">DD</label>
                       </span> <span class="symbol">/</span> <span>
-                      <input id="appnomdobm" name="appnomdobm" type="text" class="field text"  value="" size="2" maxlength="2" tabindex="65" required />
+                      <input id="appnomdobm" name="appnomdobm" type="text" class="field text"  value="" size="2" maxlength="2" tabindex="65" />
                       <label for="appnomdobm">MM</label>
                       </span> <span class="symbol">/</span> <span>
-                      <input id="appnomdoby" name="appnomdoby" type="text" class="field text" value="" size="4" maxlength="4" tabindex="66" required />
+                      <input id="appnomdoby" name="appnomdoby" type="text" class="field text" value="" size="4" maxlength="4" tabindex="66" />
                       <label for="appnomdoby">YYYY</label>
                       </span>
                       <p class="instruct" id="instructappnomdobd"><small>Your date of birth</small></p>
@@ -680,7 +697,8 @@
     <!-- validations -->
     <script type="text/javascript">
       $(document).ready(function(){
-        //cphfatbljgCPHFATBLGJ
+        //cp
+        tab_index_correction();
        	var post_code_regx = /^\d{6}$/;
       	var panPat = /^([a-zA-Z]{5})(\d{4})([a-zA-Z]{1})$/;
       	var ifscPat = /^([a-zA-Z]{4})(\d{3,10})$/;
@@ -715,6 +733,7 @@
       
       
         $("#corporateform").validate({
+          focusInvalid: false,
               rules:{
                	// "account_type":{required:true},
       			"applicantname":{required:true, maxlength: 62 },
@@ -755,20 +774,20 @@
       			"bankcity" : {required:true, maxlength:24},
       			"bankmicr" : {required:true,digits:true,max:999999999},
       			"bankifsc" : {required:true,isIFSC:true},
-      			"bank2name" : {minlength:2},
-      			"bank2accno" : {digits:true, maxlength:20},
-      			"bank2addr1" : { maxlength:39},
-      			"bank2addr2" : { maxlength:39},
-      			"bank2city" : {maxlength:24},
-      			"bank2micr" : {digits:true,max:999999999},
-      			"bank2ifsc" : {isIFSC:true},
-      			"bank3name" : {minlength:2}, 
-      			"bank3accno" : {digits:true, maxlength:20},
-      			"bank3addr1" : { maxlength:39},
-      			"bank3addr2" : { maxlength:39},
-      			"bank3city" : {maxlength:24},
-      			"bank3micr" : {digits:true,max:999999999},
-      			"bank3ifsc" : {isIFSC:true},
+      			// "bank2name" : {minlength:2},
+      			// "bank2accno" : {digits:true, maxlength:20},
+      			// "bank2addr1" : { maxlength:39},
+      			// "bank2addr2" : { maxlength:39},
+      			// "bank2city" : {maxlength:24},
+      			// "bank2micr" : {digits:true,max:999999999},
+      			// "bank2ifsc" : {isIFSC:true},
+      			// "bank3name" : {minlength:2}, 
+      			// "bank3accno" : {digits:true, maxlength:20},
+      			// "bank3addr1" : { maxlength:39},
+      			// "bank3addr2" : { maxlength:39},
+      			// "bank3city" : {maxlength:24},
+      			// "bank3micr" : {digits:true,max:999999999},
+      			//"bank3ifsc" : {isIFSC:true},
       			"appnomname" : { minlength:2},
       			"appnomdobd" : { min: 1, max: 31  },
       			'appnomdobm' : { min: 1, max: 12  },
@@ -830,6 +849,8 @@
           $("#saveForm").text("Submit");
           $("#clearForm").text("Edit");
           scroll_top();
+          }else{
+             scroll_top();
           }
         }
         return false;

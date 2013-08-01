@@ -8,6 +8,7 @@ $applicant_name=$_POST['applicant_name'];
 $applicant_father_name=$_POST["applicant_father_name"];
 $applicant_dob=$_POST["applicantdobyyyy"]."-".$_POST["applicantdobmm"]."-".$_POST["applicant_dob"];
 $applicant_gender=$_POST["applicant_gender"];
+$maritial_status=$_POST["maritial_status"];
 $applicant_pan=$_POST["applicant_pan"];
 $phone_resi=$_POST["phone_resi"];
 $phone_office=$_POST["phone_office"];
@@ -154,7 +155,7 @@ if($applicant2_pan!=""){
 
 
 $details_sql = "INSERT INTO `individual_account_details` (`application_id`,`account_type`, `applicant_name`, `father_name`,
-									  `dob`, `gender`, `pan`, `phone_office`, `phone_resi`, 
+									  `dob`, `gender`,`maritial_status`,`pan`, `phone_office`, `phone_resi`, 
 									  `mobile`, `email`, `occupation`, `tax_status`,
 									   `nationality`, `temp_address`, `temp_city`, 
 									   `temp_state`, `temp_zip`, `perm_address`,
@@ -164,7 +165,7 @@ $details_sql = "INSERT INTO `individual_account_details` (`application_id`,`acco
                        `nominee_name`,`nominee_dob`, `nominee_parent`, `nominee_relationship`, 
 									     `mode_of_holding`) VALUES ('".$application_no."',
     										'".$account_type."','".$applicant_name."','".$applicant_father_name."',
-    										'".$applicant_dob."','".$applicant_gender."','".$applicant_pan."',
+    										'".$applicant_dob."','".$applicant_gender."','".$maritial_status."','".$applicant_pan."',
     										'".$phone_office."','".$phone_resi."','".$mobile."',
     										'".$email."','".$occupation."','".$tax_status."',
     										'".$nationality."','".$temp_address."','".$temp_city."',

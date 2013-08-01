@@ -176,7 +176,7 @@ $details_sql = "INSERT INTO `corporate_account_details` (`application_id`,`accou
             										'".$applicant_dob."','".$applicant_gender."','".$applicant_pan."',
             										'".$applicant2contactname."','".$applicant2designation."',
             										'".$phone_office."','".$phone_resi."','".$mobile."',
-            										'".$email."','".$occupation."','".$status."','".$tax_status."',
+            										'".$applicant2email."','".$occupation."','".$status."','".$tax_status."',
             										'".$perm_addr."','".$perm_city."','".$perm_state."','".$perm_zip."','".$current_addr."',
             										'".$current_city."','".$current_state."','".$current_zip."','".$invester_id1."',
             										'".$invester_id2."','".$bank_id1."','".$bank_id2."','".$bank_id3."','".$sip_validity_years."',

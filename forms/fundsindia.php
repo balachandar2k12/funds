@@ -24,9 +24,40 @@
     <script type="text/javascript" src="../js/fundsinn.js"></script>
     <script type="text/javascript" src="../js/individualformval.js"></script> 
     <style type="text/css">
-      .er {color:red;}
-      .su {color:green;}
-    </style>
+      th{
+        text-align: center;
+         color: #898888 !important;
+        font-weight: bold;
+        font-size: 16px;
+      }
+      .center{
+        text-align: center;
+      }
+      .fd_comp{
+        color: #898888 !important;
+        font-weight: bold;
+      }
+      #main_header{
+        color: #898888 !important;
+        font-weight: bold;
+        font-size: 16px;
+      }
+      .buy_button{
+        font-family: 'Montserrat', sans-serif;
+        background-color: #f4c235;
+        color:black !important;
+        border-color: #f4c235;
+      }
+      .buy_button:hover{
+        font-family: 'Montserrat', sans-serif;
+        background-color: #f4c235;
+         color:white !important;
+        border-color: #f4c235;
+      }
+      
+
+     
+     </style>
   </head>
   <body>
     <!--MAIN WRAPPER-->
@@ -89,404 +120,96 @@
 <br>
 <h3>Top Rated Companies</h3>
 <span style="float:right;">
-  <font class="mandatory_star">**</font> - Online Payment Enabled
+  <font class="mandatory_star"></font> 
 </span>
-
 <table class="table table-bordered">
 <tbody><tr>
-  <th rowspan="2">Company Name</th>
-    <th colspan="4">Rating</th>
-  <th rowspan="2">1<br>Year</th>
-  <th rowspan="2">2<br>Years</th>
-  <th rowspan="2">3<br>Years</th>
-  <th rowspan="2"></th>
+  <th id="main_header">Company Name</th>
+  <th>1<br>Year</th>
+  <th>2<br>Years</th>
+  <th>3<br>Years</th>
+  <th></th>
 </tr>
-<tr>
-  <th style="border-left: 1px solid #DDDDDD;">ICRA</th>
-  <th>CRISIL</th>
-  <th>FITCH</th>
-  <th>CARE</th>
-</tr>
-            
-     
-       <tr>
-        <td>
-            <a href="/content/jsp/fixedDeposit/hdfc.jsp" class="fd_comp">
-          
-          HDFC LIMITED  </a>
-        </td>
-        <td>
-      
-            <a href="#" onclick="javascript:window.open('/content/jsp/fixedDeposit/FDrating.html','compdetails','toolbar=no,status=no,scrollbars=yes,location=no,menubar=no,directories=no,width=600,,left =200,top=50')">MAAA</a>
-            
-    </td>
-        <td>
-          
-            <a href="#" onclick="javascript:window.open('/content/jsp/fixedDeposit/FDrating.html','compdetails','toolbar=no,status=no,scrollbars=yes,location=no,menubar=no,directories=no,width=600,,left =200,top=50')">FAAAA</a>
-            
-        </td>
-        <td>
-          
-             N/A
-            
-        </td>
-        <td>
-          
-             N/A
-            
-        </td>
-        <td>
-          
-            8.9%
-            
-        </td>
-        <td>
-           
-            9.05%
-            
-        </td>
-        <td>
-          
-            9.15 %
-            
-        </td>
-        <td><img class="trans_home_txt" style="cursor:pointer;" src="../img/buy_butt.gif" onclick="enabledAction(1)"></td>
-      </tr>
-     
 
-      
-     
-       <tr>
-        <td>
-            <a href="/content/jsp/fixedDeposit/shriram.jsp" class="fd_comp">
-          
-          SHRIRAM TRANSPORT FINANCE CO.LTD  
-          <span class="mandatory_star">**</span>
-          </a>
-        </td>
-        <td>
-      
-             N/A
-            
+   <tr>
+    <td>
+       <a href="#" class="fd_comp">HDFC Limited</a>
     </td>
-        <td>
-          
-             N/A
-            
-        </td>
-        <td>
-          
-            <a href="#" onclick="javascript:window.open('/content/jsp/fixedDeposit/FDrating.html','compdetails','toolbar=no,status=no,scrollbars=yes,location=no,menubar=no,directories=no,width=600,,left =200,top=50')">TAA</a>
-            
-        </td>
-        <td>
-          
-             N/A
-            
-        </td>
-        <td>
-          
-            9.25%
-            
-        </td>
-        <td>
-           
-            9.75%
-            
-        </td>
-        <td>
-          
-            10.75 %
-            
-        </td>
-        <td><img class="trans_home_txt" style="cursor:pointer;" src="../img/buy_butt.gif" onclick="enabledAction(2)"></td>
-      </tr>
-     
+    <td class="center">8.9%</td>
+    <td class="center">9.05%</td>
+    <td class="center">9.15 %</td>
+    <td class="center"><a href="#" class="btn btn-small buy_button">Buy</a></td>
+   </tr> 
+  <tr>
+    <td>
+      <a href="#" class="fd_comp">Shriram Transport Finance Co.Ltd </a>
+    </td>
+    <td class="center">9.25%</td>
+    <td class="center">9.75%</td>
+    <td class="center">10.75 %</td>
+    <td class="center"><a href="#" class="btn btn-small buy_button">Buy</a></td>
+  </tr>
+ 
+   <tr>
+    <td>
+      <a href="#" class="fd_comp">Mahindra and Mahindra Financial Services Ltd </a>
+    </td>
+    <td class="center">9.25%</td> 
+    <td class="center">10.0%</td>
+    <td class="center">10.25 %</td>
+    <td class="center"><a href="#" class="btn btn-small buy_button">Buy</a></td>
+   </tr>
+    <tr>
+      <td>
+        <a href="#" class="fd_comp">LIC Housing Finance Ltd  </a>
+      </td>
+        <td class="center">7.0%</td>
+        <td class="center">7.4%</td>
+        <td class="center">7.65 %</td>
+        <td class="center"><a href="#" class="btn btn-small buy_button">Buy</a></td>
+     </tr>
 
-      
-     
-       <tr>
+      <tr>
         <td>
-            <a href="/content/jsp/fixedDeposit/mahindra.jsp" class="fd_comp">
-          
-          Mahindra and Mahindra Financial Services Ltd  
-          <span class="mandatory_star">**</span>
-          </a>
+        <a href="#" class="fd_comp">ICICI Home Finance Company Ltd  </a>
         </td>
-        <td>
-      
-             N/A
-            
-    </td>
-        <td>
-          
-            <a href="#" onclick="javascript:window.open('/content/jsp/fixedDeposit/FDrating.html','compdetails','toolbar=no,status=no,scrollbars=yes,location=no,menubar=no,directories=no,width=600,,left =200,top=50')">FAAA</a>
-            
-        </td>
-        <td>
-          
-             N/A
-            
-        </td>
-        <td>
-          
-             N/A
-            
-        </td>
-        <td>
-          
-            9.25%
-            
-        </td>
-        <td>
-           
-            10.0%
-            
-        </td>
-        <td>
-          
-            10.25 %
-            
-        </td>
-        <td><img class="trans_home_txt" style="cursor:pointer;" src="../img/buy_butt.gif" onclick="enabledAction(4)"></td>
-      </tr>
-     
-
-      
-     
-       <tr>
-        <td>
-            <a href="/content/jsp/fixedDeposit/LicHousing.jsp" class="fd_comp">
-          
-          LIC HOUSING FINANACE LTD  </a>
-        </td>
-        <td>
-      
-             N/A
-            
-    </td>
-        <td>
-          
-            <a href="#" onclick="javascript:window.open('/content/jsp/fixedDeposit/FDrating.html','compdetails','toolbar=no,status=no,scrollbars=yes,location=no,menubar=no,directories=no,width=600,,left =200,top=50')">FAAA</a>
-            
-        </td>
-        <td>
-          
-             N/A
-            
-        </td>
-        <td>
-          
-             N/A
-            
-        </td>
-        <td>
-          
-            7.0%
-            
-        </td>
-        <td>
-           
-            7.4%
-            
-        </td>
-        <td>
-          
-            7.65 %
-            
-        </td>
-        <td><img class="trans_home_txt" style="cursor:pointer;" src="../img/buy_butt.gif" onclick="enabledAction(5)"></td>
+        <td class="center">8.25%</td>
+        <td class="center">8.75%</td>
+        <td class="center">8.75 %</td>
+        <td class="center"><a href="#" class="btn btn-small buy_button">Buy</a></td>
       </tr>
 
        <tr>
         <td>
-            <a href="/content/jsp/fixedDeposit/iciciHousing.jsp" class="fd_comp">
-          
-          ICICI HOME FINANCE COMPANY LIMITED  </a>
+          <a href="#" class="fd_comp">DHFL Ltd  </a>
         </td>
-        <td>
-      
-            <a href="#" onclick="javascript:window.open('/content/jsp/fixedDeposit/FDrating.html','compdetails','toolbar=no,status=no,scrollbars=yes,location=no,menubar=no,directories=no,width=600,,left =200,top=50')">MAAA</a>
-            
-    </td>
-        <td>
-          
-             N/A
-            
-        </td>
-        <td>
-          
-             N/A
-            
-        </td>
-        <td>
-          
-             N/A
-            
-        </td>
-        <td>
-          
-            8.25%
-            
-        </td>
-        <td>
-           
-            8.75%
-            
-        </td>
-        <td>
-          
-            8.75 %
-            
-        </td>
-        <td><img class="trans_home_txt" style="cursor:pointer;" src="../img/buy_butt.gif" onclick="enabledAction(6)"></td>
+        <td class="center">10.5%</td>
+        <td class="center">10.5%</td>
+        <td class="center">10.5 %</td>
+        <td class="center"><a href="#" class="btn btn-small buy_button">Buy</a></td>
       </tr>
-     
-
-      
-     
+    
        <tr>
         <td>
-            <a href="/content/jsp/fixedDeposit/dhfl.jsp" class="fd_comp">
-          
-          DHFL LTD  </a>
+          <a href="#" class="fd_comp">Jaiprakash Associates Ltd</a>
         </td>
-        <td>
-      
-             N/A
-            
-    </td>
-        <td>
-          
-             N/A
-            
-        </td>
-        <td>
-          
-             N/A
-            
-        </td>
-        <td>
-          
-            <a href="#" onclick="javascript:window.open('/content/jsp/fixedDeposit/FDrating.html','compdetails','toolbar=no,status=no,scrollbars=yes,location=no,menubar=no,directories=no,width=600,,left =200,top=50')">AA+</a>
-            
-        </td>
-        <td>
-          
-            10.5%
-            
-        </td>
-        <td>
-           
-            10.5%
-            
-        </td>
-        <td>
-          
-            10.5 %
-            
-        </td>
-        <td><img class="trans_home_txt" style="cursor:pointer;" src="../img/buy_butt.gif" onclick="enabledAction(7)"></td>
+        <td class="center">12.0%</td>
+        <td class="center">12.25%</td>
+        <td class="center">12.5 %</td>
+        <td class="center"><a href="#" class="btn btn-small buy_button">Buy</a></td>
       </tr>
-     
 
-      
-     
        <tr>
         <td>
-            <a href="/content/jsp/fixedDeposit/JPALFixedDeposit.jsp" class="fd_comp">
-          
-          Jaiprakash Associates Limited  
-          <span class="mandatory_star">**</span>
-          </a>
+         <a href="/content/jsp/fixedDeposit/NHBFixedDeposit.jsp" class="fd_comp">National Housing Bank  </a>
         </td>
-        <td>
-      
-             N/A
-            
-    </td>
-        <td>
-          
-             N/A
-            
-        </td>
-        <td>
-          
-             N/A
-            
-        </td>
-        <td>
-          
-             N/A
-            
-        </td>
-        <td>
-          
-            12.0%
-            
-        </td>
-        <td>
-           
-            12.25%
-            
-        </td>
-        <td>
-          
-            12.5 %
-            
-        </td>
-        <td><img class="trans_home_txt" style="cursor:pointer;" src="../img/buy_butt.gif" onclick="enabledAction(8)"></td>
-      </tr>
-     
-
-      
-     
-       <tr>
-        <td>
-            <a href="/content/jsp/fixedDeposit/NHBFixedDeposit.jsp" class="fd_comp">
-          
-          National Housing Bank  
-          <span class="mandatory_star">**</span>
-          </a>
-        </td>
-        <td>
-      
-            <a href="#" onclick="javascript:window.open('/content/jsp/fixedDeposit/FDrating.html','compdetails','toolbar=no,status=no,scrollbars=yes,location=no,menubar=no,directories=no,width=600,,left =200,top=50')">TAAA</a>
-            
-    </td>
-        <td>
-          
-             N/A
-            
-        </td>
-        <td>
-          
-             N/A
-            
-        </td>
-        <td>
-          
-             N/A
-            
-        </td>
-        <td>
-          
-            9.25%
-            
-        </td>
-        <td>
-           
-            9.25%
-            
-        </td>
-        <td>
-          
-            9.25 %
-            
-        </td>
-        <td><img class="trans_home_txt" style="cursor:pointer;" src="../img/buy_butt.gif" onclick="enabledAction(9)"></td>
+        <td class="center">9.25%</td>
+        <td class="center">9.25%</td>
+        <td class="center">9.25 %</td>
+        <td class="center"><a href="#" class="btn btn-small buy_button">Buy</a></td>
       </tr>     
-</tbody></table>
+   </tbody>
+</table>
 <!-- End - Top Rated Companies Detail Table -->
 
 <!-- Start - Bonds & Debentures Detail Table -->
@@ -502,176 +225,30 @@
           </div>
         </div>
       </div>
+
+      <!-- Contact Us -->
+  <div class="contactUs container_16">
+    <div class="homeContentTitle conttactUsTitle grid_4 push_6">
+      <h3>CONTACT US</h3>
+    </div>
+    <div id="contactInfoBox" class="container_16">
+      <div class="contactInfo grid_8">
+       <div class="contactInfo-Title"> PHONE NUMBER </div>
+        <div class="contactInfo-Path"> (080) 412-444-24</div>
+      </div>
+      <div class="contactInfo grid_8">
+        <div class="contactInfo-Title"> E-MAIL </div>
+        <div class="contactInfo-Path"><a href="mailto:invest@fundsinn.com?">invest@fundsinn.com</a></div>
+      </div>
+    </div>
+  </div>
+
       <?php require("footer.php"); ?>
     </div> <!-- Main Wrapper -->
     <!-- validations -->
     <script type="text/javascript">
       $(document).ready(function(){
-        //cphfatbljgCPHFATBLGJ
-       	var post_code_regx = /^\d{6}$/;
-      	var panPat = /^([a-zA-Z]{5})(\d{4})([a-zA-Z]{1})$/;
-      	var ifscPat = /^([a-zA-Z]{4})(\d{3,10})$/;
-      	var currentTime = new Date();
-      	var month = currentTime.getMonth() + 1;
-      	var day = currentTime.getDate();
-      	var cyear = currentTime.getFullYear();
-      
-      	$.validator.addMethod('postalCode',function (value, element){
-      	    return this.optional(element) || post_code_regx.test(value);
-      	}, 'Please enter a valid Postal/Zip  Code');
-      
-      	$.validator.addMethod('isPAN',function (value, element){
-      	    return this.optional(element) || panPat.test(value);
-      	},'Please enter a valid PAN number');
-      
-      	$.validator.addMethod('isValidAge',function (value, element){
-      	    if( ( cyear-( Number(value) ) ) <= 100){
-      	    	return true;
-      	    }else{
-      	    	return false;
-      	    }
-      	},'this is a Not valid D.O.B');
-      
-      	$.validator.addMethod('isIFSC',function (value, element){
-      	    return this.optional(element) || ifscPat.test(value);
-      	}, 'Please enter a valid IFSC code');
-                
-	  	 $.validator.addMethod("valueNotEquals", function(value, element, arg){
-	  		  return arg != value;
-	       }, "Please Select the options!");
-      
-      
-        $("#corporateform").validate({
-              rules:{
-               	// "account_type":{required:true},
-      			"applicantname":{required:true, maxlength: 62 },
-      			"applicantdoidd":{required:true, min: 1, max: 31  },
-      			"applicantdoimm":{required:true, min: 1, max: 12  },
-      			"applicantdoiyyyy" : {required:true},
-      			"applicantpan" : {required:true, isPAN:true },
-      			"applicant2contactname" : {required:true},
-      			"applicant2contactdes" : {required:true},
-      			//"applicant2contactemail":{required:true},
-      			"applicant2contacttelr" : {digits: true},
-      			"applicant2contacttelo" : {required:true},
-      			"applicant2contacttelm" : {required:true, digits: true, minlength:10, maxlength: 10},
-      			"applicantocc": {valueNotEquals: "0" }, 
-      			"applicantstatus" : {valueNotEquals: "0"},
-      			"applicanttaxstatus" : {valueNotEquals: "0"},
-      			"applicantpaddr1" : {required:true, maxlength:39},
-      			"applicantpaddr2" : {maxlength:39},
-      			"applicantpaddr3" : {maxlength:39},
-      			"applicantpcity"  : {required:true, maxlength:24}, 
-      			"applicantpstate" : {required:true, maxlength:24}, 
-      			"applicantpzip"   : {required:true}, 
-      			"applicantcaddr1" : {required:true, maxlength:39},
-      			"applicantcaddr2" : {maxlength:39},
-      			"applicantcaddr3" : {maxlength:39},
-      			"applicantccity"  : {required:true, maxlength:24}, 
-      			"applicantcstate" : {required:true, maxlength:24}, 
-      			"applicantczip"  : {required:true}, 
-      			"applicant2_name" : {maxlength: 62 },
-      			"applicant2pan" : { isPan:true },
-      			"applicant3name" : {maxlength: 62 },
-      			"applicant3pan" : { isPan:true }, 
-      			"bankname" : { required:true, minlength:2},
-      			"bankacctype" : { required:true},
-      			"bankaccno" : { required:true, digits:true, maxlength:20},
-      			"bankaddr1" : { required:true, maxlength:39},
-      			"bankaddr2" : { maxlength:39},
-      			"bankcity" : {required:true, maxlength:24},
-      			"bankmicr" : {required:true,digits:true,max:999999999},
-      			"bankifsc" : {required:true,isIFSC:true},
-      			"bank2name" : {minlength:2},
-      			"bank2accno" : {digits:true, maxlength:20},
-      			"bank2addr1" : { maxlength:39},
-      			"bank2addr2" : { maxlength:39},
-      			"bank2city" : {maxlength:24},
-      			"bank2micr" : {digits:true,max:999999999},
-      			"bank2ifsc" : {isIFSC:true},
-      			"bank3name" : {minlength:2}, 
-      			"bank3accno" : {digits:true, maxlength:20},
-      			"bank3addr1" : { maxlength:39},
-      			"bank3addr2" : { maxlength:39},
-      			"bank3city" : {maxlength:24},
-      			"bank3micr" : {digits:true,max:999999999},
-      			"bank3ifsc" : {isIFSC:true},
-      			"appnomname" : { minlength:2},
-      			"appnomdobd" : { min: 1, max: 31  },
-      			'appnomdobm' : { min: 1, max: 12  },
-      			// "appnomdoby" : {isValidAge:true },
-      			"appnompname": { minlength:2},
-      			"nominee_relationship" :{ maxlength:39},
-      			"agreementaccept" :{required:true}
-              },
-              messages:{
-                'applicantname':"Enter Your Full Name!",
-                "applicantdoidd":{required:"0-31", min:"0-31", max: "0-31"  },
-      		  "applicantdoimm":{required:"0-12", min:"0-12", max:"0-12"  },
-      		  "applicantdoiyyyy" : {required:"ex : 1980"}, 
-      		  "applicant2contacttelm" : {required:"Enter Your Mobile Number", digits:"Enter Your Mobile Number", minlength:"Enter Your Mobile Number", maxlength: "Enter Your Mobile Number"},
-                "appnomdobd" :{required:"0-31", min:"0-31", max: "0-31"  },
-      		  'appnomdobm' :{required:"0-12", min:"0-12", max:"0-12"  },
-      		  "appnomdoby" :{required:"ex : 1980"},
-      		  "agreementaccept" :{required:"Please Accept Terms & Conditions !"}
-              },
-             errorPlacement: function (error, element) {
-             		if($(element).prop("tagName") =="SELECT")
-             			error.insertAfter(element.closest(".styled-select"));
-             		else
-                 		error.insertAfter(element);
-             }
-         });
-     // agreements
-       function prevent_default(){
-         $("#corporateform input").each(function(key,value){ 
-            if($(value).removeAttr("id")!="saveForm" && $(value).attr("id")!="clearForm"){  
-            $(value).removeAttr("disabled");} });
-          $("#corporateform select").each(function(key,value){ $(value).removeAttr("disabled","disabled");});
-          $("#saveForm").text("Preview");
-          $("#clearForm").text("Clear");
-          alert("chaged Default")
-        }
-        
-        function scroll_top(){
-           $("html, body").animate({ scrollTop: 180 }, 600);
-        }
-
-       $(document).on("click","#saveForm","click",function(){
-        
-        if($("#saveForm").text()=="Submit"){
-          if($("#corporateform").valid()){
-          alert("Please verify all the fields Before Submit !");
-          prevent_default();
-          send();}else{
-            scroll_top();
-          }
-        }else if($("#saveForm").text()=="Preview"){
-          if($("#corporateform").valid()){
-          $("#corporateform input").each(function(key,value){ 
-            if(($(value).attr("id")!="saveForm") && ($(value).attr("id")!="clearForm")){  
-            $(value).attr("disabled","disabled");} });
-          $("#corporateform select").each(function(key,value){$(value).attr("disabled","disabled");});
-           $("#saveForm").removeAttr("disabled");
-          $("#clearForm").removeAttr("disabled");
-          $("#saveForm").text("Submit");
-          $("#clearForm").text("Edit");
-          scroll_top();
-          }
-        }
-        return false;
-       }); 
-       // 
-       $(document).on("click","#clearForm",function(){
-        if($("#clearForm").text()=="Clear"){
-         formReset();
-         scroll_top();
-        }else if($("#clearForm").text()=="Edit"){
-          prevent_default();
-          scroll_top();
-        }
-        return false;
-       });
+       
       });
     </script>
   </body>

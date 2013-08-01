@@ -48,11 +48,18 @@ td a{
 	font-weight: none !important;
 }
 td a:hover{
-	color: #0000ff !important;
+	color: rgba(2, 2, 14, 0.9) !important;
 	font-weight: none;
 }
 #table_container{
 	border:1px solix ;
 	border-radius: 5px;
 	background-color: rgba(255, 255, 255, 0.89) !important;
+}
+
+.btn-small {
+padding: 5px 10px;
+font-size: 10px;
+line-height: 8px !important;
+border-radius: 2px !important;
 }

@@ -103,6 +103,22 @@
           $('#appnomineedetails').show(); 
           
         }
+// 
+        function tab_index_correction()
+         {
+          var count=1;
+          $("#nriform :input").each(function(k,v){
+            if($(v).attr("type")!="hidden" && $(v).attr("rel")!="extra")
+            { 
+             $(v).attr("tabindex",count);
+             count++;
+            //console.log($(v).attr("type")+""+count);
+            }
+          });
+            console.log("tab index corrected");
+
+        }
+
       
         var eattr;
         function send()
@@ -292,7 +308,7 @@
                   </li>
                   <!-- investor_details -->
                   <li class="notranslate">
-                    <label class="desc" for="applicantname"> Name of the applicant <span class="req">*</span> </label>
+                    <label class="desc" for="applicantname"> Name of the Applicant <span class="req">*</span> </label>
                     <div>
                       <input id="applicantname" name="applicantname" type="text" class="field text medium" value="" maxlength="62" tabindex="4"  />
                       <!-- onChange="alphareq(this.value,'applicantname','instructapplicantname') -->
@@ -335,6 +351,21 @@
                     </fieldset>
                     <p class="instruct" id="instructapplicantgenderradio"><small>Gender</small></p>
                   </li>
+                   <li class="notranslate">
+                    <fieldset>
+                      <legend class="desc">  Maritial Status <span class="req">*</span> </legend>
+                      <div>
+                        <span>
+                        <input id="applicantmaleradio" name="maritial_status" type="radio" class="field radio" value="Single" tabindex="9" checked="checked" />
+                        <label class="choice" for="applicantmaleradio" > Single</label>
+                        </span> <span>
+                        <input id="applicantfemaleradio" name="maritial_status" type="radio" class="field radio" value="Married" tabindex="10" />
+                        <label class="choice" for="applicantfemaleradio" > Married</label>
+                        </span> 
+                      </div>
+                    </fieldset>
+                    <p class="instruct" id="maritial-status-radio"><small>Maritial Status</small></p>
+                  </li>
                   <li class="notranslate">
                     <label class="desc" for="applicantpan"> PAN Number <span class="req">*</span> </label>
                     <div>
@@ -374,7 +405,7 @@
                     <label class="desc" id="applicantocc"> Occupation <span class="req">*</span> </label>
                     <div>
                       <div class="styled-select">
-                        <select  name="applicantocc" class="field select medium required" tabindex="15">
+                        <select  name="applicantocc" class="field select medium" tabindex="15">
                           <option value="0"> --Select-- </option>
                           <option value="Business">Business</option>
                           <option value="Service">Service</option>
@@ -424,7 +455,6 @@
                       <div class="styled-select">
                         <select  name="applicantnat" class="field select medium">
                           <option value="0" selected="selected"> --Select-- </option>
-                          <option value="0">none</option>
                           <option value="Afghanistan">Afghanistan</option>
                           <option value="Albania">Albania</option>
                           <option value="Algeria">Algeria</option>
@@ -973,14 +1003,14 @@
                       <li class="notranslate">
                         <label class="desc" for="applicant2name"> Name of the second applicant <span class="req">*</span> </label>
                         <div>
-                          <input id="applicant2name" name="applicant2name" type="text" class="field text medium" value="" maxlength="62" tabindex="26" onKeyUp=""/>
+                          <input id="applicant2name" name="applicant2name" type="text" class="field text medium" rel="extra" value="" maxlength="62" tabindex="26" onKeyUp=""/>
                         </div>
                         <p class="instruct" id="instructapplicant2name"><small>Only letters, maximum only 62 characters all in CAPS</small></p>
                       </li>
                       <li class="notranslate">
                         <label class="desc" for="applicant2pan"> second applicant PAN Number <span class="req">*</span> </label>
                         <div>
-                          <input id="applicant2pan" class="field text medium" name="applicant2pan" tabindex="27" type="text" value="" />
+                          <input id="applicant2pan" class="field text medium" name="applicant2pan" rel="extra" tabindex="27" type="text" value="" />
                         </div>
                         <p class="instruct" id="instructapplicant2pan"><small>Your pan number</small></p>
                       </li>
@@ -990,14 +1020,14 @@
                     <li class="notranslate">
                       <label class="desc" for="applicant3name"> Name of the Third applicant <span class="req">*</span> </label>
                       <div>
-                        <input id="applicant3name" name="applicant3name" type="text" class="field text medium" value="" maxlength="62" tabindex="28" onKeyUp="" />
+                        <input id="applicant3name" name="applicant3name" type="text" class="field text medium" value="" rel="extra" maxlength="62" tabindex="28" onKeyUp="" />
                       </div>
                       <p class="instruct" id="instructapplicant3name"><small>Only letters, maximum only 62 characters all in CAPS</small></p>
                     </li>
                     <li class="notranslate">
                       <label class="desc" for="applicant3pan"> Third applicant PAN Number <span class="req">*</span> </label>
                       <div>
-                        <input id="applicant3pan" class="field text medium" name="applicant3pan" tabindex="29" required  type="text" value="" />
+                        <input id="applicant3pan" class="field text medium" name="applicant3pan" tabindex="29" rel="extra" type="text" value="" />
                       </div>
                       <p class="instruct" id="instructapplicant3pan"><small>Your pan number</small></p>
                     </li>
@@ -1009,12 +1039,14 @@
                   if(val==2)
                   {
                   $('#investor2').show();
+                  tab_index_correction();
                   $('#addmoreinvestorlink').attr('href','javascript:addinvestor(3);');
                   }
                   
                   if(val==3)
                   {
                   $('#investor3').show();
+                  tab_index_correction();
                   $('#addinvestorsbutton').empty();
                   }
                   }
@@ -1034,8 +1066,8 @@
                       <label for="bankname">Name of the Bank</label><input id="bankname" maxlength="33"  name="bankname" type="text" class="field text addr" value="" tabindex="30" />
                       </span> <label>Account Type</label> 
                       <div>
-                        <input type="radio" checked id="bankacctypes" name="bankacctype" value="saving" tabindex="31"/>&nbsp;Savings&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="radio" id="bankacctypec" name="bankacctype" value="current" tabindex="32"/>&nbsp;Current
+                        <input type="radio" checked id="bankacctypes" name="bankacctype" value="NRE" tabindex="31"/>&nbsp;NRE&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" id="bankacctypec" name="bankacctype" value="NRO" tabindex="32"/>&nbsp;NRO
                       </div>
                       <span class="full addr2">
                       </span> <label for="bankaccno">Account Number</label><span class="left city">
@@ -1078,9 +1110,9 @@
                           <input id="bank2accno" name="bank2accno" type="text" class="field text addr" value="" maxlength="20"  tabindex="42" />
                           </span><label>Branch Address</label> <span class="right state">
                           </span> <label for="bank2addr1">Line 1</label><span class="left zip">
-                          <input id="bank2addr1" name="bank2addr1" type="text" class="field text addr" value="" maxlength="39" tabindex="43" required />
+                          <input id="bank2addr1" name="bank2addr1" type="text" class="field text addr" value="" maxlength="39" tabindex="43" />
                           </span> <label for="bank2addr2">Line 2  </label><span class="left zip">
-                          <input id="bank2addr2" name="bank2addr2" type="text" class="field text addr" value="" maxlength="39" tabindex="44" required />
+                          <input id="bank2addr2" name="bank2addr2" type="text" class="field text addr" value="" maxlength="39" tabindex="44" />
                           </span> <label for="bank2city">Branch City</label><span class="left zip">
                           <input id="bank2city" name="bank2city" type="text" class="field text addr" value="" maxlength="27" tabindex="45"  />
                           </span> <label for="bank2micr">MICR Code</label><span class="left zip">
@@ -1126,28 +1158,28 @@
                   </div>
                 </div>
                 <script type="text/javascript">
-                  function addbanksdetails(val){
+                  // function addbanksdetails(val){
                   
-                  if(val==2)
-                  {
-                  $('#bankdetails2').show();
-                  $('#addmorebankdetailslink').attr('href','javascript:addbanksdetails(3);');
-                  $('#bank2stat').attr('value','bank2true');
-                  }
+                  // if(val==2)
+                  // {
+                  // $('#bankdetails2').show();
+                  // $('#addmorebankdetailslink').attr('href','javascript:addbanksdetails(3);');
+                  // $('#bank2stat').attr('value','bank2true');
+                  // }
                   
-                  if(val==3)
-                  {
-                  $('#bankdetails3').show();
-                  $('#addbankdetailsbutton').empty();
-                  $('#bank3stat').attr('value','bank3true');
-                  }
-                  }
+                  // if(val==3)
+                  // {
+                  // $('#bankdetails3').show();
+                  // $('#addbankdetailsbutton').empty();
+                  // $('#bank3stat').attr('value','bank3true');
+                  // }
+                  // }
                 </script>
-                <ul id="addbankdetailsbutton">
+               <!--  <ul id="addbankdetailsbutton">
                   <li id="bankdetailsbutton" class="buttons">
                     <a id="addmorebankdetailslink" class="btTxt submit fundsInn-btn" href="javascript:addbanksdetails(2);" >Add More Banks</a>
                   </li>
-                </ul>
+                </ul> -->
                 <ul>
                   <li class="notranslate">
                     <span class="left zip">
@@ -1262,7 +1294,7 @@
     <!-- validations -->
     <script type="text/javascript">
       $(document).ready(function(){
-      
+        tab_index_correction();
         var post_code_regx = /^\d{6}$/;
         var panPat = /^([a-zA-Z]{5})(\d{4})([a-zA-Z]{1})$/;
         var ifscPat = /^([a-zA-Z]{4})(\d{3,10})$/;
@@ -1297,6 +1329,7 @@
       
       
         $("#nriform").validate({
+          focusInvalid: false,
               rules:{
             "account_type":{required:true},
             "applicantname":{required:true, maxlength: 62 },
@@ -1336,24 +1369,24 @@
             "bankcity" : {required:true, maxlength:24},
             "bankmicr" : {required:true,digits:true,max:999999999},
             "bankifsc" : {required:true,isIFSC:true},
-            "bank2name" : {minlength:2},
-            "bank2accno" :{digits:true, maxlength:20},
-            "bank2addr1" : { maxlength:39},
-            "bank2addr2" : { maxlength:39},
-            "bank2city" :{maxlength:24},
-            "bank2micr" :{digits:true,max:999999999},
-            "bank2ifsc" :{isIFSC:true},
-            "bank3name" : {minlength:2}, 
-            "bank3accno" :{digits:true, maxlength:20},
-            "bank3addr1" : { maxlength:39},
-            "bank3addr2" :{ maxlength:39},
-            "bank3city" :{maxlength:24},
-            "bank3micr" : {digits:true,max:999999999},
-            "bank3ifsc" :{isIFSC:true},
+            // "bank2name" : {minlength:2},
+            // "bank2accno" :{digits:true, maxlength:20},
+            // "bank2addr1" : { maxlength:39},
+            // "bank2addr2" : { maxlength:39},
+            // "bank2city" :{maxlength:24},
+            // "bank2micr" :{digits:true,max:999999999},
+            // "bank2ifsc" :{isIFSC:true},
+            // "bank3name" : {minlength:2}, 
+            // "bank3accno" :{digits:true, maxlength:20},
+            // "bank3addr1" : { maxlength:39},
+            // "bank3addr2" :{ maxlength:39},
+            // "bank3city" :{maxlength:24},
+            // "bank3micr" : {digits:true,max:999999999},
+            // "bank3ifsc" :{isIFSC:true},
             "appnomname" :{ minlength:2},
             "appnomdobd" :{ min: 1, max: 31  },
             'appnomdobm' :{ min: 1, max: 12  },
-            "appnomdoby" :{isValidAge:true },
+            //"appnomdoby" :{isValidAge:true },
             "appnompname": { minlength:2},
             "appnomrel" :{ maxlength:39},
             "agreementaccept" :{required:true}
@@ -1407,12 +1440,14 @@
           $("#nriform input").each(function(key,value){ 
             if(($(value).attr("id")!="saveForm") && ($(value).attr("id")!="clearForm")){  
             $(value).attr("disabled","disabled");} });
-          $("#nriform select").each(function(key,value){$(value).attr("disabled","disabled");});
-           $("#saveForm").removeAttr("disabled");
-          $("#clearForm").removeAttr("disabled");
-          $("#saveForm").text("Submit");
-          $("#clearForm").text("Edit");
-          scroll_top();
+            $("#nriform select").each(function(key,value){$(value).attr("disabled","disabled");});
+            $("#saveForm").removeAttr("disabled");
+            $("#clearForm").removeAttr("disabled");
+            $("#saveForm").text("Submit");
+            $("#clearForm").text("Edit");
+            scroll_top();
+          }else{
+            scroll_top();
           }
         }
         return false;
