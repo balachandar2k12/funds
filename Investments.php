@@ -9,38 +9,40 @@
         <div class="serviceBox grid_4 gridFirst">
           <div class="serviceImg"> <img src="img/fdIcon.png" alt=""> </div>
           <h2>FIXED DEPOSITS</h2>
-          <p>Aliquam sed nibh quis orci dapibus condimentum ut vitae metus.</p>
+          <p>Invest in Top Rated Corporate Fixed Deposits.</p>
         </div>
         </a> <a href="">
         <div class="serviceBox grid_4  serviceBoxMid">
           <div class="serviceImg goldIcon"> <img src="img/goldIcon.png" alt=""> </div>
           <h2>GOLD</h2>
-           <p>Aliquam sed nibh quis orci dapibus condimentum ut vitae metus.</p>
+           <p>Invest in Gold Funds and Gold ETFS.
+           And Track the returns of physical Gold.</p>
         </div>
         </a> <a href="">
         <div class="serviceBox grid_4 gridLast">
           <div class="serviceImg"> <img src="img/tsaveIcon.png" alt=""> </div>
           <h2>TAX SAVINGS</h2>
-           <p>Aliquam sed nibh quis orci dapibus condimentum ut vitae metus.</p>
+           <p>Invest in the TOP Tax Saver/ELSS Fund.
+           And get Tax Benefit Under Section 80 C</p>
         </div>
         </a> 
         
         <div class="serviceBox grid_4 gridFirst">
           <div class="serviceImg"> <img src="img/mutualicon.png" alt=""> </div>
           <h2>SIP</h2>
-           <p>Aliquam sed nibh quis orci dapibus condimentum ut vitae metus.</p>
+           <p>Invest in Top Performing SIP funds.</p>
         </div>
         </a> <a href="">
         <div class="serviceBox grid_4  serviceBoxMid">
           <div class="serviceImg goldIcon"> <img src="img/equityIcons.png" alt=""> </div>
           <h2>EQUITY FUNDS</h2>
-           <p>Aliquam sed nibh quis orci dapibus condimentum ut vitae metus.</p>
+           <p>Invest In Top Performing Equity Funds for Long Term Growth.</p>
         </div>
         </a> <a href="">
         <div class="serviceBox grid_4 gridLast">
           <div class="serviceImg"> <img src="img/liquidIcon.png" alt=""> </div>
           <h2>LIQUID FUNDS</h2>
-           <p>Aliquam sed nibh quis orci dapibus condimentum ut vitae metus.</p>
+           <p>Invest Your Excess Money for Short Term Returns.</p>
         </div>
         </a> </div>
   </div>

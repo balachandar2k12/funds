@@ -26,7 +26,7 @@
       <div class="serviceBox grid_4 gridFirst">
         <div class="serviceImg"> <img src="img/mutualicon.png" alt=""> </div>
         <h2>SIP</h2>
-        <p>Invest in Top SIP funds. </p>
+        <p>Invest in Top Performing SIP funds. </p>
       </div>
       </a> <a href="">
       <div class="serviceBox grid_4  serviceBoxMid">

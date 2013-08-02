@@ -986,7 +986,46 @@
                       </span> <label for="applicanticity">City</label> <span class="left city">
                       <input id="applicanticity" name="applicanticity" type="text" class="field text addr" value="" tabindex="18" maxlength="27"/>
                       </span>  <label for="applicantistate">State</label><span class="right state">
-                      <input id="applicantistate" name="applicantistate" type="text" class="field text addr" value="" tabindex="19" maxlength="20"/>
+                      <div class="styled-select">
+                       <select id="applicantistate" name="applicantistate" class="field select medium" value="" tabindex="19"/>
+                       <option value="0">--select--</option>
+                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                        <option value="Assam">Assam</option>
+                        <option value="Bihar">Bihar</option>
+                        <option value="Chhattisgarh">Chhattisgarh</option>
+                        <option value="Goa">Goa</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Haryana">Haryana</option>
+                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                        <option value="Jharkhand">Jharkhand</option>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Manipur">Manipur</option>
+                        <option value="Meghalaya">Meghalaya</option>
+                        <option value="Mizoram">Mizoram</option>
+                        <option value="Nagaland">Nagaland</option>
+                        <option value="Orissa">Orissa</option>
+                        <option value="Punjab">Punjab</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Sikkim">Sikkim</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+                        <option value="Tripura">Tripura</option>
+                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                        <option value="Uttarakhand">Uttarakhand</option>
+                        <option value="West Bengal">West Bengal</option>
+                        <option value="Andaman and Nicobar">Andaman and Nicobar</option>
+                        <option value="Chandigarh">Chandigarh</option>
+                        <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                        <option value="Daman and Diu">Daman and Diu</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Lakshadweep">Lakshadweep</option>
+                        <option value="Pondicherry">Pondicherry</option> 
+                       </select>
+                      </div>
                       </span><label for="applicantizip">Postal / Zip Code</label> <span class="left zip">
                       <input id="applicantizip" name="applicantizip" type="text" class="field text addr" value="" maxlength="6" tabindex="20"/>
                       </span> 

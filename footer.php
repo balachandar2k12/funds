@@ -38,11 +38,11 @@
      <!--End mc_embed_signup-->
       <div class="socialIcons grid_5 gridFirst">
         <ul>
-          <li id="twitter-link"><a href="https://twitter.com/fundsinn"><img src="img/twitter.png" alt=""></a></li>
-          <li id="facebook-link"><a href="https://www.facebook.com/Fundsinn"><img src="img/fbk.png" alt=""></a></li>
-          <li id="linkedin-link"><a href="#"><img src="img/linkedin.png" alt=""></a></li>
-		      <li id="youtube-link"><a href="http://www.youtube.com/fundsinn"><img src="img/you.png" alt="" id="youtube-logo"></a></li>
-        </ul>
+          <li><a href="https://twitter.com/fundsinn"><img src="img/twitter.png" alt=""></a></li>
+          <li><a href="https://www.facebook.com/Fundsinn"><img src="img/fbk.png" alt=""></a></li>
+          <li><a href="#"><img src="img/linkedin.png" alt=""></a></li>
+          <li><a href="http://www.youtube.com/fundsinn"><img src="img/you.png" alt=""></a></li>
+         </ul>
       </div>
     </div>
 	<div class="footerCopy grid_5 gridLast">
